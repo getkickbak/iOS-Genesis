@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>-NOTICE-</key>
+	<string>THIS FILE IS DIGITALLY SIGNED. DO NOT MODIFY.</string>
+	<key>Company Name</key>
+	<string>GetKickBak</string>
+	<key>iOS</key>
+	<dict>
+		<key>App Bundle IDs</key>
+		<array>
+			<string>com.genesis.GetKickBak</string>
+		</array>
+	</dict>
+	
+</dict>
+</plist>
+-----BEGIN SIGNATURE-----
+RlGcfwWe9TwwW9YRi22mgxFBPCCC6/8ED+9jeZ3XQdtAPS8zW295/ZL9Nh5NUtM4
+vgIF4v6mjhKtzt6UMzDirJRjDyglEXcMHaD4VVJXBd52nlqkWpk4KXqLPbZdcQxi
+Ko6ModnblMwMtxZsTidGzwD/OOr7sJs6swsNKJ3SIuudcYwCuRBcg8Ptb0IMaysJ
+Yb+DHRHZ91wIMCLSHWHhug54mpzONP4/Z33hI0yAsQfXSWbYrOUrCE2ae9MhtOmy
+g0Fp4Hz1mcvDEKibAEKpbpLqjqA5rdMFsGdXlyue109GjP8oAdweim8HNDqRH6gJ
+7kvDmDMhS0Xmbwt5HzgwQN1oq8t79gVWwsKv5cj3tfYVqAQb6xDkLDIKmcv4UmWK
+jzyUULJpXXRDiGZZe2+OSWQ2Wo7YgWRKqX7QCrf19kbzXI/Kydpr25Ys7V0LAQUL
+gGQbGkWHXqllSs0gg+rUIGLa4oGlGvtZjQ2CpRVyHr07MyOskllTeRNk8gXuYefL
+AGKTUziFeL1YlSoOHBDj/Cgb3EygfV4HH8lj/pjdomDhJ5LhwfajRq8ZnL8KcOqd
+n0zXIY5mpZLc8DQz7FT6DI2MN+crN00p83YIJEmsIA1aiIGYxKiuKUFqfD2otTeU
+/GPkzbB5yx3FrbvMtf7Dmr6Fw/VdILqkPANlmpSScSM=
+-----END SIGNATURE-----
