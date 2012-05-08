@@ -30,6 +30,8 @@
 	</array>
 	<key>Plugins</key>
 	<dict>
+		<key>LowLatencyAudio</key>
+		<string>LowLatencyAudio</string>
 		<key>FacebookConnect</key>
 		<string>FacebookConnectPlugin</string>
 		<key>QRCodeReaderNigma</key>

@@ -64,6 +64,8 @@
 		070AA04C14E2DEF300420282 /* Scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 070AA04A14E2DEF200420282 /* Scanner.cpp */; };
 		070AA04F14E2DF0700420282 /* ScanOverlayNigma.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070AA04D14E2DF0700420282 /* ScanOverlayNigma.xib */; };
 		070AA05014E2DF0700420282 /* ScanOverlayRL.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070AA04E14E2DF0700420282 /* ScanOverlayRL.xib */; };
+		0723BEEA155891C100738176 /* LowLatencyAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 0723BEE7155891C100738176 /* LowLatencyAudio.m */; };
+		0723BEEB155891C100738176 /* LowLatencyAudioAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 0723BEE9155891C100738176 /* LowLatencyAudioAsset.m */; };
 		07583AF9150FF288001B1059 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 07583AEC150FF288001B1059 /* FBDialog.bundle */; };
 		07583AFA150FF288001B1059 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07583AF2150FF288001B1059 /* libfacebook_ios_sdk.a */; };
 		07646DAB14AC3C840098B6D2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 07646DAA14AC3C840098B6D2 /* Default.png */; };
@@ -79,7 +81,7 @@
 		07D0AB04150A966C000E07EC /* verify.sh in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AB03150A966C000E07EC /* verify.sh */; };
 		07D0AB06150A980A000E07EC /* Cordova.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D0AACF150A927E000E07EC /* Cordova.framework */; };
 		07D0AB0D150C6650000E07EC /* FacebookConnectPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D0AB0C150C6650000E07EC /* FacebookConnectPlugin.m */; };
-		07DF4A9415181AE200E950E1 /* RedLaser_License.xml in Resources */ = {isa = PBXBuildFile; fileRef = 07DF4A9315181AE200E950E1 /* RedLaser_License.xml */; };
+		07F347791550AEF10085F6CC /* RedLaser_License.xml in Resources */ = {isa = PBXBuildFile; fileRef = 07F347781550AEF10085F6CC /* RedLaser_License.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +164,10 @@
 		070AA04B14E2DEF300420282 /* Scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scanner.h; path = Classes/Scanner.h; sourceTree = "<group>"; };
 		070AA04D14E2DF0700420282 /* ScanOverlayNigma.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScanOverlayNigma.xib; path = Resources/ScanOverlayNigma.xib; sourceTree = "<group>"; };
 		070AA04E14E2DF0700420282 /* ScanOverlayRL.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScanOverlayRL.xib; path = Resources/ScanOverlayRL.xib; sourceTree = "<group>"; };
+		0723BEE6155891C100738176 /* LowLatencyAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LowLatencyAudio.h; sourceTree = "<group>"; };
+		0723BEE7155891C100738176 /* LowLatencyAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LowLatencyAudio.m; sourceTree = "<group>"; };
+		0723BEE8155891C100738176 /* LowLatencyAudioAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LowLatencyAudioAsset.h; sourceTree = "<group>"; };
+		0723BEE9155891C100738176 /* LowLatencyAudioAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LowLatencyAudioAsset.m; sourceTree = "<group>"; };
 		07583ABF150FEBED001B1059 /* facebook-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "facebook-ios-sdk.xcodeproj"; path = "../../Aptana Studio 3 Workspace/phonegap-plugin-facebook-connect/lib/facebook-ios-sdk/src/facebook-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		07583AEA150FF288001B1059 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		07583AEB150FF288001B1059 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
@@ -198,7 +204,7 @@
 		07D0AB05150A9687000E07EC /* test-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "test-Prefix.pch"; sourceTree = "<group>"; };
 		07D0AB0B150C6650000E07EC /* FacebookConnectPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookConnectPlugin.h; sourceTree = "<group>"; };
 		07D0AB0C150C6650000E07EC /* FacebookConnectPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookConnectPlugin.m; sourceTree = "<group>"; };
-		07DF4A9315181AE200E950E1 /* RedLaser_License.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RedLaser_License.xml; sourceTree = "<group>"; };
+		07F347781550AEF10085F6CC /* RedLaser_License.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RedLaser_License.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,7 +320,7 @@
 		0706DE2614A2A6F90023AE8E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				07DF4A9315181AE200E950E1 /* RedLaser_License.xml */,
+				07F347781550AEF10085F6CC /* RedLaser_License.xml */,
 				07D0AAEB150A940C000E07EC /* de.lproj */,
 				07D0AAEE150A940C000E07EC /* en.lproj */,
 				07D0AAF1150A940C000E07EC /* es.lproj */,
@@ -370,6 +376,7 @@
 		0706DE4314A2A6F90023AE8E /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				0723BEE4155891C100738176 /* LowLatencyAudio */,
 				07583AE9150FF288001B1059 /* facebook-ios-sdk */,
 				07D0AB0A150C6650000E07EC /* ios */,
 				070AA04614E23CC600420282 /* QRCodeReaderNigma.m */,
@@ -410,6 +417,25 @@
 				0706DE8914A2ACAD0023AE8E /* white_up_arrow.png */,
 			);
 			path = "Overlay Assets";
+			sourceTree = "<group>";
+		};
+		0723BEE4155891C100738176 /* LowLatencyAudio */ = {
+			isa = PBXGroup;
+			children = (
+				0723BEE5155891C100738176 /* src */,
+			);
+			path = LowLatencyAudio;
+			sourceTree = "<group>";
+		};
+		0723BEE5155891C100738176 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0723BEE6155891C100738176 /* LowLatencyAudio.h */,
+				0723BEE7155891C100738176 /* LowLatencyAudio.m */,
+				0723BEE8155891C100738176 /* LowLatencyAudioAsset.h */,
+				0723BEE9155891C100738176 /* LowLatencyAudioAsset.m */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		07583AC0150FEBED001B1059 /* Products */ = {
@@ -592,7 +618,7 @@
 				07D0AB02150A94C6000E07EC /* MainViewController.xib in Resources */,
 				07D0AB04150A966C000E07EC /* verify.sh in Resources */,
 				07583AF9150FF288001B1059 /* FBDialog.bundle in Resources */,
-				07DF4A9415181AE200E950E1 /* RedLaser_License.xml in Resources */,
+				07F347791550AEF10085F6CC /* RedLaser_License.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,7 +636,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "appPath=\"/Users/eric/Documents/Aptana Studio 3 Workspace/GetKickBak/public/javascripts/mobile\";\nlibPath=\"lib/sencha-touch-2.0.0-commercial\";\nmkdir -p $PROJECT_DIR/www/app/store\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/app/store/mainPage.json $PROJECT_DIR/www/app/store/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources $PROJECT_DIR/www\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/*.wav $PROJECT_DIR/www\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/*.js $PROJECT_DIR/www\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/index.html $PROJECT_DIR/www\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/*.js $PROJECT_DIR/www/lib\n\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/src $PROJECT_DIR/www\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/*.gz $PROJECT_DIR/www\n\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/resources $PROJECT_DIR/www/$libPath\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/Datejs-all $PROJECT_DIR/www/lib\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/sencha-touch-all.js $PROJECT_DIR/www/$libPath/\n\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/src/device $PROJECT_DIR/www/$libPath/src\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/kitchensink $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/resources $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/video $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/audio $PROJECT_DIR/www/$libPath/examples\n\n\t\t\t\t\t\t\t\tif [ ! -d \"$PROJECT_DIR/www\" ] ; then\n\t\t\t\t\t\t\t\t\tcp -R /Users/Shared/Cordova/Frameworks/PhoneGap.framework/www \"$PROJECT_DIR\"\n\t\t\t\t\t\t\t\tfi\n\t\t\t\t\t\t\t\t# detect www folder reference in project, if missing, print warning\n\t\t\t\t\t\t\t\tgrep \"{isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = \\\"<group>\\\"; };\" \"$PROJECT_DIR/$PROJECT_NAME.xcodeproj/project.pbxproj\"\n\t\t\t\t\t\t\t\trc=$? \n\t\t\t\t\t\t\t\tif [ $rc != 0 ] ; then\n\t\t\t\t\t\t\t\techo -e \"warning: Missing - Add $PROJECT_DIR/www as a folder reference in your project. Just drag and drop the folder into your project, into the Project Navigator of Xcode 4. Make sure you select the second radio-button: 'Create folder references for any added folders' (which will create a blue folder)\" 1>&2\n\t\t\t\t\t\t\t\tfi\n";
+			shellScript = "appPath=\"/Users/eric/Documents/Aptana Studio 3 Workspace/GetKickBak/public/javascripts/mobile\";\nlibPath=\"lib/sencha-touch-2.0.0-commercial\";\nmkdir -p $PROJECT_DIR/www/app/store\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/app/store/main*Page.json $PROJECT_DIR/www/app/store/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources $PROJECT_DIR/www\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/*.wav $PROJECT_DIR/www\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/*.js $PROJECT_DIR/www\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/index.html $PROJECT_DIR/www\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/*.js $PROJECT_DIR/www/lib\n\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/src $PROJECT_DIR/www\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/*.gz $PROJECT_DIR/www\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/Datejs-all $PROJECT_DIR/www/lib\n\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/resources $PROJECT_DIR/www/$libPath\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/sencha-touch-all.js $PROJECT_DIR/www/$libPath/\n\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/src/device $PROJECT_DIR/www/$libPath/src\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/kitchensink $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/resources $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/video $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/audio $PROJECT_DIR/www/$libPath/examples\n\nif [ ! -d \"$PROJECT_DIR/www\" ] ; then\n   cp -R /Users/Shared/Cordova/Frameworks/PhoneGap.framework/www \"$PROJECT_DIR\"\nfi\n# detect www folder reference in project, if missing, print warning\ngrep \"{isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = \\\"<group>\\\"; };\" \"$PROJECT_DIR/$PROJECT_NAME.xcodeproj/project.pbxproj\"\nrc=$? \nif [ $rc != 0 ] ; then\n   echo -e \"warning: Missing - Add $PROJECT_DIR/www as a folder reference in your project. Just drag and drop the folder into your project, into the Project Navigator of Xcode 4. Make sure you select the second radio-button: 'Create folder references for any added folders' (which will create a blue folder)\" 1>&2\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -629,6 +655,8 @@
 				07D0AAFF150A9497000E07EC /* AppDelegate.m in Sources */,
 				07D0AB00150A9497000E07EC /* MainViewController.m in Sources */,
 				07D0AB0D150C6650000E07EC /* FacebookConnectPlugin.m in Sources */,
+				0723BEEA155891C100738176 /* LowLatencyAudio.m in Sources */,
+				0723BEEB155891C100738176 /* LowLatencyAudioAsset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,8 +708,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;
 				CLANG_WARN_OBJCPP_ARC_ABI = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Chan (RNZK43S324)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Chan (RNZK43S324)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -698,8 +726,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
-				PROVISIONING_PROFILE = "23E08770-9CE8-4916-9F96-BBBAE6E50D19";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "23E08770-9CE8-4916-9F96-BBBAE6E50D19";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -715,8 +743,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;
 				CLANG_WARN_OBJCPP_ARC_ABI = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Chan (RNZK43S324)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Chan (RNZK43S324)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -731,8 +759,8 @@
 					"-DNS_BLOCK_ASSERTIONS=1",
 					"$(OTHER_CFLAGS)",
 				);
-				PROVISIONING_PROFILE = "23E08770-9CE8-4916-9F96-BBBAE6E50D19";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "23E08770-9CE8-4916-9F96-BBBAE6E50D19";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

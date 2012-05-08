@@ -52,7 +52,7 @@
    [overlayController setCamera:cameraViewController];
 	
    // Show the scanner view
-   [[super appViewController] presentModalViewController:cameraViewController animated:TRUE];   
+   [[super viewController] presentModalViewController:cameraViewController animated:TRUE];   
 }
 
 - (void) overlayController:(OverlayControllerNigma*)overlay returnResults:(NSSet *)results
@@ -60,7 +60,7 @@
 	[[UIApplication sharedApplication] setStatusBarHidden:NO];
 	
 	// Restore main screen (and restore title bar for 3.0)
-	[[super appViewController] dismissModalViewControllerAnimated:TRUE];
+	[[super viewController] dismissModalViewControllerAnimated:TRUE];
 
    // create dictionary to return FileUploadResult object
    NSMutableDictionary* uploadResult = [NSMutableDictionary dictionaryWithCapacity:1];

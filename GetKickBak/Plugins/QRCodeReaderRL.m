@@ -63,7 +63,7 @@
 	[pickerController setScanDATAMATRIX:NO];
    
     // Show the scanner view
-    [[super appViewController] presentModalViewController:pickerController animated:TRUE];   
+    [[super viewController] presentModalViewController:pickerController animated:TRUE];   
    NSLog(@"Loaded Scanner ....");
 }
 
@@ -72,7 +72,7 @@
 	[[UIApplication sharedApplication] setStatusBarHidden:NO];
 	
 	// Restore main screen (and restore title bar for 3.0)
-	[[super appViewController] dismissModalViewControllerAnimated:TRUE];
+	[[super viewController] dismissModalViewControllerAnimated:TRUE];
 	
 	// Note that it is possible to get multiple results discovered at the same time.
 	// Even if you return as soon as you see result barcodes, there could be more than one.
