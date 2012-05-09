@@ -38,8 +38,6 @@
 		<string>QRCodeReaderNigma</string>
 		<key>QRCodeReaderRL</key>
 		<string>QRCodeReaderRL</string>
-		<key>FileTransfer_old</key>
-		<string>FileTransfer</string>
 		<key>Accelerometer</key>
 		<string>CDVAccelerometer</string>
 		<key>Camera</key>
