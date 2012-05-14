@@ -30,6 +30,8 @@
 	</array>
 	<key>Plugins</key>
 	<dict>
+		<key>BarcodeScanner</key>
+		<string>CDVBarcodeScanner</string>
 		<key>LowLatencyAudio</key>
 		<string>LowLatencyAudio</string>
 		<key>FacebookConnect</key>

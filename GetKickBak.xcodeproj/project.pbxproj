@@ -81,6 +81,16 @@
 		07D0AB04150A966C000E07EC /* verify.sh in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AB03150A966C000E07EC /* verify.sh */; };
 		07D0AB06150A980A000E07EC /* Cordova.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D0AACF150A927E000E07EC /* Cordova.framework */; };
 		07D0AB0D150C6650000E07EC /* FacebookConnectPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D0AB0C150C6650000E07EC /* FacebookConnectPlugin.m */; };
+		07DA345F155DA5E3004E655A /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07DA345E155DA5E3004E655A /* appicon.png */; };
+		07DA34F31560F5A3004E655A /* barcodescanner.js in Sources */ = {isa = PBXBuildFile; fileRef = 07DA34C21560F5A3004E655A /* barcodescanner.js */; };
+		07DA34F41560F5A3004E655A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 07DA34C41560F5A3004E655A /* .gitignore */; };
+		07DA34F51560F5A3004E655A /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 07DA34C51560F5A3004E655A /* Makefile */; };
+		07DA34F61560F5A3004E655A /* onefile-zxing.py in Resources */ = {isa = PBXBuildFile; fileRef = 07DA34C61560F5A3004E655A /* onefile-zxing.py */; };
+		07DA34F71560F5A3004E655A /* CDVBarcodeScanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07DA34C71560F5A3004E655A /* CDVBarcodeScanner.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		07DA34F81560F5A3004E655A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 07DA34C81560F5A3004E655A /* README.md */; };
+		07DA34F91560F5A3004E655A /* scannerOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07DA34C91560F5A3004E655A /* scannerOverlay.xib */; };
+		07DA351C1560F5A3004E655A /* zxing-all-in-one.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07DA34F11560F5A3004E655A /* zxing-all-in-one.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		07DA351E1560F5C6004E655A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DA351D1560F5C6004E655A /* AssetsLibrary.framework */; };
 		07F347791550AEF10085F6CC /* RedLaser_License.xml in Resources */ = {isa = PBXBuildFile; fileRef = 07F347781550AEF10085F6CC /* RedLaser_License.xml */; };
 /* End PBXBuildFile section */
 
@@ -204,6 +214,17 @@
 		07D0AB05150A9687000E07EC /* test-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "test-Prefix.pch"; sourceTree = "<group>"; };
 		07D0AB0B150C6650000E07EC /* FacebookConnectPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookConnectPlugin.h; sourceTree = "<group>"; };
 		07D0AB0C150C6650000E07EC /* FacebookConnectPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookConnectPlugin.m; sourceTree = "<group>"; };
+		07DA345E155DA5E3004E655A /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
+		07DA34C21560F5A3004E655A /* barcodescanner.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = barcodescanner.js; sourceTree = "<group>"; };
+		07DA34C41560F5A3004E655A /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		07DA34C51560F5A3004E655A /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		07DA34C61560F5A3004E655A /* onefile-zxing.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = "onefile-zxing.py"; sourceTree = "<group>"; };
+		07DA34C71560F5A3004E655A /* CDVBarcodeScanner.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDVBarcodeScanner.mm; sourceTree = "<group>"; };
+		07DA34C81560F5A3004E655A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		07DA34C91560F5A3004E655A /* scannerOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = scannerOverlay.xib; sourceTree = "<group>"; };
+		07DA34F11560F5A3004E655A /* zxing-all-in-one.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "zxing-all-in-one.cpp"; sourceTree = "<group>"; };
+		07DA34F21560F5A3004E655A /* zxing-all-in-one.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "zxing-all-in-one.h"; sourceTree = "<group>"; };
+		07DA351D1560F5C6004E655A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		07F347781550AEF10085F6CC /* RedLaser_License.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RedLaser_License.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -212,6 +233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07DA351E1560F5C6004E655A /* AssetsLibrary.framework in Frameworks */,
 				07D0AB06150A980A000E07EC /* Cordova.framework in Frameworks */,
 				0706DE4F14A2A7640023AE8E /* libiconv.dylib in Frameworks */,
 				0706DE4B14A2A7320023AE8E /* libstdc++.dylib in Frameworks */,
@@ -244,6 +266,8 @@
 		0706DDEF14A2A6F90023AE8E = {
 			isa = PBXGroup;
 			children = (
+				07DA351D1560F5C6004E655A /* AssetsLibrary.framework */,
+				07DA345E155DA5E3004E655A /* appicon.png */,
 				07583ABF150FEBED001B1059 /* facebook-ios-sdk.xcodeproj */,
 				07646DAF14AC3D470098B6D2 /* Default-Portrait~ipad.png */,
 				07646DAD14AC3C9A0098B6D2 /* Default@2x.png */,
@@ -376,6 +400,7 @@
 		0706DE4314A2A6F90023AE8E /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				07DA34C11560F5A3004E655A /* BarcodeScanner */,
 				0723BEE4155891C100738176 /* LowLatencyAudio */,
 				07583AE9150FF288001B1059 /* facebook-ios-sdk */,
 				07D0AB0A150C6650000E07EC /* ios */,
@@ -509,6 +534,30 @@
 			path = ios;
 			sourceTree = "<group>";
 		};
+		07DA34C11560F5A3004E655A /* BarcodeScanner */ = {
+			isa = PBXGroup;
+			children = (
+				07DA34C21560F5A3004E655A /* barcodescanner.js */,
+				07DA34C31560F5A3004E655A /* build */,
+				07DA34C71560F5A3004E655A /* CDVBarcodeScanner.mm */,
+				07DA34C81560F5A3004E655A /* README.md */,
+				07DA34C91560F5A3004E655A /* scannerOverlay.xib */,
+				07DA34F11560F5A3004E655A /* zxing-all-in-one.cpp */,
+				07DA34F21560F5A3004E655A /* zxing-all-in-one.h */,
+			);
+			path = BarcodeScanner;
+			sourceTree = "<group>";
+		};
+		07DA34C31560F5A3004E655A /* build */ = {
+			isa = PBXGroup;
+			children = (
+				07DA34C41560F5A3004E655A /* .gitignore */,
+				07DA34C51560F5A3004E655A /* Makefile */,
+				07DA34C61560F5A3004E655A /* onefile-zxing.py */,
+			);
+			path = build;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -619,6 +668,11 @@
 				07D0AB04150A966C000E07EC /* verify.sh in Resources */,
 				07583AF9150FF288001B1059 /* FBDialog.bundle in Resources */,
 				07F347791550AEF10085F6CC /* RedLaser_License.xml in Resources */,
+				07DA345F155DA5E3004E655A /* appicon.png in Resources */,
+				07DA34F41560F5A3004E655A /* .gitignore in Resources */,
+				07DA34F61560F5A3004E655A /* onefile-zxing.py in Resources */,
+				07DA34F81560F5A3004E655A /* README.md in Resources */,
+				07DA34F91560F5A3004E655A /* scannerOverlay.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,6 +711,10 @@
 				07D0AB0D150C6650000E07EC /* FacebookConnectPlugin.m in Sources */,
 				0723BEEA155891C100738176 /* LowLatencyAudio.m in Sources */,
 				0723BEEB155891C100738176 /* LowLatencyAudioAsset.m in Sources */,
+				07DA34F31560F5A3004E655A /* barcodescanner.js in Sources */,
+				07DA34F51560F5A3004E655A /* Makefile in Sources */,
+				07DA34F71560F5A3004E655A /* CDVBarcodeScanner.mm in Sources */,
+				07DA351C1560F5A3004E655A /* zxing-all-in-one.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
