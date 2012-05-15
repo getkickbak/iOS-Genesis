@@ -91,6 +91,7 @@
 		07DA34F91560F5A3004E655A /* scannerOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07DA34C91560F5A3004E655A /* scannerOverlay.xib */; };
 		07DA351C1560F5A3004E655A /* zxing-all-in-one.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07DA34F11560F5A3004E655A /* zxing-all-in-one.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		07DA351E1560F5C6004E655A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DA351D1560F5C6004E655A /* AssetsLibrary.framework */; };
+		07DA35201561F980004E655A /* appicon3g.png in Resources */ = {isa = PBXBuildFile; fileRef = 07DA351F1561F980004E655A /* appicon3g.png */; };
 		07F347791550AEF10085F6CC /* RedLaser_License.xml in Resources */ = {isa = PBXBuildFile; fileRef = 07F347781550AEF10085F6CC /* RedLaser_License.xml */; };
 /* End PBXBuildFile section */
 
@@ -225,6 +226,7 @@
 		07DA34F11560F5A3004E655A /* zxing-all-in-one.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "zxing-all-in-one.cpp"; sourceTree = "<group>"; };
 		07DA34F21560F5A3004E655A /* zxing-all-in-one.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "zxing-all-in-one.h"; sourceTree = "<group>"; };
 		07DA351D1560F5C6004E655A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		07DA351F1561F980004E655A /* appicon3g.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon3g.png; sourceTree = "<group>"; };
 		07F347781550AEF10085F6CC /* RedLaser_License.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RedLaser_License.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -266,6 +268,7 @@
 		0706DDEF14A2A6F90023AE8E = {
 			isa = PBXGroup;
 			children = (
+				07DA351F1561F980004E655A /* appicon3g.png */,
 				07DA351D1560F5C6004E655A /* AssetsLibrary.framework */,
 				07DA345E155DA5E3004E655A /* appicon.png */,
 				07583ABF150FEBED001B1059 /* facebook-ios-sdk.xcodeproj */,
@@ -673,6 +676,7 @@
 				07DA34F61560F5A3004E655A /* onefile-zxing.py in Resources */,
 				07DA34F81560F5A3004E655A /* README.md in Resources */,
 				07DA34F91560F5A3004E655A /* scannerOverlay.xib in Resources */,
+				07DA35201561F980004E655A /* appicon3g.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

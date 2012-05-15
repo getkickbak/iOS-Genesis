@@ -255,7 +255,15 @@ parentViewController:(UIViewController*)parentViewController
 - (void)barcodeScanDone {
     self.capturing = NO;
     [self.captureSession stopRunning];
-    [self.parentViewController dismissModalViewControllerAnimated: YES];
+   //
+   // Bugfix to prevent uncaught exception at "decidePolicyForNavigationAction"
+   //
+   if ([self.parentViewController respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
+      [self.parentViewController dismissModalViewControllerAnimated:YES];
+   } else {
+      [[super presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+   }
+   //[self.parentViewController dismissModalViewControllerAnimated: YES];
     
     // viewcontroller holding onto a reference to us, release them so they
     // will release us
