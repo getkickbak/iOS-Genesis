@@ -70,7 +70,6 @@
 		07583AFA150FF288001B1059 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07583AF2150FF288001B1059 /* libfacebook_ios_sdk.a */; };
 		07646DAB14AC3C840098B6D2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 07646DAA14AC3C840098B6D2 /* Default.png */; };
 		07646DAE14AC3C9A0098B6D2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07646DAD14AC3C9A0098B6D2 /* Default@2x.png */; };
-		07646DB014AC3D470098B6D2 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 07646DAF14AC3D470098B6D2 /* Default-Portrait~ipad.png */; };
 		07D0AAE0150A9355000E07EC /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AADD150A9355000E07EC /* icon-72.png */; };
 		07D0AAE1150A9355000E07EC /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AADE150A9355000E07EC /* icon.png */; };
 		07D0AAE2150A9355000E07EC /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AADF150A9355000E07EC /* icon@2x.png */; };
@@ -197,7 +196,6 @@
 		07583AF8150FF288001B1059 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		07646DAA14AC3C840098B6D2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		07646DAD14AC3C9A0098B6D2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		07646DAF14AC3D470098B6D2 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		07D0AACF150A927E000E07EC /* Cordova.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cordova.framework; path = /Users/Shared/Cordova/Frameworks/Cordova.framework; sourceTree = "<absolute>"; };
 		07D0AADD150A9355000E07EC /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 		07D0AADE150A9355000E07EC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -272,7 +270,6 @@
 				07DA351D1560F5C6004E655A /* AssetsLibrary.framework */,
 				07DA345E155DA5E3004E655A /* appicon.png */,
 				07583ABF150FEBED001B1059 /* facebook-ios-sdk.xcodeproj */,
-				07646DAF14AC3D470098B6D2 /* Default-Portrait~ipad.png */,
 				07646DAD14AC3C9A0098B6D2 /* Default@2x.png */,
 				07646DAA14AC3C840098B6D2 /* Default.png */,
 				0706DE5614A2A8D10023AE8E /* www */,
@@ -660,7 +657,6 @@
 				0706DE9F14A2ACAD0023AE8E /* white_up_arrow.png in Resources */,
 				07646DAB14AC3C840098B6D2 /* Default.png in Resources */,
 				07646DAE14AC3C9A0098B6D2 /* Default@2x.png in Resources */,
-				07646DB014AC3D470098B6D2 /* Default-Portrait~ipad.png in Resources */,
 				070AA04F14E2DF0700420282 /* ScanOverlayNigma.xib in Resources */,
 				070AA05014E2DF0700420282 /* ScanOverlayRL.xib in Resources */,
 				07D0AAE0150A9355000E07EC /* icon-72.png in Resources */,
