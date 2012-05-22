@@ -26,7 +26,7 @@
 @interface CameraViewController : UIViewController
 {
 }
-@property (nonatomic) OverlayControllerNigma *overlay;
+@property (assign) OverlayControllerNigma *overlay;
 - (void) startScanner;
 @end
 
@@ -62,8 +62,8 @@
    CameraViewController *camera;
 }
 
-@property (nonatomic) CameraViewController *camera;
-@property (nonatomic, unsafe_unretained) id <OverlayControllerNigmaDelegate> delegate;
+@property (assign) CameraViewController *camera;
+@property (retain) id <OverlayControllerNigmaDelegate> delegate;
 -(IBAction) cancelPressed;
 -(IBAction) flashPressed;
 -(void) onError: (const char*) str;

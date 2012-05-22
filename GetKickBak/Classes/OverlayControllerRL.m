@@ -217,7 +217,7 @@
 	if(!_isSilent) // If silent, no need to do this.
 	{
 		NSURL* aFileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"beep" ofType:@"wav"] isDirectory:NO]; 
-		AudioServicesCreateSystemSoundID((__bridge_retained CFURLRef)aFileURL, &_scanSuccessSound);
+		AudioServicesCreateSystemSoundID((CFURLRef)aFileURL, &_scanSuccessSound);
 		
 		UInt32 flag = 0;
 		OSStatus error = AudioServicesSetProperty(kAudioServicesPropertyIsUISound,
@@ -260,7 +260,7 @@
 		NSMutableArray * items = [[toolBar items] mutableCopy];
 		[items removeObject:flashButton];
 		[toolBar setItems:items animated:NO];
-		//[items release];
+		[items release];
 	}else
 	{
 		[flashButton setEnabled:YES];

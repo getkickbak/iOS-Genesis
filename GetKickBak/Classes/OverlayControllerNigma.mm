@@ -9,27 +9,27 @@
 void WrapError(void* pThis,const char* str)
 {
 	//OverlayControllerNigma* p = ((__bridge_transfer CameraViewController*)pThis).overlay;
-	OverlayControllerNigma* p = ((__bridge OverlayControllerNigma*)pThis);
+	OverlayControllerNigma* p = ((OverlayControllerNigma*)pThis);
 	[p onError:str];
 	
 }
 void WrapNotify(void* pThis,const char* str)
 {
 	//OverlayControllerNigma* p = ((__bridge_transfer CameraViewController*)pThis).overlay;
-	OverlayControllerNigma* p = ((__bridge OverlayControllerNigma*)pThis);
+	OverlayControllerNigma* p = ((OverlayControllerNigma*)pThis);
 	[p onNotify:str];
 	
 }
 void WrapDecode(void* pThis,const unsigned short* str,const char* SymbolType)
 {
 	//OverlayControllerNigma* p = ((__bridge_transfer CameraViewController*)pThis).overlay;   
-	OverlayControllerNigma* p = ((__bridge OverlayControllerNigma*)pThis);
+	OverlayControllerNigma* p = ((OverlayControllerNigma*)pThis);
 	[p onDecode:str:SymbolType];
 }
 void WrapCameraStopOrStart(int on,void* pThis)
 {
 	//OverlayControllerNigma* p = ((__bridge_transfer CameraViewController*)pThis).overlay;
-	OverlayControllerNigma* p = ((__bridge OverlayControllerNigma*)pThis);
+	OverlayControllerNigma* p = ((OverlayControllerNigma*)pThis);
 	[p OnCameraStopOrStart:on];	
 }
 
@@ -40,7 +40,7 @@ void WrapCameraStopOrStart(int on,void* pThis)
 {
    if (![overlay getScanner])
    {
-      CScanner *scanner = new CScanner((__bridge void *)overlay);
+      CScanner *scanner = new CScanner((void *)overlay);
       [overlay setScanner:(void *)scanner];
       [overlay setBTorch:0];      
       NSLog(@"Scanner Loading ...");
@@ -53,7 +53,7 @@ void WrapCameraStopOrStart(int on,void* pThis)
    // Start Scan upon Ready
    NSLog(@"Scanner Loading Into View");
    CScanner *scanner = (CScanner *)[overlay getScanner];   
-   scanner->Scan((__bridge  void*)self);   
+   scanner->Scan((void*)self);   
 }
 @end
 
@@ -171,7 +171,7 @@ void WrapCameraStopOrStart(int on,void* pThis)
 	if(!_isSilent) // If silent, no need to do this.
 	{
 		NSURL* aFileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"beep" ofType:@"wav"] isDirectory:NO]; 
-		AudioServicesCreateSystemSoundID((__bridge_retained CFURLRef)aFileURL, &_scanSuccessSound);
+		AudioServicesCreateSystemSoundID((CFURLRef)aFileURL, &_scanSuccessSound);
 		
 		UInt32 flag = 0;
 		OSStatus error = AudioServicesSetProperty(kAudioServicesPropertyIsUISound,
@@ -206,7 +206,7 @@ void WrapCameraStopOrStart(int on,void* pThis)
 		NSMutableArray * items = [[toolBar items] mutableCopy];
 		[items removeObject:flashButton];
 		[toolBar setItems:items animated:NO];
-		//[items release];
+		[items release];
 	}else
 	{
 		[flashButton setEnabled:YES];
