@@ -37,7 +37,7 @@
    if(errorCode > 0) {
    	NSString* jsString = [[NSString alloc] initWithFormat:@"window.plugins.qrCodeReader._didNotFinishWithResult(%d);",errorCode];
       [self writeJavascript:jsString];
-      //[jsString release];
+      [jsString release];
       return;
    }
    	

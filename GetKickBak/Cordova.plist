@@ -19,7 +19,7 @@
 	<key>AllowInlineMediaPlayback</key>
 	<false/>
 	<key>OpenAllWhitelistURLsInWebView</key>
-	<false/>
+	<true/>
 	<key>UIWebViewBounce</key>
 	<true/>
 	<key>ExternalHosts</key>
@@ -30,6 +30,8 @@
 	</array>
 	<key>Plugins</key>
 	<dict>
+		<key>EmailComposer</key>
+		<string>EmailComposer</string>
 		<key>BarcodeScanner</key>
 		<string>CDVBarcodeScanner</string>
 		<key>LowLatencyAudio</key>
