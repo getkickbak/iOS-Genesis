@@ -30,7 +30,7 @@
 		0706DE4F14A2A7640023AE8E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0706DE4E14A2A7640023AE8E /* libiconv.dylib */; };
 		0706DE5114A2A77A0023AE8E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0706DE5014A2A77A0023AE8E /* OpenGLES.framework */; };
 		0706DE5314A2A7810023AE8E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0706DE5214A2A7810023AE8E /* Security.framework */; };
-		0706DE5514A2A7CC0023AE8E /* libRedLaserSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0706DE5414A2A7CC0023AE8E /* libRedLaserSDK.a */; };
+		0706DE5514A2A7CC0023AE8E /* libRedLaserSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0706DE5414A2A7CC0023AE8E /* libRedLaserSDK.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0706DE5714A2A8D10023AE8E /* www in Resources */ = {isa = PBXBuildFile; fileRef = 0706DE5614A2A8D10023AE8E /* www */; };
 		0706DE8A14A2ACAD0023AE8E /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0706DE7414A2ACAD0023AE8E /* beep.wav */; };
 		0706DE8B14A2ACAD0023AE8E /* bolt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0706DE7514A2ACAD0023AE8E /* bolt.png */; };
