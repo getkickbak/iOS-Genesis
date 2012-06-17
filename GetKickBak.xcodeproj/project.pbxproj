@@ -30,8 +30,8 @@
 		0736AF0215801F73008C0D98 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0736AF0115801F73008C0D98 /* CoreVideo.framework */; };
 		0736AF0415801F8D008C0D98 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0736AF0315801F8D008C0D98 /* AssetsLibrary.framework */; };
 		0736AF0615801FCB008C0D98 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0736AF0515801FCB008C0D98 /* libiconv.dylib */; };
+		0739AF64158DCAB600FA5050 /* Capture.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0739AF63158DCAB600FA5050 /* Capture.bundle */; };
 		073B1E76156D96E1000FB928 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 073B1E75156D96E1000FB928 /* NSDataAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		0741630D1589CFDA00E39D0E /* Capture.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0741630C1589CFDA00E39D0E /* Capture.bundle */; };
 		07583AF9150FF288001B1059 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 07583AEC150FF288001B1059 /* FBDialog.bundle */; };
 		07583AFA150FF288001B1059 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07583AF2150FF288001B1059 /* libfacebook_ios_sdk.a */; };
 		07646DAB14AC3C840098B6D2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 07646DAA14AC3C840098B6D2 /* Default.png */; };
@@ -104,9 +104,9 @@
 		0736AF0115801F73008C0D98 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		0736AF0315801F8D008C0D98 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		0736AF0515801FCB008C0D98 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		0739AF63158DCAB600FA5050 /* Capture.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Capture.bundle; sourceTree = "<group>"; };
 		073B1E74156D96E1000FB928 /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
 		073B1E75156D96E1000FB928 /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
-		0741630C1589CFDA00E39D0E /* Capture.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Capture.bundle; sourceTree = "<group>"; };
 		07583ABF150FEBED001B1059 /* facebook-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "facebook-ios-sdk.xcodeproj"; path = "../../Aptana Studio 3 Workspace/phonegap-plugin-facebook-connect/lib/facebook-ios-sdk/src/facebook-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		07583AEA150FF288001B1059 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		07583AEB150FF288001B1059 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 		0706DE2614A2A6F90023AE8E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0741630C1589CFDA00E39D0E /* Capture.bundle */,
+				0739AF63158DCAB600FA5050 /* Capture.bundle */,
 				07D9A98E1580962200AD5447 /* beep.wav */,
 				07D0AAEB150A940C000E07EC /* de.lproj */,
 				07D0AAEE150A940C000E07EC /* en.lproj */,
@@ -543,7 +543,7 @@
 				0799AFCA156C440C00C43BC4 /* index.html in Resources */,
 				0799AFCB156C440C00C43BC4 /* readme.md in Resources */,
 				07D9A98F1580962200AD5447 /* beep.wav in Resources */,
-				0741630D1589CFDA00E39D0E /* Capture.bundle in Resources */,
+				0739AF64158DCAB600FA5050 /* Capture.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
