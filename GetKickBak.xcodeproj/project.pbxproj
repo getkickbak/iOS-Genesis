@@ -75,7 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0706DDFD14A2A6F90023AE8E /* GetKickBak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetKickBak.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0706DDFD14A2A6F90023AE8E /* KICKBAK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KICKBAK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0706DE0114A2A6F90023AE8E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0706DE0314A2A6F90023AE8E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0706DE0514A2A6F90023AE8E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -210,7 +210,7 @@
 		0706DDFE14A2A6F90023AE8E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0706DDFD14A2A6F90023AE8E /* GetKickBak.app */,
+				0706DDFD14A2A6F90023AE8E /* KICKBAK.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -469,7 +469,7 @@
 			);
 			name = GetKickBak;
 			productName = GetKickBak;
-			productReference = 0706DDFD14A2A6F90023AE8E /* GetKickBak.app */;
+			productReference = 0706DDFD14A2A6F90023AE8E /* KICKBAK.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -670,8 +670,8 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;
 				CLANG_WARN_OBJCPP_ARC_ABI = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Chan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Chan";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -686,8 +686,8 @@
 					"-DNS_BLOCK_ASSERTIONS=1",
 					"$(OTHER_CFLAGS)",
 				);
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "2263708E-611E-4B7E-9C38-30B2EB657739";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2263708E-611E-4B7E-9C38-30B2EB657739";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
@@ -700,6 +700,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_OBJCPP_ARC_ABI = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Chan (RNZK43S324)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Chan (RNZK43S324)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = /Users/Shared/Cordova/Frameworks;
@@ -722,8 +723,9 @@
 				);
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = GetKickBak;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PRODUCT_NAME = KICKBAK;
+				PROVISIONING_PROFILE = "64E986B6-AE13-4298-A52B-93405267757B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "64E986B6-AE13-4298-A52B-93405267757B";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -736,8 +738,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_OBJCPP_ARC_ABI = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Chan (RNZK43S324)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Chan (RNZK43S324)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Chan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Chan";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = /Users/Shared/Cordova/Frameworks;
@@ -763,8 +765,9 @@
 					"$(OTHER_CFLAGS)",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = GetKickBak;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PRODUCT_NAME = KICKBAK;
+				PROVISIONING_PROFILE = "1C1E5984-424A-446D-9300-843E77CC26EE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1C1E5984-424A-446D-9300-843E77CC26EE";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

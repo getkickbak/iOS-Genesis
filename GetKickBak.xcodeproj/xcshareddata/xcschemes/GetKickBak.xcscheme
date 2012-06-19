@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0706DDFC14A2A6F90023AE8E"
-               BuildableName = "GetKickBak.app"
+               BuildableName = "KICKBAK.app"
                BlueprintName = "GetKickBak"
                ReferencedContainer = "container:GetKickBak.xcodeproj">
             </BuildableReference>
@@ -23,8 +23,8 @@
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.GDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0706DDFC14A2A6F90023AE8E"
-            BuildableName = "GetKickBak.app"
+            BuildableName = "KICKBAK.app"
             BlueprintName = "GetKickBak"
             ReferencedContainer = "container:GetKickBak.xcodeproj">
          </BuildableReference>
@@ -44,7 +44,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0706DDFC14A2A6F90023AE8E"
-            BuildableName = "GetKickBak.app"
+            BuildableName = "KICKBAK.app"
             BlueprintName = "GetKickBak"
             ReferencedContainer = "container:GetKickBak.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0706DDFC14A2A6F90023AE8E"
-            BuildableName = "GetKickBak.app"
+            BuildableName = "KICKBAK.app"
             BlueprintName = "GetKickBak"
             ReferencedContainer = "container:GetKickBak.xcodeproj">
          </BuildableReference>
