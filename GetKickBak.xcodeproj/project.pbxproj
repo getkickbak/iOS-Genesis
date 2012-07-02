@@ -25,22 +25,32 @@
 		0706DE3A14A2A6F90023AE8E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0706DE3914A2A6F90023AE8E /* Default@2x.png */; };
 		0706DE3E14A2A6F90023AE8E /* Cordova.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0706DE3D14A2A6F90023AE8E /* Cordova.plist */; };
 		0706DE5714A2A8D10023AE8E /* www in Resources */ = {isa = PBXBuildFile; fileRef = 0706DE5614A2A8D10023AE8E /* www */; };
-		0723BEEA155891C100738176 /* LowLatencyAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 0723BEE7155891C100738176 /* LowLatencyAudio.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		0723BEEB155891C100738176 /* LowLatencyAudioAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 0723BEE9155891C100738176 /* LowLatencyAudioAsset.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0736AF0215801F73008C0D98 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0736AF0115801F73008C0D98 /* CoreVideo.framework */; };
 		0736AF0415801F8D008C0D98 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0736AF0315801F8D008C0D98 /* AssetsLibrary.framework */; };
 		0736AF0615801FCB008C0D98 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0736AF0515801FCB008C0D98 /* libiconv.dylib */; };
 		0739AF64158DCAB600FA5050 /* Capture.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0739AF63158DCAB600FA5050 /* Capture.bundle */; };
 		073B1E76156D96E1000FB928 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 073B1E75156D96E1000FB928 /* NSDataAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		07583AF9150FF288001B1059 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 07583AEC150FF288001B1059 /* FBDialog.bundle */; };
-		07583AFA150FF288001B1059 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07583AF2150FF288001B1059 /* libfacebook_ios_sdk.a */; };
 		07646DAB14AC3C840098B6D2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 07646DAA14AC3C840098B6D2 /* Default.png */; };
 		07646DAE14AC3C9A0098B6D2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07646DAD14AC3C9A0098B6D2 /* Default@2x.png */; };
-		0799AFC8156C440C00C43BC4 /* EmailComposer.js in Sources */ = {isa = PBXBuildFile; fileRef = 0799AFC4156C440C00C43BC4 /* EmailComposer.js */; };
-		0799AFC9156C440C00C43BC4 /* EmailComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0799AFC5156C440C00C43BC4 /* EmailComposer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		0799AFCA156C440C00C43BC4 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 0799AFC6156C440C00C43BC4 /* index.html */; };
-		0799AFCB156C440C00C43BC4 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 0799AFC7156C440C00C43BC4 /* readme.md */; };
 		0799AFCD156C454700C43BC4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0799AFCC156C454700C43BC4 /* MessageUI.framework */; };
+		079CA209159F8F930026A58E /* PushNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CA208159F8F930026A58E /* PushNotification.m */; };
+		079CA21A159F94590026A58E /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 079CA20D159F94590026A58E /* FBDialog.bundle */; };
+		079CA21B159F94590026A58E /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 079CA213159F94590026A58E /* libfacebook_ios_sdk.a */; };
+		079CA236159F94960026A58E /* barcodescanner.js in Sources */ = {isa = PBXBuildFile; fileRef = 079CA21D159F94960026A58E /* barcodescanner.js */; };
+		079CA237159F94960026A58E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 079CA21F159F94960026A58E /* .gitignore */; };
+		079CA238159F94960026A58E /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 079CA220159F94960026A58E /* Makefile */; };
+		079CA239159F94960026A58E /* onefile-zxing.py in Resources */ = {isa = PBXBuildFile; fileRef = 079CA221159F94960026A58E /* onefile-zxing.py */; };
+		079CA23A159F94960026A58E /* CDVBarcodeScanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 079CA222159F94960026A58E /* CDVBarcodeScanner.mm */; };
+		079CA23B159F94960026A58E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 079CA223159F94960026A58E /* README.md */; };
+		079CA23C159F94960026A58E /* scannerOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 079CA224159F94960026A58E /* scannerOverlay.xib */; };
+		079CA23D159F94960026A58E /* zxing-all-in-one.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 079CA225159F94960026A58E /* zxing-all-in-one.cpp */; };
+		079CA23E159F94960026A58E /* EmailComposer.js in Sources */ = {isa = PBXBuildFile; fileRef = 079CA229159F94960026A58E /* EmailComposer.js */; };
+		079CA23F159F94960026A58E /* EmailComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CA22A159F94960026A58E /* EmailComposer.m */; };
+		079CA240159F94960026A58E /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 079CA22B159F94960026A58E /* index.html */; };
+		079CA241159F94960026A58E /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 079CA22C159F94960026A58E /* readme.md */; };
+		079CA242159F94960026A58E /* FacebookConnectPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CA22F159F94960026A58E /* FacebookConnectPlugin.m */; };
+		079CA243159F94960026A58E /* LowLatencyAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CA233159F94960026A58E /* LowLatencyAudio.m */; };
+		079CA244159F94960026A58E /* LowLatencyAudioAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CA235159F94960026A58E /* LowLatencyAudioAsset.m */; };
 		07D0AAE0150A9355000E07EC /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AADD150A9355000E07EC /* icon-72.png */; };
 		07D0AAE1150A9355000E07EC /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AADE150A9355000E07EC /* icon.png */; };
 		07D0AAE2150A9355000E07EC /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AADF150A9355000E07EC /* icon@2x.png */; };
@@ -50,17 +60,8 @@
 		07D0AB02150A94C6000E07EC /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AB01150A94C6000E07EC /* MainViewController.xib */; };
 		07D0AB04150A966C000E07EC /* verify.sh in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AB03150A966C000E07EC /* verify.sh */; };
 		07D0AB06150A980A000E07EC /* Cordova.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D0AACF150A927E000E07EC /* Cordova.framework */; };
-		07D0AB0D150C6650000E07EC /* FacebookConnectPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D0AB0C150C6650000E07EC /* FacebookConnectPlugin.m */; };
 		07D9A98F1580962200AD5447 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07D9A98E1580962200AD5447 /* beep.wav */; };
 		07DA345F155DA5E3004E655A /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07DA345E155DA5E3004E655A /* appicon.png */; };
-		07DA34F31560F5A3004E655A /* barcodescanner.js in Sources */ = {isa = PBXBuildFile; fileRef = 07DA34C21560F5A3004E655A /* barcodescanner.js */; };
-		07DA34F41560F5A3004E655A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 07DA34C41560F5A3004E655A /* .gitignore */; };
-		07DA34F51560F5A3004E655A /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 07DA34C51560F5A3004E655A /* Makefile */; };
-		07DA34F61560F5A3004E655A /* onefile-zxing.py in Resources */ = {isa = PBXBuildFile; fileRef = 07DA34C61560F5A3004E655A /* onefile-zxing.py */; };
-		07DA34F71560F5A3004E655A /* CDVBarcodeScanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07DA34C71560F5A3004E655A /* CDVBarcodeScanner.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		07DA34F81560F5A3004E655A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 07DA34C81560F5A3004E655A /* README.md */; };
-		07DA34F91560F5A3004E655A /* scannerOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07DA34C91560F5A3004E655A /* scannerOverlay.xib */; };
-		07DA351C1560F5A3004E655A /* zxing-all-in-one.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07DA34F11560F5A3004E655A /* zxing-all-in-one.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		07DA35201561F980004E655A /* appicon3g.png in Resources */ = {isa = PBXBuildFile; fileRef = 07DA351F1561F980004E655A /* appicon3g.png */; };
 /* End PBXBuildFile section */
 
@@ -97,10 +98,6 @@
 		0706DE3D14A2A6F90023AE8E /* Cordova.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Cordova.plist; sourceTree = "<group>"; };
 		0706DE4414A2A6F90023AE8E /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = Plugins/README; sourceTree = "<group>"; };
 		0706DE5614A2A8D10023AE8E /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
-		0723BEE6155891C100738176 /* LowLatencyAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LowLatencyAudio.h; sourceTree = "<group>"; };
-		0723BEE7155891C100738176 /* LowLatencyAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LowLatencyAudio.m; sourceTree = "<group>"; };
-		0723BEE8155891C100738176 /* LowLatencyAudioAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LowLatencyAudioAsset.h; sourceTree = "<group>"; };
-		0723BEE9155891C100738176 /* LowLatencyAudioAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LowLatencyAudioAsset.m; sourceTree = "<group>"; };
 		0736AF0115801F73008C0D98 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		0736AF0315801F8D008C0D98 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		0736AF0515801FCB008C0D98 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
@@ -108,29 +105,46 @@
 		073B1E74156D96E1000FB928 /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
 		073B1E75156D96E1000FB928 /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
 		07583ABF150FEBED001B1059 /* facebook-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "facebook-ios-sdk.xcodeproj"; path = "../../Aptana Studio 3 Workspace/phonegap-plugin-facebook-connect/lib/facebook-ios-sdk/src/facebook-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
-		07583AEA150FF288001B1059 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
-		07583AEB150FF288001B1059 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
-		07583AEC150FF288001B1059 /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
-		07583AED150FF288001B1059 /* FBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBDialog.h; sourceTree = "<group>"; };
-		07583AEE150FF288001B1059 /* FBFrictionlessRequestSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFrictionlessRequestSettings.h; sourceTree = "<group>"; };
-		07583AEF150FF288001B1059 /* FBLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginDialog.h; sourceTree = "<group>"; };
-		07583AF0150FF288001B1059 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRequest.h; sourceTree = "<group>"; };
-		07583AF1150FF288001B1059 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
-		07583AF2150FF288001B1059 /* libfacebook_ios_sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfacebook_ios_sdk.a; sourceTree = "<group>"; };
-		07583AF3150FF288001B1059 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
-		07583AF4150FF288001B1059 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
-		07583AF5150FF288001B1059 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
-		07583AF6150FF288001B1059 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
-		07583AF7150FF288001B1059 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		07583AF8150FF288001B1059 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		07646DAA14AC3C840098B6D2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		07646DAD14AC3C9A0098B6D2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		0799AFC3156C440C00C43BC4 /* EmailComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailComposer.h; sourceTree = "<group>"; };
-		0799AFC4156C440C00C43BC4 /* EmailComposer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = EmailComposer.js; sourceTree = "<group>"; };
-		0799AFC5156C440C00C43BC4 /* EmailComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailComposer.m; sourceTree = "<group>"; };
-		0799AFC6156C440C00C43BC4 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		0799AFC7156C440C00C43BC4 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
 		0799AFCC156C454700C43BC4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		079CA207159F8F930026A58E /* PushNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotification.h; sourceTree = "<group>"; };
+		079CA208159F8F930026A58E /* PushNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotification.m; sourceTree = "<group>"; };
+		079CA20B159F94590026A58E /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
+		079CA20C159F94590026A58E /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
+		079CA20D159F94590026A58E /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
+		079CA20E159F94590026A58E /* FBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBDialog.h; sourceTree = "<group>"; };
+		079CA20F159F94590026A58E /* FBFrictionlessRequestSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFrictionlessRequestSettings.h; sourceTree = "<group>"; };
+		079CA210159F94590026A58E /* FBLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginDialog.h; sourceTree = "<group>"; };
+		079CA211159F94590026A58E /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRequest.h; sourceTree = "<group>"; };
+		079CA212159F94590026A58E /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		079CA213159F94590026A58E /* libfacebook_ios_sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfacebook_ios_sdk.a; sourceTree = "<group>"; };
+		079CA214159F94590026A58E /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		079CA215159F94590026A58E /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		079CA216159F94590026A58E /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		079CA217159F94590026A58E /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		079CA218159F94590026A58E /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		079CA219159F94590026A58E /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		079CA21D159F94960026A58E /* barcodescanner.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = barcodescanner.js; sourceTree = "<group>"; };
+		079CA21F159F94960026A58E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		079CA220159F94960026A58E /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		079CA221159F94960026A58E /* onefile-zxing.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = "onefile-zxing.py"; sourceTree = "<group>"; };
+		079CA222159F94960026A58E /* CDVBarcodeScanner.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDVBarcodeScanner.mm; sourceTree = "<group>"; };
+		079CA223159F94960026A58E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		079CA224159F94960026A58E /* scannerOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = scannerOverlay.xib; sourceTree = "<group>"; };
+		079CA225159F94960026A58E /* zxing-all-in-one.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "zxing-all-in-one.cpp"; sourceTree = "<group>"; };
+		079CA226159F94960026A58E /* zxing-all-in-one.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "zxing-all-in-one.h"; sourceTree = "<group>"; };
+		079CA228159F94960026A58E /* EmailComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailComposer.h; sourceTree = "<group>"; };
+		079CA229159F94960026A58E /* EmailComposer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = EmailComposer.js; sourceTree = "<group>"; };
+		079CA22A159F94960026A58E /* EmailComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailComposer.m; sourceTree = "<group>"; };
+		079CA22B159F94960026A58E /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		079CA22C159F94960026A58E /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
+		079CA22E159F94960026A58E /* FacebookConnectPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookConnectPlugin.h; sourceTree = "<group>"; };
+		079CA22F159F94960026A58E /* FacebookConnectPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookConnectPlugin.m; sourceTree = "<group>"; };
+		079CA232159F94960026A58E /* LowLatencyAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LowLatencyAudio.h; sourceTree = "<group>"; };
+		079CA233159F94960026A58E /* LowLatencyAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LowLatencyAudio.m; sourceTree = "<group>"; };
+		079CA234159F94960026A58E /* LowLatencyAudioAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LowLatencyAudioAsset.h; sourceTree = "<group>"; };
+		079CA235159F94960026A58E /* LowLatencyAudioAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LowLatencyAudioAsset.m; sourceTree = "<group>"; };
 		07D0AACF150A927E000E07EC /* Cordova.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cordova.framework; path = /Users/Shared/Cordova/Frameworks/Cordova.framework; sourceTree = "<absolute>"; };
 		07D0AADD150A9355000E07EC /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 		07D0AADE150A9355000E07EC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -146,19 +160,8 @@
 		07D0AB01150A94C6000E07EC /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		07D0AB03150A966C000E07EC /* verify.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = verify.sh; sourceTree = "<group>"; };
 		07D0AB05150A9687000E07EC /* test-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "test-Prefix.pch"; sourceTree = "<group>"; };
-		07D0AB0B150C6650000E07EC /* FacebookConnectPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookConnectPlugin.h; sourceTree = "<group>"; };
-		07D0AB0C150C6650000E07EC /* FacebookConnectPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookConnectPlugin.m; sourceTree = "<group>"; };
 		07D9A98E1580962200AD5447 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = beep.wav; path = Resources/beep.wav; sourceTree = "<group>"; };
 		07DA345E155DA5E3004E655A /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
-		07DA34C21560F5A3004E655A /* barcodescanner.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = barcodescanner.js; sourceTree = "<group>"; };
-		07DA34C41560F5A3004E655A /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		07DA34C51560F5A3004E655A /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		07DA34C61560F5A3004E655A /* onefile-zxing.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = "onefile-zxing.py"; sourceTree = "<group>"; };
-		07DA34C71560F5A3004E655A /* CDVBarcodeScanner.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDVBarcodeScanner.mm; sourceTree = "<group>"; };
-		07DA34C81560F5A3004E655A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		07DA34C91560F5A3004E655A /* scannerOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = scannerOverlay.xib; sourceTree = "<group>"; };
-		07DA34F11560F5A3004E655A /* zxing-all-in-one.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "zxing-all-in-one.cpp"; sourceTree = "<group>"; };
-		07DA34F21560F5A3004E655A /* zxing-all-in-one.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "zxing-all-in-one.h"; sourceTree = "<group>"; };
 		07DA351F1561F980004E655A /* appicon3g.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon3g.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,7 +188,7 @@
 				0706DE1814A2A6F90023AE8E /* MobileCoreServices.framework in Frameworks */,
 				0706DE1A14A2A6F90023AE8E /* CoreMedia.framework in Frameworks */,
 				0736AF0615801FCB008C0D98 /* libiconv.dylib in Frameworks */,
-				07583AFA150FF288001B1059 /* libfacebook_ios_sdk.a in Frameworks */,
+				079CA21B159F94590026A58E /* libfacebook_ios_sdk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,33 +318,15 @@
 		0706DE4314A2A6F90023AE8E /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				0799AFC2156C440C00C43BC4 /* EmailComposer */,
-				07DA34C11560F5A3004E655A /* BarcodeScanner */,
-				0723BEE4155891C100738176 /* LowLatencyAudio */,
-				07583AE9150FF288001B1059 /* facebook-ios-sdk */,
-				07D0AB0A150C6650000E07EC /* ios */,
+				079CA21C159F94960026A58E /* BarcodeScanner */,
+				079CA227159F94960026A58E /* EmailComposer */,
+				079CA22D159F94960026A58E /* ios */,
+				079CA230159F94960026A58E /* LowLatencyAudio */,
+				079CA20A159F94590026A58E /* facebook-ios-sdk */,
+				079CA206159F8F930026A58E /* PushNotification */,
 				0706DE4414A2A6F90023AE8E /* README */,
 			);
 			name = Plugins;
-			sourceTree = "<group>";
-		};
-		0723BEE4155891C100738176 /* LowLatencyAudio */ = {
-			isa = PBXGroup;
-			children = (
-				0723BEE5155891C100738176 /* src */,
-			);
-			path = LowLatencyAudio;
-			sourceTree = "<group>";
-		};
-		0723BEE5155891C100738176 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				0723BEE6155891C100738176 /* LowLatencyAudio.h */,
-				0723BEE7155891C100738176 /* LowLatencyAudio.m */,
-				0723BEE8155891C100738176 /* LowLatencyAudioAsset.h */,
-				0723BEE9155891C100738176 /* LowLatencyAudioAsset.m */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		07583AC0150FEBED001B1059 /* Products */ = {
@@ -352,38 +337,105 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		07583AE9150FF288001B1059 /* facebook-ios-sdk */ = {
+		079CA206159F8F930026A58E /* PushNotification */ = {
 			isa = PBXGroup;
 			children = (
-				07583AEA150FF288001B1059 /* Facebook.h */,
-				07583AEB150FF288001B1059 /* FBConnect.h */,
-				07583AEC150FF288001B1059 /* FBDialog.bundle */,
-				07583AED150FF288001B1059 /* FBDialog.h */,
-				07583AEE150FF288001B1059 /* FBFrictionlessRequestSettings.h */,
-				07583AEF150FF288001B1059 /* FBLoginDialog.h */,
-				07583AF0150FF288001B1059 /* FBRequest.h */,
-				07583AF1150FF288001B1059 /* JSON.h */,
-				07583AF2150FF288001B1059 /* libfacebook_ios_sdk.a */,
-				07583AF3150FF288001B1059 /* NSObject+SBJSON.h */,
-				07583AF4150FF288001B1059 /* NSString+SBJSON.h */,
-				07583AF5150FF288001B1059 /* SBJSON.h */,
-				07583AF6150FF288001B1059 /* SBJsonBase.h */,
-				07583AF7150FF288001B1059 /* SBJsonParser.h */,
-				07583AF8150FF288001B1059 /* SBJsonWriter.h */,
+				079CA207159F8F930026A58E /* PushNotification.h */,
+				079CA208159F8F930026A58E /* PushNotification.m */,
 			);
-			path = "facebook-ios-sdk";
+			name = PushNotification;
+			path = Plugins/PushNotification;
 			sourceTree = "<group>";
 		};
-		0799AFC2156C440C00C43BC4 /* EmailComposer */ = {
+		079CA20A159F94590026A58E /* facebook-ios-sdk */ = {
 			isa = PBXGroup;
 			children = (
-				0799AFC3156C440C00C43BC4 /* EmailComposer.h */,
-				0799AFC4156C440C00C43BC4 /* EmailComposer.js */,
-				0799AFC5156C440C00C43BC4 /* EmailComposer.m */,
-				0799AFC6156C440C00C43BC4 /* index.html */,
-				0799AFC7156C440C00C43BC4 /* readme.md */,
+				079CA20B159F94590026A58E /* Facebook.h */,
+				079CA20C159F94590026A58E /* FBConnect.h */,
+				079CA20D159F94590026A58E /* FBDialog.bundle */,
+				079CA20E159F94590026A58E /* FBDialog.h */,
+				079CA20F159F94590026A58E /* FBFrictionlessRequestSettings.h */,
+				079CA210159F94590026A58E /* FBLoginDialog.h */,
+				079CA211159F94590026A58E /* FBRequest.h */,
+				079CA212159F94590026A58E /* JSON.h */,
+				079CA213159F94590026A58E /* libfacebook_ios_sdk.a */,
+				079CA214159F94590026A58E /* NSObject+SBJSON.h */,
+				079CA215159F94590026A58E /* NSString+SBJSON.h */,
+				079CA216159F94590026A58E /* SBJSON.h */,
+				079CA217159F94590026A58E /* SBJsonBase.h */,
+				079CA218159F94590026A58E /* SBJsonParser.h */,
+				079CA219159F94590026A58E /* SBJsonWriter.h */,
 			);
-			path = EmailComposer;
+			name = "facebook-ios-sdk";
+			path = "Plugins/facebook-ios-sdk";
+			sourceTree = "<group>";
+		};
+		079CA21C159F94960026A58E /* BarcodeScanner */ = {
+			isa = PBXGroup;
+			children = (
+				079CA21D159F94960026A58E /* barcodescanner.js */,
+				079CA21E159F94960026A58E /* build */,
+				079CA222159F94960026A58E /* CDVBarcodeScanner.mm */,
+				079CA223159F94960026A58E /* README.md */,
+				079CA224159F94960026A58E /* scannerOverlay.xib */,
+				079CA225159F94960026A58E /* zxing-all-in-one.cpp */,
+				079CA226159F94960026A58E /* zxing-all-in-one.h */,
+			);
+			name = BarcodeScanner;
+			path = Plugins/BarcodeScanner;
+			sourceTree = "<group>";
+		};
+		079CA21E159F94960026A58E /* build */ = {
+			isa = PBXGroup;
+			children = (
+				079CA21F159F94960026A58E /* .gitignore */,
+				079CA220159F94960026A58E /* Makefile */,
+				079CA221159F94960026A58E /* onefile-zxing.py */,
+			);
+			path = build;
+			sourceTree = "<group>";
+		};
+		079CA227159F94960026A58E /* EmailComposer */ = {
+			isa = PBXGroup;
+			children = (
+				079CA228159F94960026A58E /* EmailComposer.h */,
+				079CA229159F94960026A58E /* EmailComposer.js */,
+				079CA22A159F94960026A58E /* EmailComposer.m */,
+				079CA22B159F94960026A58E /* index.html */,
+				079CA22C159F94960026A58E /* readme.md */,
+			);
+			name = EmailComposer;
+			path = Plugins/EmailComposer;
+			sourceTree = "<group>";
+		};
+		079CA22D159F94960026A58E /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				079CA22E159F94960026A58E /* FacebookConnectPlugin.h */,
+				079CA22F159F94960026A58E /* FacebookConnectPlugin.m */,
+			);
+			name = ios;
+			path = Plugins/ios;
+			sourceTree = "<group>";
+		};
+		079CA230159F94960026A58E /* LowLatencyAudio */ = {
+			isa = PBXGroup;
+			children = (
+				079CA231159F94960026A58E /* src */,
+			);
+			name = LowLatencyAudio;
+			path = Plugins/LowLatencyAudio;
+			sourceTree = "<group>";
+		};
+		079CA231159F94960026A58E /* src */ = {
+			isa = PBXGroup;
+			children = (
+				079CA232159F94960026A58E /* LowLatencyAudio.h */,
+				079CA233159F94960026A58E /* LowLatencyAudio.m */,
+				079CA234159F94960026A58E /* LowLatencyAudioAsset.h */,
+				079CA235159F94960026A58E /* LowLatencyAudioAsset.m */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		07D0AAEB150A940C000E07EC /* de.lproj */ = {
@@ -416,39 +468,6 @@
 				07D0AAF5150A940C000E07EC /* Localizable.strings */,
 			);
 			path = se.lproj;
-			sourceTree = "<group>";
-		};
-		07D0AB0A150C6650000E07EC /* ios */ = {
-			isa = PBXGroup;
-			children = (
-				07D0AB0B150C6650000E07EC /* FacebookConnectPlugin.h */,
-				07D0AB0C150C6650000E07EC /* FacebookConnectPlugin.m */,
-			);
-			path = ios;
-			sourceTree = "<group>";
-		};
-		07DA34C11560F5A3004E655A /* BarcodeScanner */ = {
-			isa = PBXGroup;
-			children = (
-				07DA34C21560F5A3004E655A /* barcodescanner.js */,
-				07DA34C31560F5A3004E655A /* build */,
-				07DA34C71560F5A3004E655A /* CDVBarcodeScanner.mm */,
-				07DA34C81560F5A3004E655A /* README.md */,
-				07DA34C91560F5A3004E655A /* scannerOverlay.xib */,
-				07DA34F11560F5A3004E655A /* zxing-all-in-one.cpp */,
-				07DA34F21560F5A3004E655A /* zxing-all-in-one.h */,
-			);
-			path = BarcodeScanner;
-			sourceTree = "<group>";
-		};
-		07DA34C31560F5A3004E655A /* build */ = {
-			isa = PBXGroup;
-			children = (
-				07DA34C41560F5A3004E655A /* .gitignore */,
-				07DA34C51560F5A3004E655A /* Makefile */,
-				07DA34C61560F5A3004E655A /* onefile-zxing.py */,
-			);
-			path = build;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -533,17 +552,17 @@
 				07D0AAF8150A940C000E07EC /* Localizable.strings in Resources */,
 				07D0AB02150A94C6000E07EC /* MainViewController.xib in Resources */,
 				07D0AB04150A966C000E07EC /* verify.sh in Resources */,
-				07583AF9150FF288001B1059 /* FBDialog.bundle in Resources */,
 				07DA345F155DA5E3004E655A /* appicon.png in Resources */,
-				07DA34F41560F5A3004E655A /* .gitignore in Resources */,
-				07DA34F61560F5A3004E655A /* onefile-zxing.py in Resources */,
-				07DA34F81560F5A3004E655A /* README.md in Resources */,
-				07DA34F91560F5A3004E655A /* scannerOverlay.xib in Resources */,
 				07DA35201561F980004E655A /* appicon3g.png in Resources */,
-				0799AFCA156C440C00C43BC4 /* index.html in Resources */,
-				0799AFCB156C440C00C43BC4 /* readme.md in Resources */,
 				07D9A98F1580962200AD5447 /* beep.wav in Resources */,
 				0739AF64158DCAB600FA5050 /* Capture.bundle in Resources */,
+				079CA21A159F94590026A58E /* FBDialog.bundle in Resources */,
+				079CA237159F94960026A58E /* .gitignore in Resources */,
+				079CA239159F94960026A58E /* onefile-zxing.py in Resources */,
+				079CA23B159F94960026A58E /* README.md in Resources */,
+				079CA23C159F94960026A58E /* scannerOverlay.xib in Resources */,
+				079CA240159F94960026A58E /* index.html in Resources */,
+				079CA241159F94960026A58E /* readme.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,16 +592,17 @@
 				0706DE2214A2A6F90023AE8E /* main.m in Sources */,
 				07D0AAFF150A9497000E07EC /* AppDelegate.m in Sources */,
 				07D0AB00150A9497000E07EC /* MainViewController.m in Sources */,
-				07D0AB0D150C6650000E07EC /* FacebookConnectPlugin.m in Sources */,
-				0723BEEA155891C100738176 /* LowLatencyAudio.m in Sources */,
-				0723BEEB155891C100738176 /* LowLatencyAudioAsset.m in Sources */,
-				07DA34F31560F5A3004E655A /* barcodescanner.js in Sources */,
-				07DA34F51560F5A3004E655A /* Makefile in Sources */,
-				07DA34F71560F5A3004E655A /* CDVBarcodeScanner.mm in Sources */,
-				07DA351C1560F5A3004E655A /* zxing-all-in-one.cpp in Sources */,
-				0799AFC8156C440C00C43BC4 /* EmailComposer.js in Sources */,
-				0799AFC9156C440C00C43BC4 /* EmailComposer.m in Sources */,
 				073B1E76156D96E1000FB928 /* NSDataAdditions.m in Sources */,
+				079CA209159F8F930026A58E /* PushNotification.m in Sources */,
+				079CA236159F94960026A58E /* barcodescanner.js in Sources */,
+				079CA238159F94960026A58E /* Makefile in Sources */,
+				079CA23A159F94960026A58E /* CDVBarcodeScanner.mm in Sources */,
+				079CA23D159F94960026A58E /* zxing-all-in-one.cpp in Sources */,
+				079CA23E159F94960026A58E /* EmailComposer.js in Sources */,
+				079CA23F159F94960026A58E /* EmailComposer.m in Sources */,
+				079CA242159F94960026A58E /* FacebookConnectPlugin.m in Sources */,
+				079CA243159F94960026A58E /* LowLatencyAudio.m in Sources */,
+				079CA244159F94960026A58E /* LowLatencyAudioAsset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -720,12 +740,13 @@
 					"\"$(SRCROOT)/GetKickBak/facebook-ios-sdk\"",
 					"\"$(SRCROOT)/GetKickBak/Release-iphoneos\"",
 					"\"$(SRCROOT)/GetKickBak/Release-iphonesimulator\"",
+					"\"$(SRCROOT)/GetKickBak/Plugins/facebook-ios-sdk\"",
 				);
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = KICKBAK;
-				PROVISIONING_PROFILE = "64E986B6-AE13-4298-A52B-93405267757B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "64E986B6-AE13-4298-A52B-93405267757B";
+				PROVISIONING_PROFILE = "B8224B48-8949-4A57-B8D2-0E90212E880E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B8224B48-8949-4A57-B8D2-0E90212E880E";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -738,8 +759,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_OBJCPP_ARC_ABI = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Chan";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Chan";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Chan (RNZK43S324)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Chan (RNZK43S324)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = /Users/Shared/Cordova/Frameworks;
@@ -758,6 +779,7 @@
 					"\"$(SRCROOT)/GetKickBak/facebook-ios-sdk\"",
 					"\"$(SRCROOT)/GetKickBak/Release-iphoneos\"",
 					"\"$(SRCROOT)/GetKickBak/Release-iphonesimulator\"",
+					"\"$(SRCROOT)/GetKickBak/Plugins/facebook-ios-sdk\"",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_CPLUSPLUSFLAGS = (
@@ -766,8 +788,8 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = KICKBAK;
-				PROVISIONING_PROFILE = "1C1E5984-424A-446D-9300-843E77CC26EE";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1C1E5984-424A-446D-9300-843E77CC26EE";
+				PROVISIONING_PROFILE = "B8224B48-8949-4A57-B8D2-0E90212E880E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B8224B48-8949-4A57-B8D2-0E90212E880E";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

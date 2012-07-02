@@ -24,24 +24,26 @@
 	<true/>
 	<key>ExternalHosts</key>
 	<array>
-		<string>*</string>
+		<string>*.getkickbak.com</string>
 		<string>*.facebook.com</string>
-		<string>localhost</string>
+		<string>cp.pushwoosh.com</string>
 	</array>
 	<key>Plugins</key>
 	<dict>
+		<key>PushNotification</key>
+		<string>PushNotification</string>
 		<key>EmailComposer</key>
 		<string>EmailComposer</string>
-		<key>BarcodeScanner</key>
-		<string>CDVBarcodeScanner</string>
 		<key>LowLatencyAudio</key>
 		<string>LowLatencyAudio</string>
-		<key>FacebookConnect</key>
-		<string>FacebookConnectPlugin</string>
 		<key>QRCodeReaderNigma</key>
 		<string>QRCodeReaderNigma</string>
 		<key>QRCodeReaderRL</key>
 		<string>QRCodeReaderRL</string>
+		<key>FacebookConnect</key>
+		<string>FacebookConnectPlugin</string>
+		<key>BarcodeScanner</key>
+		<string>CDVBarcodeScanner</string>
 		<key>Accelerometer</key>
 		<string>CDVAccelerometer</string>
 		<key>Camera</key>
