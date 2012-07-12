@@ -24,8 +24,11 @@
 	<true/>
 	<key>ExternalHosts</key>
 	<array>
+		<string>*.googleapis.com</string>
 		<string>*.getkickbak.com</string>
 		<string>*.facebook.com</string>
+		<string>*.akamaihd.net</string>
+		<string>*.fbcdn.net</string>
 		<string>cp.pushwoosh.com</string>
 	</array>
 	<key>Plugins</key>
