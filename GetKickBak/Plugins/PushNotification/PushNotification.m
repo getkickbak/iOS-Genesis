@@ -40,9 +40,21 @@
 		NSDictionary * userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];	
 		[pushHandler.pushManager handlePushReceived:userInfo];
 
+		
+		NSString* u = [userInfo objectForKey:@"u"];
+		if (u) {
+			NSDictionary *dict = [u objectFromJSONString];
+			if (dict) {
+				NSMutableDictionary *pn = [NSMutableDictionary dictionaryWithDictionary:userInfo];
+				[pn setObject:dict forKey:@"u"];
+				userInfo = pn;
+			}
+		}
+
+		
 		if(userInfo) {
 			NSString *jsonString = [userInfo JSONString];
-			jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\"" withString:@"'"];
+			jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
 			self.viewController.invokeString = jsonString;
 		}
 	}
@@ -164,12 +176,22 @@
 }
 
 
-- (void) onPushAccepted:(PushNotificationManager *)manager {
+- (void) onPushAccepted:(PushNotificationManager *)manager withNotification:(NSDictionary *)pushNotification{
 	//reset badge counter
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 	
-	NSString *jsonString = [pushManager.lastPushDict JSONString];
-	NSString *jsStatement = [NSString stringWithFormat:@"window.plugins.pushNotification.notificationCallback('%@');", jsonString];
+	NSString* u = [pushNotification objectForKey:@"u"];
+	if (u) {
+		NSDictionary *dict = [u objectFromJSONString];
+		if (dict) {
+			NSMutableDictionary *pn = [NSMutableDictionary dictionaryWithDictionary:pushNotification];
+			[pn setObject:dict forKey:@"u"];
+			pushNotification = pn;
+		}
+	}
+	
+	NSString *jsonString = [pushNotification JSONString];
+	NSString *jsStatement = [NSString stringWithFormat:@"window.plugins.pushNotification.notificationCallback(%@);", jsonString];
 	[self writeJavascript:jsStatement];
 }
 
@@ -297,7 +319,7 @@
 
 @implementation PushNotificationManager
 
-@synthesize appCode, appName, navController, lastPushDict, delegate;
+@synthesize appCode, appName, navController, pushNotifications, delegate;
 
 - (NSString *) stringFromMD5: (NSString *)val{
     
@@ -395,6 +417,8 @@
 	if(self = [super init]) {
 		self.appCode = _appCode;
 		self.appName = _appName;
+		internalIndex = 0;
+		pushNotifications = [[NSMutableDictionary alloc] init];
 	}
 	
 	return self;
@@ -405,6 +429,8 @@
 		self.appCode = _appCode;
 		self.navController = _navController;
 		self.appName = _appName;
+		internalIndex = 0;
+		pushNotifications = [[NSMutableDictionary alloc] init];
 	}
 	
 	return self;
@@ -508,9 +534,15 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if(buttonIndex != 1)
+	if(buttonIndex != 1) {
+		if(!alertView.tag)
+			return;
+		
+		[pushNotifications removeObjectForKey:[NSNumber numberWithInt:alertView.tag]];
 		return;
+	}
 	
+	NSDictionary *lastPushDict = [pushNotifications objectForKey:[NSNumber numberWithInt:alertView.tag]];
 	NSString *htmlPageId = [lastPushDict objectForKey:@"h"];
 	if(htmlPageId) {
 		[self showPushPage:htmlPageId];
@@ -521,7 +553,8 @@
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:linkUrl]];
 	}
 	
-	[delegate onPushAccepted:self];
+	[delegate onPushAccepted:self withNotification:lastPushDict];
+	[pushNotifications removeObjectForKey:[NSNumber numberWithInt:alertView.tag]];
 }
 
 - (BOOL) handlePushReceived:(NSDictionary *)userInfo {
@@ -540,8 +573,6 @@
 	if (!pushDict)
 		return NO;
 	
-	self.lastPushDict = userInfo;
-	
 	//check if the app is really running
 	if([[UIApplication sharedApplication] respondsToSelector:@selector(applicationState)] && [[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
 		isPushOnStart = YES;
@@ -552,21 +583,24 @@
 		return YES;
 	}
 	
-	NSString *alertMsg = [pushDict objectForKey:@"alert"];
+	//NSString *alertMsg = [pushDict objectForKey:@"alert"];
 	//	NSString *badge = [pushDict objectForKey:@"badge"];
 	//	NSString *sound = [pushDict objectForKey:@"sound"];
 	NSString *htmlPageId = [userInfo objectForKey:@"h"];
 	//	NSString *customData = [userInfo objectForKey:@"u"];
 	NSString *linkUrl = [userInfo objectForKey:@"l"];
 	
+	//Do not display alert for PhoneGap plugin, just pass the push to the javascript
 	//the app is running, display alert only
-	if(!isPushOnStart) {
+/*	if(!isPushOnStart) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:self.appName message:alertMsg delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+		alert.tag = ++internalIndex;
+		[pushNotifications setObject:userInfo forKey:[NSNumber numberWithInt:internalIndex]];
 		[alert show];
 		[alert release];
 		return YES;
 	}
-	
+*/	
 	if(htmlPageId) {
 		[self showPushPage:htmlPageId];
 	}
@@ -575,23 +609,23 @@
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:linkUrl]];
 	}
 	
-	[delegate onPushAccepted:self];
+	[delegate onPushAccepted:self withNotification:userInfo];
 	return YES;
 }
 
-- (NSDictionary *) getApnPayload {
-	return [self.lastPushDict objectForKey:@"aps"];
+- (NSDictionary *) getApnPayload:(NSDictionary *)pushNotification {
+	return [pushNotification objectForKey:@"aps"];
 }
 
-- (NSString *) getCustomPushData {
-	return [self.lastPushDict objectForKey:@"u"];
+- (NSString *) getCustomPushData:(NSDictionary *)pushNotification {
+	return [pushNotification objectForKey:@"u"];
 }
 
 - (void) dealloc {
 	self.delegate = nil;
 	self.appCode = nil;
 	self.navController = nil;
-	self.lastPushDict = nil;
+	self.pushNotifications = nil;
 	
 	[super dealloc];
 }

@@ -26,7 +26,7 @@
 - (void) onPushReceived:(PushNotificationManager *)pushManager onStart:(BOOL)onStart;
 
 //user pressed OK on the push notification
-- (void) onPushAccepted:(PushNotificationManager *)pushManager;
+- (void) onPushAccepted:(PushNotificationManager *)pushManager withNotification:(NSDictionary *)pushNotification;
 @end
 
 
@@ -34,15 +34,16 @@
 	NSString *appCode;
 	NSString *appName;
 	UIViewController *navController;
-	
-	NSDictionary *lastPushDict;
+
+	NSInteger internalIndex;
+	NSMutableDictionary *pushNotifications;
 	NSObject<PushNotificationDelegate> *delegate;
 }
 
 @property (nonatomic, copy) NSString *appCode;
 @property (nonatomic, copy) NSString *appName;
 @property (nonatomic, assign) UIViewController *navController;
-@property (nonatomic, retain) NSDictionary *lastPushDict;
+@property (nonatomic, retain) NSDictionary *pushNotifications;
 @property (nonatomic, assign) NSObject<PushNotificationDelegate> *delegate;
 
 - (id) initWithApplicationCode:(NSString *)appCode appName:(NSString *)appName;
@@ -56,10 +57,10 @@
 - (BOOL) handlePushReceived:(NSDictionary *) userInfo;
 
 //gets apn payload
-- (NSDictionary *) getApnPayload;
+- (NSDictionary *) getApnPayload:(NSDictionary *)pushNotification;
 
 //get custom data from the push payload
-- (NSString *) getCustomPushData;
+- (NSString *) getCustomPushData:(NSDictionary *)pushNotification;
 
 @end
 //Pushwoosh SDK END

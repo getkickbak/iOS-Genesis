@@ -22,8 +22,11 @@
 	<true/>
 	<key>UIWebViewBounce</key>
 	<true/>
+	<key>BackupWebStorage</key>
+	<true/>
 	<key>ExternalHosts</key>
 	<array>
+		<string>192.168.0.52</string>
 		<string>*.googleapis.com</string>
 		<string>*.getkickbak.com</string>
 		<string>*.facebook.com</string>
@@ -57,6 +60,8 @@
 		<string>CDVContacts</string>
 		<key>Debug Console</key>
 		<string>CDVDebugConsole</string>
+		<key>Device</key>
+		<string>CDVDevice</string>
 		<key>File</key>
 		<string>CDVFile</string>
 		<key>FileTransfer</key>
