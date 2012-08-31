@@ -36,6 +36,8 @@
 	</array>
 	<key>Plugins</key>
 	<dict>
+		<key>Bluetooth</key>
+		<string>Bluetooth</string>
 		<key>PushNotification</key>
 		<string>PushNotification</string>
 		<key>EmailComposer</key>

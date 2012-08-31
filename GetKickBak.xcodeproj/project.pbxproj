@@ -51,6 +51,9 @@
 		079CA242159F94960026A58E /* FacebookConnectPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CA22F159F94960026A58E /* FacebookConnectPlugin.m */; };
 		079CA243159F94960026A58E /* LowLatencyAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CA233159F94960026A58E /* LowLatencyAudio.m */; };
 		079CA244159F94960026A58E /* LowLatencyAudioAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CA235159F94960026A58E /* LowLatencyAudioAsset.m */; };
+		07B69F0B15ECBBC1002F781E /* Bluetooth.js in Sources */ = {isa = PBXBuildFile; fileRef = 07B69F0915ECBBC1002F781E /* Bluetooth.js */; };
+		07B69F0C15ECBBC1002F781E /* Bluetooth.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B69F0A15ECBBC1002F781E /* Bluetooth.m */; };
+		07B69F0E15ECBBDB002F781E /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B69F0D15ECBBDB002F781E /* GameKit.framework */; };
 		07D0AAE0150A9355000E07EC /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AADD150A9355000E07EC /* icon-72.png */; };
 		07D0AAE1150A9355000E07EC /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AADE150A9355000E07EC /* icon.png */; };
 		07D0AAE2150A9355000E07EC /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AADF150A9355000E07EC /* icon@2x.png */; };
@@ -145,6 +148,10 @@
 		079CA233159F94960026A58E /* LowLatencyAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LowLatencyAudio.m; sourceTree = "<group>"; };
 		079CA234159F94960026A58E /* LowLatencyAudioAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LowLatencyAudioAsset.h; sourceTree = "<group>"; };
 		079CA235159F94960026A58E /* LowLatencyAudioAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LowLatencyAudioAsset.m; sourceTree = "<group>"; };
+		07B69F0815ECBBC1002F781E /* Bluetooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bluetooth.h; sourceTree = "<group>"; };
+		07B69F0915ECBBC1002F781E /* Bluetooth.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Bluetooth.js; sourceTree = "<group>"; };
+		07B69F0A15ECBBC1002F781E /* Bluetooth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bluetooth.m; sourceTree = "<group>"; };
+		07B69F0D15ECBBDB002F781E /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		07D0AACF150A927E000E07EC /* Cordova.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cordova.framework; path = /Users/Shared/Cordova/Frameworks/Cordova.framework; sourceTree = "<absolute>"; };
 		07D0AADD150A9355000E07EC /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 		07D0AADE150A9355000E07EC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -170,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07B69F0E15ECBBDB002F781E /* GameKit.framework in Frameworks */,
 				0736AF0415801F8D008C0D98 /* AssetsLibrary.framework in Frameworks */,
 				0736AF0215801F73008C0D98 /* CoreVideo.framework in Frameworks */,
 				0799AFCD156C454700C43BC4 /* MessageUI.framework in Frameworks */,
@@ -221,6 +229,7 @@
 		0706DE0014A2A6F90023AE8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07B69F0D15ECBBDB002F781E /* GameKit.framework */,
 				0736AF0515801FCB008C0D98 /* libiconv.dylib */,
 				0736AF0315801F8D008C0D98 /* AssetsLibrary.framework */,
 				0736AF0115801F73008C0D98 /* CoreVideo.framework */,
@@ -318,6 +327,7 @@
 		0706DE4314A2A6F90023AE8E /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				07B69F0715ECBBC1002F781E /* Bluetooth */,
 				079CA21C159F94960026A58E /* BarcodeScanner */,
 				079CA227159F94960026A58E /* EmailComposer */,
 				079CA22D159F94960026A58E /* ios */,
@@ -436,6 +446,17 @@
 				079CA235159F94960026A58E /* LowLatencyAudioAsset.m */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		07B69F0715ECBBC1002F781E /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				07B69F0815ECBBC1002F781E /* Bluetooth.h */,
+				07B69F0915ECBBC1002F781E /* Bluetooth.js */,
+				07B69F0A15ECBBC1002F781E /* Bluetooth.m */,
+			);
+			name = Bluetooth;
+			path = Plugins/Bluetooth;
 			sourceTree = "<group>";
 		};
 		07D0AAEB150A940C000E07EC /* de.lproj */ = {
@@ -603,6 +624,8 @@
 				079CA242159F94960026A58E /* FacebookConnectPlugin.m in Sources */,
 				079CA243159F94960026A58E /* LowLatencyAudio.m in Sources */,
 				079CA244159F94960026A58E /* LowLatencyAudioAsset.m in Sources */,
+				07B69F0B15ECBBC1002F781E /* Bluetooth.js in Sources */,
+				07B69F0C15ECBBC1002F781E /* Bluetooth.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,8 +785,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_OBJCPP_ARC_ABI = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Chan";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Chan";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Chan (RNZK43S324)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Chan (RNZK43S324)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = /Users/Shared/Cordova/Frameworks;
@@ -794,8 +817,8 @@
 					"-Obj-C",
 				);
 				PRODUCT_NAME = KICKBAK;
-				PROVISIONING_PROFILE = "7337549C-CC2A-4B89-B191-49A79DFEE577";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7337549C-CC2A-4B89-B191-49A79DFEE577";
+				PROVISIONING_PROFILE = "B8224B48-8949-4A57-B8D2-0E90212E880E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B8224B48-8949-4A57-B8D2-0E90212E880E";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
