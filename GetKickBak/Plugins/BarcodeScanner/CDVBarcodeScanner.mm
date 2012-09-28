@@ -10,18 +10,13 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "AudioToolbox/AudioServices.h"
 
 //------------------------------------------------------------------------------
 // use the all-in-one version of zxing that we built
 //------------------------------------------------------------------------------
 #import "zxing-all-in-one.h"
 
-#ifdef CORDOVA_FRAMEWORK
 #import <CORDOVA/CDVPlugin.h>
-#else
-#import "CDVPlugin.h"
-#endif
 
 //------------------------------------------------------------------------------
 // Adds a shutter button to the UI, and changes the scan from continuous to
@@ -77,10 +72,7 @@
 //------------------------------------------------------------------------------
 // view controller for the ui
 //------------------------------------------------------------------------------
-@interface CDVbcsViewController : UIViewController {
-   SystemSoundID _scanSuccessSound;
-	BOOL _isSilent;
-}
+@interface CDVbcsViewController : UIViewController {}
 @property (nonatomic, retain) CDVbcsProcessor*  processor;
 @property (nonatomic, retain) NSString*        alternateXib;
 @property (nonatomic)         BOOL             shutterPressed;
@@ -92,7 +84,6 @@
 - (UIImage*)buildReticleImage;
 - (void)shutterButtonPressed;
 - (IBAction)cancelButtonPressed:(id)sender;
--(void) beepOrVibrate;
 
 @end
 
@@ -260,16 +251,7 @@ parentViewController:(UIViewController*)parentViewController
 - (void)barcodeScanDone {
     self.capturing = NO;
     [self.captureSession stopRunning];
-   //
-   // Bugfix to prevent uncaught exception at "decidePolicyForNavigationAction"
-   //
-   if ([self.parentViewController respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
-      [self.parentViewController dismissModalViewControllerAnimated:YES];
-   } else {
-      [[super presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-   }
-   //[self.parentViewController dismissModalViewControllerAnimated: YES];
-   [self.viewController beepOrVibrate];
+    [self.parentViewController dismissModalViewControllerAnimated: YES];
     
     // viewcontroller holding onto a reference to us, release them so they
     // will release us
@@ -812,66 +794,6 @@ parentViewController:(UIViewController*)parentViewController
     result = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return result;
-}
-
-
-//-------------------------------------------------------------------------
-// Checks if the phone is in vibrate mode, in which case the scanner
-// vibrates instead of beeps.
-//-------------------------------------------------------------------------
--(void)beepOrVibrate
-{
-	if(!_isSilent)
-   {
-		UInt32 routeSize = sizeof (CFStringRef);
-		CFStringRef route = NULL;
-		AudioSessionGetProperty (
-                               kAudioSessionProperty_AudioRoute,
-                               &routeSize,
-                               &route
-                               );
-		
-		if (CFStringGetLength(route) == 0) {
-			AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-		}
-		else {
-			AudioServicesPlaySystemSound(_scanSuccessSound);
-		}
-   }
-}
-
-- (void)viewDidLoad 
-{
-   [super viewDidLoad];
-   self->_isSilent = [[NSUserDefaults standardUserDefaults] boolForKey:@"silent_pref"];
-   
-   if(!_isSilent) // If silent, no need to do this.
-   {
-      NSURL* aFileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"beep" ofType:@"wav"] isDirectory:NO]; 
-      AudioServicesCreateSystemSoundID((CFURLRef)aFileURL, &_scanSuccessSound);
-      
-      UInt32 flag = 0;
-      OSStatus error = AudioServicesSetProperty(kAudioServicesPropertyIsUISound,
-                                                sizeof(UInt32),
-                                                &_scanSuccessSound,
-                                                sizeof(UInt32),
-                                                &flag);
-      
-      float aBufferLength = 1.0; // In seconds
-      error = AudioSessionSetProperty(kAudioSessionProperty_PreferredHardwareIOBufferDuration, 
-                                      sizeof(aBufferLength), &aBufferLength);
-      
-      /* Create and warm up an audio session */
-      AudioSessionInitialize(NULL, NULL, NULL, NULL);
-      AudioSessionSetActive(TRUE);
-   }
-}
-
-- (void)viewDidUnload 
-{
-   
-	AudioServicesDisposeSystemSoundID(_scanSuccessSound);
-	if(!_isSilent) { AudioSessionSetActive(FALSE); }
 }
 
 @end

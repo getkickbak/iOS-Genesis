@@ -1,11 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIApplication.h>
 #import <GameKit/GameKit.h>
-#ifdef CORDOVA_FRAMEWORK
 #import <Cordova/CDVPlugin.h>
-#else
-#import "CDVPlugin.h"
-#endif
 
 @interface Bluetooth : CDVPlugin<GKSessionDelegate> {
     GKSession       *session;

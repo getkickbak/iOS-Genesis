@@ -21,21 +21,14 @@
 //  AppDelegate.m
 //  test
 //
-//  Created by Eric Chan on 12-04-14.
-//  Copyright __MyCompanyName__ 2012. All rights reserved.
+//  Created by ___FULLUSERNAME___ on ___DATE___.
+//  Copyright ___ORGANIZATIONNAME___ ___YEAR___. All rights reserved.
 //
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
-#ifdef CORDOVA_FRAMEWORK
-    #import <Cordova/CDVPlugin.h>
-    #import <Cordova/CDVURLProtocol.h>
-#else
-    #import "CDVPlugin.h"
-    #import "CDVURLProtocol.h"
-#endif
-
+#import <Cordova/CDVPlugin.h>
 
 @implementation AppDelegate
 
@@ -48,10 +41,9 @@
 	 **/
     NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage]; 
     [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
-        
-    [CDVURLProtocol registerURLProtocol];
-    
-    return [super init];
+   
+    self = [super init];
+    return self;
 }
 
 #pragma UIApplicationDelegate implementation
@@ -66,25 +58,27 @@
     
     if (url && [url isKindOfClass:[NSURL class]]) {
         invokeString = [url absoluteString];
-		NSLog(@"test launchOptions = %@", url);
-    }    
+		NSLog(@"KickBak launchOptions = %@", url);
+    }
     
     //[[UIApplication sharedApplication] setStatusBarHidden:YES animated:NO];
-    CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    //self.window = [[UIWindow alloc] initWithFrame:screenBounds];
-    self.window = [[[UIWindow alloc] initWithFrame:screenBounds] autorelease];
-    self.window.autoresizesSubviews = YES;
+   CGRect screenBounds = [[UIScreen mainScreen] bounds];
+   self.window = [[UIWindow alloc] initWithFrame:screenBounds];
+   //self.window = [[[UIWindow alloc] initWithFrame:screenBounds] autorelease];
+   self.window.autoresizesSubviews = YES;
     
-    CGRect viewBounds = [[UIScreen mainScreen] applicationFrame];
+    //CGRect viewBounds = [[UIScreen mainScreen] applicationFrame];
     
-    //self.viewController = [[MainViewController alloc] init];
-    self.viewController = [[[MainViewController alloc] init] autorelease];
+    self.viewController = [[MainViewController alloc] init];
+    //self.viewController = [[[MainViewController alloc] init] autorelease];
     self.viewController.useSplashScreen = YES;
     self.viewController.wwwFolderName = @"www";
     self.viewController.startPage = @"index.html";
     self.viewController.invokeString = invokeString;
-    self.viewController.view.frame = viewBounds;
-    
+    //self.viewController.view.frame = viewBounds;
+   
+    // NOTE: To control the view's frame size, override [self.viewController viewWillAppear:] in your view controller.
+   
     // check whether the current orientation is supported: if it is, keep it, rather than forcing a rotation
     BOOL forceStartupRotation = YES;
     UIDeviceOrientation curDevOrientation = [[UIDevice currentDevice] orientation];
@@ -95,14 +89,34 @@
     }
     
     if (UIDeviceOrientationIsValidInterfaceOrientation(curDevOrientation)) {
+       if ([self.viewController supportsOrientation:curDevOrientation]) {
+          forceStartupRotation = NO;
+       }
+       /*
         for (NSNumber *orient in self.viewController.supportedOrientations) {
             if ([orient intValue] == curDevOrientation) {
                 forceStartupRotation = NO;
                 break;
             }
         }
+        */
     } 
     
+   if (forceStartupRotation) {
+      UIInterfaceOrientation newOrient;
+      if ([self.viewController supportsOrientation:UIInterfaceOrientationPortrait])
+         newOrient = UIInterfaceOrientationPortrait;
+      else if ([self.viewController supportsOrientation:UIInterfaceOrientationLandscapeLeft])
+         newOrient = UIInterfaceOrientationLandscapeLeft;
+      else if ([self.viewController supportsOrientation:UIInterfaceOrientationLandscapeRight])
+         newOrient = UIInterfaceOrientationLandscapeRight;
+      else
+         newOrient = UIInterfaceOrientationPortraitUpsideDown;
+      
+      NSLog(@"AppDelegate forcing status bar to: %d from: %d", newOrient, curDevOrientation);
+      [[UIApplication sharedApplication] setStatusBarOrientation:newOrient];
+   }
+   /*
     if (forceStartupRotation) {
         NSLog(@"supportedOrientations: %@", self.viewController.supportedOrientations);
         // The first item in the supportedOrientations array is the start orientation (guaranteed to be at least Portrait)
@@ -110,8 +124,10 @@
         NSLog(@"AppDelegate forcing status bar to: %d from: %d", newOrient, curDevOrientation);
         [[UIApplication sharedApplication] setStatusBarOrientation:newOrient];
     }
+    */
     
-    [self.window addSubview:self.viewController.view];
+    //[self.window addSubview:self.viewController.view];
+    self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -135,9 +151,12 @@
     return YES;    
 }
 
-- (void) dealloc
+- (NSUInteger) application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
-	[super dealloc];
+   // IPhone doesn't support upside down by default, while the IPad does.  Override to allow all orientations always, and let the root view controller decide whats allowed (the supported orientations mask gets intersected).
+   NSUInteger supportedInterfaceOrientations = (1 << UIInterfaceOrientationPortrait) | (1 << UIInterfaceOrientationPortraitUpsideDown);
+   // | (1 << UIInterfaceOrientationLandscapeLeft) | (1 << UIInterfaceOrientationLandscapeRight)
+   return supportedInterfaceOrientations;
 }
 
 @end

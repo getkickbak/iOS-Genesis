@@ -7,7 +7,6 @@
 //
 
 #import "EmailComposer.h"
-#import "NSDataAdditions.h"
 
 
 @implementation EmailComposer
@@ -23,27 +22,10 @@
 	NSString* subject = [options valueForKey:@"subject"];
 	NSString* body = [options valueForKey:@"body"];
 	NSString* isHTML = [options valueForKey:@"bIsHTML"];
-   NSArray * images = [options valueForKey:@"images"];
 	
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
     picker.mailComposeDelegate = self;
     
-   // Attach an image to the email
-	// NSString *path = [[NSBundle mainBundle] pathForResource:@"rainy" ofType:@"png"];
-	// NSData *myData = [NSData dataWithContentsOfFile:path];
-	// [picker addAttachmentData:myData mimeType:@"image/png" fileName:@"rainy"];
-   if (images != nil)
-   {
-      for (int i = 0; i < [images count]; i++)
-      {
-         NSString *image = [images objectAtIndex: i];
-         NSData *data = [NSData dataWithBase64EncodedString:image];
-         [picker addAttachmentData:data
-                          mimeType:@"image/png" 
-                          fileName:[NSString stringWithFormat:@"image%d.png", i+1]];
-      }
-   }
-      
 	// Set subject
 	if(subject != nil)
 		[picker setSubject:subject];
@@ -73,11 +55,18 @@
 	{
 		[picker setBccRecipients:[ bccRecipientsString componentsSeparatedByString:@","]];
 	}
-	    
-   if (picker != nil) {
-      [self.viewController presentModalViewController:picker animated:YES];
-   }
-   [picker release];
+	
+    // Attach an image to the email
+	// NSString *path = [[NSBundle mainBundle] pathForResource:@"rainy" ofType:@"png"];
+	//  NSData *myData = [NSData dataWithContentsOfFile:path];
+	//  [picker addAttachmentData:myData mimeType:@"image/png" fileName:@"rainy"];
+    
+    
+    
+    if (picker != nil) {  	
+        [self.viewController presentModalViewController:picker animated:YES];
+    }
+    [picker release];
 }
 
 

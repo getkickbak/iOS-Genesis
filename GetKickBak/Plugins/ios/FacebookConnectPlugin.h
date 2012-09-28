@@ -9,13 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "FBConnect.h"
 
-#ifdef CORDOVA_FRAMEWORK
-    #import <Cordova/CDVPlugin.h>
-    #import <Cordova/CDVPluginResult.h>
-#else
-    #import "CDVPlugin.h"
-    #import "CDVPluginResult.h"
-#endif
+#import <Cordova/CDVPlugin.h>
+#import <Cordova/CDVPluginResult.h>
 
 
 @interface FacebookConnectPlugin : CDVPlugin < FBSessionDelegate, FBRequestDelegate, FBDialogDelegate > {
