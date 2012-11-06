@@ -18,6 +18,10 @@
 }
 
 - (BOOL) sendRequest: (PWRequest *) request {
+	return [self sendRequest:request error:nil];
+}
+
+- (BOOL) sendRequest: (PWRequest *) request error:(NSError **)retError {
 	NSMutableArray *requestStringBuilder = [NSMutableArray new];
 	NSDictionary *requestDict = [request requestDictionary];
 	
@@ -28,8 +32,7 @@
 	NSString *jsonRequestData = [NSString stringWithFormat:@"{\"request\":{%@}}", requestString];
 	[requestStringBuilder release];
 	
-   NSString *requestUrl = [kServiceAddress stringByAppendingString:[request methodName]];
-	//NSString *requestUrl = [kServiceAddress stringByAppendingPathComponent:[request methodName]];
+	NSString *requestUrl = [kServiceAddress stringByAppendingString:[request methodName]];
 	NSLog(@"Sending request: %@", jsonRequestData);
 	NSLog(@"To urL %@", requestUrl);
 	
@@ -43,6 +46,9 @@
 	NSError *error = nil;
 	NSData * responseData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
 	[urlRequest release]; urlRequest = nil;
+	
+	if(retError)
+		*retError = error;
 	
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	NSLog(@"Response \"%d %@\": string: %@", [response statusCode], [NSHTTPURLResponse localizedStringForStatusCode:[response statusCode]], responseString);

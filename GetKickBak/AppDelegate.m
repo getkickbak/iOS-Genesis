@@ -61,7 +61,7 @@
 		NSLog(@"KickBak launchOptions = %@", url);
     }
     
-    //[[UIApplication sharedApplication] setStatusBarHidden:YES animated:NO];
+   //[[UIApplication sharedApplication] setStatusBarHidden:YES animated:NO];
    CGRect screenBounds = [[UIScreen mainScreen] bounds];
    self.window = [[UIWindow alloc] initWithFrame:screenBounds];
    //self.window = [[[UIWindow alloc] initWithFrame:screenBounds] autorelease];

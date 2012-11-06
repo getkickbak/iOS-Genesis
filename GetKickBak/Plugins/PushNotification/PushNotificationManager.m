@@ -10,6 +10,7 @@
 #import "PWRequestManager.h"
 #import "PWRegisterDeviceRequest.h"
 #import "PWSetTagsRequest.h"
+#import "PWSendBadgeRequest.h"
 #import "PWPushStatRequest.h"
 #import "PWGetNearestZoneRequest.h"
 
@@ -168,10 +169,10 @@
 	static PushNotificationManager * instance = nil;
 	
 	if(instance == nil) {
-		NSString * appid = [[NSUserDefaults standardUserDefaults] objectForKey:@"Pushwoosh_APPID"];
+		NSString * appid = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Pushwoosh_APPID"];
 		
 		if(!appid) {
-			appid = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Pushwoosh_APPID"];
+			appid = [[NSUserDefaults standardUserDefaults] objectForKey:@"Pushwoosh_APPID"];
 
 			if(!appid) {
 				return nil;
@@ -246,10 +247,19 @@
 	request.language = appLocale;
 	request.timeZone = [NSString stringWithFormat:@"%d", [[NSTimeZone localTimeZone] secondsFromGMT]];
 	
-	if ([[PWRequestManager sharedManager] sendRequest:request]) {
+	NSError *error = nil;
+	if ([[PWRequestManager sharedManager] sendRequest:request error:&error]) {
 		NSLog(@"Registered for push notifications: %@", deviceID);
+
+		if([delegate respondsToSelector:@selector(onDidRegisterForRemoteNotificationsWithDeviceToken:)] ) {
+			[delegate performSelectorOnMainThread:@selector(onDidRegisterForRemoteNotificationsWithDeviceToken:) withObject:[self getPushToken] waitUntilDone:NO];
+		}
 	} else {
 		NSLog(@"Registered for push notifications failed");
+
+		if([delegate respondsToSelector:@selector(onDidFailToRegisterForRemoteNotificationsWithError:)] ) {
+			[delegate performSelectorOnMainThread:@selector(onDidFailToRegisterForRemoteNotificationsWithError:) withObject:error waitUntilDone:NO];
+		}
 	}
 	
 	[request release]; request = nil;
@@ -273,6 +283,39 @@
 	return [[NSUserDefaults standardUserDefaults] objectForKey:@"PWPushUserId"];
 }
 
+#pragma mark URL redirect handling flow
+
+//This method is added to work with shorten urls
+//According to ios 6, if user isn't logged in appstore, then when safari opens itunes url system will ask permission to run appstore.
+//But still if application open appstore url, system will open it without any alerts.
+- (void) openUrl: (NSURL *) url {
+	//When opening nsurlconnection to some url if it has some redirect, then connection will ask delegate what to do.
+	//But if url has no redirects, then THIS CODE WILL NOT WORK.
+	//
+	//Pushwoosh.com guarantee that any http/https url is shorten URL.
+	//Unshort url and open it by usual way.
+	if ([[url scheme] hasPrefix:@"http"]) {
+		NSURLConnection *connection  = [[NSURLConnection alloc] initWithRequest:[NSMutableURLRequest requestWithURL:url] delegate:self];
+		if (!connection) {
+			return;
+		}
+		
+		[connection release];
+		return;
+	}
+	
+	//If url has cusmtom scheme like facebook:// or itms:// we need to open it directly:
+	[[UIApplication sharedApplication] openURL:url];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+	NSLog(@"Url: %@", [response URL]);
+
+	//as soon as all the redirects finished we can open the final URL
+	[[UIApplication sharedApplication] openURL:[response URL]];
+}
+
+#pragma mark -
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if(buttonIndex != 1) {
 		if(!alertView.tag)
@@ -290,7 +333,7 @@
     
 	NSString *linkUrl = [lastPushDict objectForKey:@"l"];	
 	if(linkUrl) {
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:linkUrl]];
+		[self openUrl:[NSURL URLWithString:linkUrl]];
 	}
 	
 	if([delegate respondsToSelector:@selector(onPushAccepted: withNotification:)] ) {
@@ -350,7 +393,7 @@
 	}
     
 	if(linkUrl) {
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:linkUrl]];
+		[self openUrl:[NSURL URLWithString:linkUrl]];
 	}
 	
 	if([delegate respondsToSelector:@selector(onPushAccepted: withNotification:)] ) {
@@ -428,6 +471,28 @@
 	[pool release]; pool = nil;
 }
 
+- (void) sendBadgesBackground: (NSNumber *) badge {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
+	PWSendBadgeRequest *request = [[PWSendBadgeRequest alloc] init];
+	request.appId = appCode;
+	request.hwid = [self uniqueGlobalDeviceIdentifier];
+	request.badge = [badge intValue];
+		
+	if ([[PWRequestManager sharedManager] sendRequest:request]) {
+		NSLog(@"setBadges completed");
+	} else {
+		NSLog(@"setBadges failed");
+	}
+	
+	[request release]; request = nil;
+	[pool release]; pool = nil;
+}
+
+- (void) sendBadges: (NSInteger) badge {
+	[self performSelectorInBackground:@selector(sendBadgesBackground:) withObject:[NSNumber numberWithInt:badge]];
+}
+
 - (void) setTags: (NSDictionary *) tags {
 	[self performSelectorInBackground:@selector(sendTagsBackground:) withObject:tags];
 }
@@ -464,8 +529,6 @@
     //you might want to send it to your backend if you use remote integration
 	NSString *token = [pushHandler.pushManager getPushToken];
 	NSLog(@"Push token: %@", token);
-	
-	[pushHandler didRegisterForRemoteNotificationsWithDeviceToken:token];
 }
 
 - (void)application:(UIApplication *)application newDidRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
@@ -475,7 +538,7 @@
 
 - (void)application:(UIApplication *)application internalDidFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
 	PushNotification* pushHandler = [self.viewController getCommandInstance:@"PushNotification"];
-	[pushHandler didFailToRegisterForRemoteNotificationsWithError:err];
+	[pushHandler onDidFailToRegisterForRemoteNotificationsWithError:err];
 }
 
 - (void)application:(UIApplication *)application newDidFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
@@ -508,7 +571,7 @@
 		
 		NSString* u = [userInfo objectForKey:@"u"];
 		if (u) {
-			NSDictionary *dict = [u objectFromJSONString];
+			NSDictionary *dict = [u cdvjk_objectFromJSONString];
 			if (dict) {
 				NSMutableDictionary *pn = [NSMutableDictionary dictionaryWithDictionary:userInfo];
 				[pn setObject:dict forKey:@"u"];
@@ -517,7 +580,7 @@
 		}
 		
 		if(userInfo) {
-			NSString *jsonString = [userInfo JSONString];
+			NSString *jsonString = [userInfo cdvjk_JSONString];
 			//the webview is not loaded yet, keep it for the callback
 			pushHandler.startPushData = jsonString;
 		}
@@ -571,6 +634,23 @@ void dynamicMethodIMP(id self, SEL _cmd, id application, id param) {
 	else {
 		class_addMethod(self, @selector(application:didReceiveRemoteNotification:), (IMP)dynamicMethodIMP, "v@:::");
 	}
+}
+
+@end
+
+@implementation UIApplication(Pushwoosh)
+
+- (void) pw_setApplicationIconBadgeNumber:(NSInteger) badgeNumber {
+	[self pw_setApplicationIconBadgeNumber:badgeNumber];
+	
+	[[PushNotificationManager pushManager] sendBadges:badgeNumber];
+}
+
++ (void) load {
+	method_exchangeImplementations(class_getInstanceMethod(self, @selector(setApplicationIconBadgeNumber:)), class_getInstanceMethod(self, @selector(pw_setApplicationIconBadgeNumber:)));
+	
+	UIApplication *app = [UIApplication sharedApplication];
+	NSLog(@"Initializing application: %@, %@", app, app.delegate);
 }
 
 @end
