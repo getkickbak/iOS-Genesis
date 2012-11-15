@@ -37,7 +37,6 @@
 		0711C80E1614D525002F0AC2 /* debug in Resources */ = {isa = PBXBuildFile; fileRef = 0711C80B1614D525002F0AC2 /* debug */; };
 		0711C80F1614D525002F0AC2 /* emulate in Resources */ = {isa = PBXBuildFile; fileRef = 0711C80C1614D525002F0AC2 /* emulate */; };
 		0711C8101614D525002F0AC2 /* log in Resources */ = {isa = PBXBuildFile; fileRef = 0711C80D1614D525002F0AC2 /* log */; };
-		0711C85A1614E997002F0AC2 /* CordovaBuildSettings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0711C8591614E997002F0AC2 /* CordovaBuildSettings.xcconfig */; };
 		0715FE561607ED4600A6501C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0715FE551607ED4600A6501C /* libsqlite3.0.dylib */; };
 		072FAF7E163B14F6001E8EA9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 072FAF7D163B14F6001E8EA9 /* Default-568h@2x.png */; };
 		0736AF0215801F73008C0D98 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0736AF0115801F73008C0D98 /* CoreVideo.framework */; };
@@ -647,7 +646,7 @@
 		0706DDF114A2A6F90023AE8E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 0706DDF414A2A6F90023AE8E /* Build configuration list for PBXProject "GetKickBak" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -716,7 +715,6 @@
 				0711C80E1614D525002F0AC2 /* debug in Resources */,
 				0711C80F1614D525002F0AC2 /* emulate in Resources */,
 				0711C8101614D525002F0AC2 /* log in Resources */,
-				0711C85A1614E997002F0AC2 /* CordovaBuildSettings.xcconfig in Resources */,
 				077DECD816333C6200FDF078 /* FacebookSDKResources.bundle in Resources */,
 				072FAF7E163B14F6001E8EA9 /* Default-568h@2x.png in Resources */,
 				076ACD1B16459C5B00270053 /* Default-568h@2x.png in Resources */,
