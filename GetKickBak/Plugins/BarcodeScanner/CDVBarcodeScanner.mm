@@ -10,18 +10,26 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "AudioToolbox/AudioServices.h"
 
 //------------------------------------------------------------------------------
 // use the all-in-one version of zxing that we built
 //------------------------------------------------------------------------------
 #import "zxing-all-in-one.h"
 
-#ifdef CORDOVA_FRAMEWORK
-#import <CORDOVA/CDVPlugin.h>
-#else
-#import "CDVPlugin.h"
-#endif
+#import <Cordova/CDVPlugin.h>
+
+
+//------------------------------------------------------------------------------
+// Delegate to handle orientation functions
+// 
+//------------------------------------------------------------------------------
+@protocol CDVBarcodeScannerOrientationDelegate <NSObject>
+
+- (NSUInteger)supportedInterfaceOrientations;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
+- (BOOL)shouldAutorotate;
+
+@end
 
 //------------------------------------------------------------------------------
 // Adds a shutter button to the UI, and changes the scan from continuous to
@@ -77,14 +85,13 @@
 //------------------------------------------------------------------------------
 // view controller for the ui
 //------------------------------------------------------------------------------
-@interface CDVbcsViewController : UIViewController {
-   SystemSoundID _scanSuccessSound;
-	BOOL _isSilent;
-}
+@interface CDVbcsViewController : UIViewController <CDVBarcodeScannerOrientationDelegate> {}
 @property (nonatomic, retain) CDVbcsProcessor*  processor;
 @property (nonatomic, retain) NSString*        alternateXib;
 @property (nonatomic)         BOOL             shutterPressed;
 @property (nonatomic, retain) IBOutlet UIView* overlayView;
+// unsafe_unretained is equivalent to assign - used to prevent retain cycles in the property below
+@property (nonatomic, unsafe_unretained) id orientationDelegate;
 
 - (id)initWithProcessor:(CDVbcsProcessor*)processor alternateOverlay:(NSString *)alternateXib;
 - (void)startCapturing;
@@ -92,7 +99,6 @@
 - (UIImage*)buildReticleImage;
 - (void)shutterButtonPressed;
 - (IBAction)cancelButtonPressed:(id)sender;
--(void) beepOrVibrate;
 
 @end
 
@@ -243,6 +249,8 @@ parentViewController:(UIViewController*)parentViewController
     }
     
     self.viewController = [[[CDVbcsViewController alloc] initWithProcessor: self alternateOverlay:self.alternateXib] autorelease];
+    // here we set the orientation delegate to the MainViewController of the app (orientation controlled in the Project Settings)
+    self.viewController.orientationDelegate = self.plugin.viewController;
     
     // delayed [self openDialog];
     [self performSelector:@selector(openDialog) withObject:nil afterDelay:1];
@@ -260,16 +268,7 @@ parentViewController:(UIViewController*)parentViewController
 - (void)barcodeScanDone {
     self.capturing = NO;
     [self.captureSession stopRunning];
-   //
-   // Bugfix to prevent uncaught exception at "decidePolicyForNavigationAction"
-   //
-   if ([self.parentViewController respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
-      [self.parentViewController dismissModalViewControllerAnimated:YES];
-   } else {
-      [[super presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-   }
-   //[self.parentViewController dismissModalViewControllerAnimated: YES];
-   [self.viewController beepOrVibrate];
+    [self.parentViewController dismissModalViewControllerAnimated: YES];
     
     // viewcontroller holding onto a reference to us, release them so they
     // will release us
@@ -648,6 +647,17 @@ parentViewController:(UIViewController*)parentViewController
 }
 
 //--------------------------------------------------------------------------
+- (void)viewWillAppear:(BOOL)animated {
+    
+    // set video orientation to what the camera sees
+    self.processor.previewLayer.orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
+    // this fixes the bug when the statusbar is landscape, and the preview layer
+    // starts up in portrait (not filling the whole view)
+    self.processor.previewLayer.frame = self.view.bounds;
+}
+
+//--------------------------------------------------------------------------
 - (void)viewDidAppear:(BOOL)animated {
     [self startCapturing];
     
@@ -657,13 +667,6 @@ parentViewController:(UIViewController*)parentViewController
 //--------------------------------------------------------------------------
 - (void)startCapturing {
     self.processor.capturing = YES;
-}
-
-//--------------------------------------------------------------------------
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // rotation currently not supported
-    if (interfaceOrientation == UIInterfaceOrientationPortrait) return YES;
-    return NO;
 }
 
 //--------------------------------------------------------------------------
@@ -814,64 +817,45 @@ parentViewController:(UIViewController*)parentViewController
     return result;
 }
 
+#pragma mark CDVBarcodeScannerOrientationDelegate
 
-//-------------------------------------------------------------------------
-// Checks if the phone is in vibrate mode, in which case the scanner
-// vibrates instead of beeps.
-//-------------------------------------------------------------------------
--(void)beepOrVibrate
+- (BOOL)shouldAutorotate
 {
-	if(!_isSilent)
-   {
-		UInt32 routeSize = sizeof (CFStringRef);
-		CFStringRef route = NULL;
-		AudioSessionGetProperty (
-                               kAudioSessionProperty_AudioRoute,
-                               &routeSize,
-                               &route
-                               );
-		
-		if (CFStringGetLength(route) == 0) {
-			AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-		}
-		else {
-			AudioServicesPlaySystemSound(_scanSuccessSound);
-		}
-   }
+    if ((self.orientationDelegate != nil) && [self.orientationDelegate respondsToSelector:@selector(shouldAutorotate)]) {
+        return [self.orientationDelegate shouldAutorotate];
+    }
+    
+    return YES;
 }
 
-- (void)viewDidLoad 
+- (NSUInteger)supportedInterfaceOrientations
 {
-   [super viewDidLoad];
-   self->_isSilent = [[NSUserDefaults standardUserDefaults] boolForKey:@"silent_pref"];
-   
-   if(!_isSilent) // If silent, no need to do this.
-   {
-      NSURL* aFileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"beep" ofType:@"wav"] isDirectory:NO]; 
-      AudioServicesCreateSystemSoundID((CFURLRef)aFileURL, &_scanSuccessSound);
-      
-      UInt32 flag = 0;
-      OSStatus error = AudioServicesSetProperty(kAudioServicesPropertyIsUISound,
-                                                sizeof(UInt32),
-                                                &_scanSuccessSound,
-                                                sizeof(UInt32),
-                                                &flag);
-      
-      float aBufferLength = 1.0; // In seconds
-      error = AudioSessionSetProperty(kAudioSessionProperty_PreferredHardwareIOBufferDuration, 
-                                      sizeof(aBufferLength), &aBufferLength);
-      
-      /* Create and warm up an audio session */
-      AudioSessionInitialize(NULL, NULL, NULL, NULL);
-      AudioSessionSetActive(TRUE);
-   }
+    if ((self.orientationDelegate != nil) && [self.orientationDelegate respondsToSelector:@selector(supportedInterfaceOrientations)]) {
+        return [self.orientationDelegate supportedInterfaceOrientations];
+    }
+    
+    return UIInterfaceOrientationMaskPortrait;
 }
 
-- (void)viewDidUnload 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-   
-	AudioServicesDisposeSystemSoundID(_scanSuccessSound);
-	if(!_isSilent) { AudioSessionSetActive(FALSE); }
+    if ((self.orientationDelegate != nil) && [self.orientationDelegate respondsToSelector:@selector(shouldAutorotateToInterfaceOrientation:)]) {
+        return [self.orientationDelegate shouldAutorotateToInterfaceOrientation:interfaceOrientation];
+    }
+    
+    return YES;
+}
+
+- (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
+{
+    [CATransaction begin];
+    
+    self.processor.previewLayer.orientation = orientation;
+    [self.processor.previewLayer layoutSublayers];
+    self.processor.previewLayer.frame = self.view.bounds;
+    
+    [CATransaction commit];
+    [super willAnimateRotationToInterfaceOrientation:orientation duration:duration];
 }
 
 @end
