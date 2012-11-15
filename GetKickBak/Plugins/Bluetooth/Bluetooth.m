@@ -14,6 +14,7 @@
     for (NSString* peerId in [self.session peersWithConnectionState:GKPeerStateConnected])
         [peers setObject:[self.session displayNameForPeer:peerId] forKey:peerId];
 
+	NSLog(@"%u Connexion Peers", peers.count);
     if (peers.count > 1){
         CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:peers];
         [result setKeepCallbackAsBool:YES];
@@ -26,6 +27,7 @@
     for (NSString* peerId in [self.session peersWithConnectionState:GKPeerStateAvailable])
         [peers setObject:[self.session displayNameForPeer:peerId] forKey:peerId];
     
+	NSLog(@"%u Session Peers", peers.count);
     if (peers.count > 0){
         CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:peers];
         [result setKeepCallbackAsBool:YES];
@@ -150,6 +152,23 @@
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[options objectForKey:@"data"]];
     [result setKeepCallbackAsBool:YES];
     [self writeJavascript:[result toErrorCallbackString:connexionEvents]];
+}
+
+//function(data)
+- (void) sendData:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
+{
+	NSLog(@"sendData");
+   
+   NSArray *peers = [options objectForKey:@"peers"];
+   NSMutableData *data = [[NSMutableData alloc] init];
+   NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+   [archiver encodeObject:[options objectForKey:@"data"] forKey:@"data"];
+   [archiver finishEncoding];
+   [session sendData:data toPeers:peers withDataMode:GKSendDataReliable error:nil];
+   
+   CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[options objectForKey:@"data"]];
+   [result setKeepCallbackAsBool:YES];
+   [self writeJavascript:[result toErrorCallbackString:connexionEvents]];
 }
 
 @end
