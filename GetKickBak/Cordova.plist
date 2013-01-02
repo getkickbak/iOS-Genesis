@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIApplicationExitsOnSuspend</key>
+	<false/>
 	<key>SuppressesIncrementalRendering</key>
 	<true/>
 	<key>TopActivityIndicator</key>
@@ -28,6 +30,8 @@
 	<string>cloud</string>
 	<key>ExternalHosts</key>
 	<array>
+		<string>76.10.173.153</string>
+		<string>*.devgetkickbak.com</string>
 		<string>localhost</string>
 		<string>192.168.0.52</string>
 		<string>*.googleapis.com</string>
@@ -41,8 +45,8 @@
 	</array>
 	<key>Plugins</key>
 	<dict>
-		<key>Bluetooth</key>
-		<string>Bluetooth</string>
+		<key>ProximityIDPlugin</key>
+		<string>ProximityID</string>
 		<key>PushNotification</key>
 		<string>PushNotification</string>
 		<key>EmailComposer</key>
@@ -53,8 +57,8 @@
 		<string>QRCodeReaderNigma</string>
 		<key>QRCodeReaderRL</key>
 		<string>QRCodeReaderRL</string>
-		<key>org.apache.cordova.facebook.Connect</key>
-		<string>FacebookConnectPlugin</string>
+		<key>FacebookConnect</key>
+		<string>FacebookConnect</string>
 		<key>BarcodeScanner</key>
 		<string>CDVBarcodeScanner</string>
 		<key>Accelerometer</key>

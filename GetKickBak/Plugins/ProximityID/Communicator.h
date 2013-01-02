@@ -1,0 +1,54 @@
+//
+//  Receiver.h
+//  ProximityID
+//
+//  Created by Eric Chan on 12/10/12.
+//
+// THIS SOFTWARE IS PROVIDED BY ERIC CHAN "AS IS" AND ANY EXPRESS OR
+// IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+// MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+// EVENT SHALL ERIC CHAN OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+// INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+// BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+// LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+// OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+// ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+
+
+#import <Foundation/Foundation.h>
+
+
+
+#ifndef max
+#define max( a, b ) ( ((a) > (b)) ? (a) : (b) )
+#endif
+
+#ifndef min
+#define min( a, b ) ( ((a) < (b)) ? (a) : (b) )
+#endif
+
+@interface Communicator : NSObject {
+   int N;
+   bool stopped;
+   bool abort;
+   bool paused;
+}
+
+/*
+-(void) cleanup;
+-(int[]) process;
+-(void) stop;
+-(void) pause;
+-(void) resume;
+*/
+-(bool) isStopped;
+-(int) getNumSignals;
+-(double) getFreqGap;
+-(int) getFrameCount;
+-(float) getStartFreq;
+-(float) getSampleRate;
+-(float) getBandwidth;
+
+@end
