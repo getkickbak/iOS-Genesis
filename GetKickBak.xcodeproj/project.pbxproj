@@ -23,7 +23,7 @@
 		0706DE2214A2A6F90023AE8E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0706DE2114A2A6F90023AE8E /* main.m */; };
 		0706DE3814A2A6F90023AE8E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0706DE3714A2A6F90023AE8E /* Default.png */; };
 		0706DE3A14A2A6F90023AE8E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0706DE3914A2A6F90023AE8E /* Default@2x.png */; };
-		0706DE3E14A2A6F90023AE8E /* Cordova.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0706DE3D14A2A6F90023AE8E /* Cordova.plist */; };
+		0706DE3E14A2A6F90023AE8E /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 0706DE3D14A2A6F90023AE8E /* config.xml */; };
 		0706DE5714A2A8D10023AE8E /* www in Resources */ = {isa = PBXBuildFile; fileRef = 0706DE5614A2A8D10023AE8E /* www */; };
 		0711C8011614AC7C002F0AC2 /* HtmlWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0711C7F11614AC7C002F0AC2 /* HtmlWebViewController.m */; };
 		0711C8021614AC7C002F0AC2 /* PushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0711C7F31614AC7C002F0AC2 /* PushNotificationManager.m */; };
@@ -34,9 +34,6 @@
 		0711C8071614AC7C002F0AC2 /* PWRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0711C7FD1614AC7C002F0AC2 /* PWRequestManager.m */; };
 		0711C8081614AC7C002F0AC2 /* PWSetTagsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0711C7FF1614AC7C002F0AC2 /* PWSetTagsRequest.m */; };
 		0711C8091614AC7C002F0AC2 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 0711C8001614AC7C002F0AC2 /* README */; };
-		0711C80E1614D525002F0AC2 /* debug in Resources */ = {isa = PBXBuildFile; fileRef = 0711C80B1614D525002F0AC2 /* debug */; };
-		0711C80F1614D525002F0AC2 /* emulate in Resources */ = {isa = PBXBuildFile; fileRef = 0711C80C1614D525002F0AC2 /* emulate */; };
-		0711C8101614D525002F0AC2 /* log in Resources */ = {isa = PBXBuildFile; fileRef = 0711C80D1614D525002F0AC2 /* log */; };
 		0715FE561607ED4600A6501C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0715FE551607ED4600A6501C /* libsqlite3.0.dylib */; };
 		072FAF7E163B14F6001E8EA9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 072FAF7D163B14F6001E8EA9 /* Default-568h@2x.png */; };
 		0736AF0215801F73008C0D98 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0736AF0115801F73008C0D98 /* CoreVideo.framework */; };
@@ -54,6 +51,12 @@
 		076ACD181644F27000270053 /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 072FB0671644E3C0001E8EA9 /* libCordova.a */; };
 		076ACD1B16459C5B00270053 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 076ACD1A16459C5B00270053 /* Default-568h@2x.png */; };
 		077DECFC16333DAB00FDF078 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077DECFB16333DAB00FDF078 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		077E6A65169DE059004C402E /* build in Resources */ = {isa = PBXBuildFile; fileRef = 077E6A60169DE059004C402E /* build */; };
+		077E6A66169DE059004C402E /* emulate in Resources */ = {isa = PBXBuildFile; fileRef = 077E6A61169DE059004C402E /* emulate */; };
+		077E6A67169DE059004C402E /* log in Resources */ = {isa = PBXBuildFile; fileRef = 077E6A62169DE059004C402E /* log */; };
+		077E6A68169DE059004C402E /* release in Resources */ = {isa = PBXBuildFile; fileRef = 077E6A63169DE059004C402E /* release */; };
+		077E6A69169DE059004C402E /* run in Resources */ = {isa = PBXBuildFile; fileRef = 077E6A64169DE059004C402E /* run */; };
+		0799905E169A18FF00A32C1C /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 0799905D169A18FF00A32C1C /* Notification.m */; };
 		0799AFCD156C454700C43BC4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0799AFCC156C454700C43BC4 /* MessageUI.framework */; };
 		079CA209159F8F930026A58E /* PushNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CA208159F8F930026A58E /* PushNotification.m */; };
 		079CA236159F94960026A58E /* barcodescanner.js in Sources */ = {isa = PBXBuildFile; fileRef = 079CA21D159F94960026A58E /* barcodescanner.js */; };
@@ -126,7 +129,7 @@
 		0706DE2314A2A6F90023AE8E /* GetKickBak-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetKickBak-Prefix.pch"; sourceTree = "<group>"; };
 		0706DE3714A2A6F90023AE8E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/splash/Default.png; sourceTree = "<group>"; };
 		0706DE3914A2A6F90023AE8E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/splash/Default@2x.png"; sourceTree = "<group>"; };
-		0706DE3D14A2A6F90023AE8E /* Cordova.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Cordova.plist; sourceTree = "<group>"; };
+		0706DE3D14A2A6F90023AE8E /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
 		0706DE4414A2A6F90023AE8E /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = Plugins/README; sourceTree = "<group>"; };
 		0706DE5614A2A8D10023AE8E /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		0711C7F01614AC7C002F0AC2 /* HtmlWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HtmlWebViewController.h; sourceTree = "<group>"; };
@@ -146,13 +149,10 @@
 		0711C7FE1614AC7C002F0AC2 /* PWSetTagsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWSetTagsRequest.h; sourceTree = "<group>"; };
 		0711C7FF1614AC7C002F0AC2 /* PWSetTagsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWSetTagsRequest.m; sourceTree = "<group>"; };
 		0711C8001614AC7C002F0AC2 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		0711C80B1614D525002F0AC2 /* debug */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = debug; sourceTree = "<group>"; };
-		0711C80C1614D525002F0AC2 /* emulate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = emulate; sourceTree = "<group>"; };
-		0711C80D1614D525002F0AC2 /* log */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = log; sourceTree = "<group>"; };
 		0711C8591614E997002F0AC2 /* CordovaBuildSettings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = CordovaBuildSettings.xcconfig; sourceTree = "<group>"; };
 		0715FE551607ED4600A6501C /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		072FAF7D163B14F6001E8EA9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		072FB05F1644E3BF001E8EA9 /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
+		072FB05F1644E3BF001E8EA9 /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = "../../CordovaLib-2.3.0/lib/ios/CordovaLib/CordovaLib.xcodeproj"; sourceTree = "<group>"; };
 		0736AF0115801F73008C0D98 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		0736AF0315801F8D008C0D98 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		0736AF0515801FCB008C0D98 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
@@ -161,7 +161,6 @@
 		073A9640168F74F9000FACB3 /* FacebookConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookConnect.m; sourceTree = "<group>"; };
 		073A9644168F75AC000FACB3 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		073A9646168F75B5000FACB3 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		073A9648168F8563000FACB3 /* FacebookSDK-3.1.1.pkg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FacebookSDK-3.1.1.pkg"; path = "../../../Downloads/FacebookSDK-3.1.1.pkg"; sourceTree = "<group>"; };
 		073A964A168F8619000FACB3 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = System/Library/Frameworks/FacebookSDK.framework; sourceTree = SDKROOT; };
 		073A966D168F8941000FACB3 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		073A966E168F8941000FACB3 /* FacebookSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookSDK.h; sourceTree = "<group>"; };
@@ -221,6 +220,13 @@
 		07646DAD14AC3C9A0098B6D2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		076ACD1A16459C5B00270053 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/splash/Default-568h@2x.png"; sourceTree = "<group>"; };
 		077DECFB16333DAB00FDF078 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		077E6A60169DE059004C402E /* build */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = build; sourceTree = "<group>"; };
+		077E6A61169DE059004C402E /* emulate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = emulate; sourceTree = "<group>"; };
+		077E6A62169DE059004C402E /* log */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = log; sourceTree = "<group>"; };
+		077E6A63169DE059004C402E /* release */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = release; sourceTree = "<group>"; };
+		077E6A64169DE059004C402E /* run */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = run; sourceTree = "<group>"; };
+		0799905C169A18FF00A32C1C /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
+		0799905D169A18FF00A32C1C /* Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
 		0799AFCC156C454700C43BC4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		079CA207159F8F930026A58E /* PushNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotification.h; sourceTree = "<group>"; };
 		079CA208159F8F930026A58E /* PushNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotification.m; sourceTree = "<group>"; };
@@ -311,9 +317,8 @@
 		0706DDEF14A2A6F90023AE8E = {
 			isa = PBXGroup;
 			children = (
-				073A9648168F8563000FACB3 /* FacebookSDK-3.1.1.pkg */,
+				077E6A5F169DE059004C402E /* cordova */,
 				072FB05F1644E3BF001E8EA9 /* CordovaLib.xcodeproj */,
-				0711C80A1614D525002F0AC2 /* cordova */,
 				07DA351F1561F980004E655A /* appicon3g.png */,
 				07DA345E155DA5E3004E655A /* appicon.png */,
 				072FAF7D163B14F6001E8EA9 /* Default-568h@2x.png */,
@@ -385,7 +390,7 @@
 				0706DE1D14A2A6F90023AE8E /* GetKickBak-Info.plist */,
 				0706DE2114A2A6F90023AE8E /* main.m */,
 				0706DE2314A2A6F90023AE8E /* GetKickBak-Prefix.pch */,
-				0706DE3D14A2A6F90023AE8E /* Cordova.plist */,
+				0706DE3D14A2A6F90023AE8E /* config.xml */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -442,6 +447,7 @@
 		0706DE4314A2A6F90023AE8E /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				0799905B169A18FF00A32C1C /* Notification */,
 				073A963E168F74F9000FACB3 /* FacebookConnect */,
 				07CBB23C1675185600DC2CEE /* ProximityID */,
 				079CA21C159F94960026A58E /* BarcodeScanner */,
@@ -451,16 +457,6 @@
 				0706DE4414A2A6F90023AE8E /* README */,
 			);
 			name = Plugins;
-			sourceTree = "<group>";
-		};
-		0711C80A1614D525002F0AC2 /* cordova */ = {
-			isa = PBXGroup;
-			children = (
-				0711C80B1614D525002F0AC2 /* debug */,
-				0711C80C1614D525002F0AC2 /* emulate */,
-				0711C80D1614D525002F0AC2 /* log */,
-			);
-			path = cordova;
 			sourceTree = "<group>";
 		};
 		072FB0601644E3BF001E8EA9 /* Products */ = {
@@ -537,6 +533,28 @@
 			);
 			name = DeprecatedHeaders;
 			path = GetKickBak/FacebookConnect/FacebookSDK.framework/Versions/A/DeprecatedHeaders;
+			sourceTree = "<group>";
+		};
+		077E6A5F169DE059004C402E /* cordova */ = {
+			isa = PBXGroup;
+			children = (
+				077E6A60169DE059004C402E /* build */,
+				077E6A61169DE059004C402E /* emulate */,
+				077E6A62169DE059004C402E /* log */,
+				077E6A63169DE059004C402E /* release */,
+				077E6A64169DE059004C402E /* run */,
+			);
+			path = cordova;
+			sourceTree = "<group>";
+		};
+		0799905B169A18FF00A32C1C /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				0799905C169A18FF00A32C1C /* Notification.h */,
+				0799905D169A18FF00A32C1C /* Notification.m */,
+			);
+			name = Notification;
+			path = Plugins/Notification;
 			sourceTree = "<group>";
 		};
 		079CA206159F8F930026A58E /* PushNotification */ = {
@@ -750,7 +768,7 @@
 			files = (
 				0706DE3814A2A6F90023AE8E /* Default.png in Resources */,
 				0706DE3A14A2A6F90023AE8E /* Default@2x.png in Resources */,
-				0706DE3E14A2A6F90023AE8E /* Cordova.plist in Resources */,
+				0706DE3E14A2A6F90023AE8E /* config.xml in Resources */,
 				0706DE5714A2A8D10023AE8E /* www in Resources */,
 				07646DAB14AC3C840098B6D2 /* Default.png in Resources */,
 				07646DAE14AC3C9A0098B6D2 /* Default@2x.png in Resources */,
@@ -770,12 +788,14 @@
 				079CA240159F94960026A58E /* index.html in Resources */,
 				079CA241159F94960026A58E /* readme.md in Resources */,
 				0711C8091614AC7C002F0AC2 /* README in Resources */,
-				0711C80E1614D525002F0AC2 /* debug in Resources */,
-				0711C80F1614D525002F0AC2 /* emulate in Resources */,
-				0711C8101614D525002F0AC2 /* log in Resources */,
 				072FAF7E163B14F6001E8EA9 /* Default-568h@2x.png in Resources */,
 				076ACD1B16459C5B00270053 /* Default-568h@2x.png in Resources */,
 				073A96A1168F898E000FACB3 /* FacebookSDKResources.bundle in Resources */,
+				077E6A65169DE059004C402E /* build in Resources */,
+				077E6A66169DE059004C402E /* emulate in Resources */,
+				077E6A67169DE059004C402E /* log in Resources */,
+				077E6A68169DE059004C402E /* release in Resources */,
+				077E6A69169DE059004C402E /* run in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,7 +813,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "appPath=\"/Users/eric/Documents/GetKickBak/V2.0.0/V2.0.0/public/javascripts/mobile\";\n\nlibPath=\"lib/sencha-touch-2.1.0-commercial\";\n\ntouch -cm ${PROJECT_DIR}/www\nmkdir -p $PROJECT_DIR/www/app/store\nmkdir -p $PROJECT_DIR/www/app/profile\nmkdir -p $PROJECT_DIR/www/resources/themes/images/v1\n\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/app/store/*Client*.json $PROJECT_DIR/www/app/store/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/app/profile/Iphone.js $PROJECT_DIR/www/app/profile/\n\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/*.wav $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/*.htm $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/client-all.js $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/core.js $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/index.html $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/*.ios.js $PROJECT_DIR/www/lib/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/*min.js $PROJECT_DIR/www/lib/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/core/*.ios.js $PROJECT_DIR/www/lib/core/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/core/Facebook*.js $PROJECT_DIR/www/lib/core/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/sencha-touch-all.js $PROJECT_DIR/www/lib/\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/src $PROJECT_DIR/www/$libPath\n\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/css/i*.css $PROJECT_DIR/www/resources/css/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/audio/*.mp3 $PROJECT_DIR/www/resources/audio/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/audio/*.wav $PROJECT_DIR/www/resources/audio/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/themes/images/v1/ios $PROJECT_DIR/www/resources/themes/images/v1\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/themes/images/v1/iphone5 $PROJECT_DIR/www/resources/themes/images/v1\n\n#--\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/src/device $PROJECT_DIR/www/$libPath/src\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/kitchensink $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/resources $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/video $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/audio $PROJECT_DIR/www/$libPath/examples\n#---\n\nif [ ! -d \"$PROJECT_DIR/www\" ] ; then\ncp -R /Users/Shared/Cordova/Frameworks/PhoneGap.framework/www \"$PROJECT_DIR\"\nfi\n# detect www folder reference in project, if missing, print warning\ngrep \"{isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = \\\"<group>\\\"; };\" \"$PROJECT_DIR/$PROJECT_NAME.xcodeproj/project.pbxproj\"\nrc=$? \nif [ $rc != 0 ] ; then\necho -e \"warning: Missing - Add $PROJECT_DIR/www as a folder reference in your project. Just drag and drop the folder into your project, into the Project Navigator of Xcode 4. Make sure you select the second radio-button: 'Create folder references for any added folders' (which will create a blue folder)\" 1>&2\nfi\n";
+			shellScript = "appPath=\"/Users/eric/Documents/GetKickBak/V2.0.0/V2.0.0/public/javascripts/mobile\";\n\nlibPath=\"lib/sencha-touch-2.1.0-commercial\";\n\ntouch -cm ${PROJECT_DIR}/www\nmkdir -p $PROJECT_DIR/www/app/store\nmkdir -p $PROJECT_DIR/www/app/profile\nmkdir -p $PROJECT_DIR/www/resources/themes/images/v1\n\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/app/store/*Client*.json $PROJECT_DIR/www/app/store/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/app/profile/Iphone.js $PROJECT_DIR/www/app/profile/\n\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/*.wav $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/*.htm $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/client-all.js $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/core.js $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/index.html $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/*.ios.js $PROJECT_DIR/www/lib/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/*min.js $PROJECT_DIR/www/lib/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/core/*.ios.js $PROJECT_DIR/www/lib/core/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/core/Facebook*.js $PROJECT_DIR/www/lib/core/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/sencha-touch-all.js $PROJECT_DIR/www/lib/\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/src $PROJECT_DIR/www/$libPath\n\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/css/i*.css $PROJECT_DIR/www/resources/css/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/audio/*.mp3 $PROJECT_DIR/www/resources/audio/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/audio/*.wav $PROJECT_DIR/www/resources/audio/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/themes/images/v1/*facebook* $PROJECT_DIR/www/resources/themes/images/v1/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/themes/images/v1/ios $PROJECT_DIR/www/resources/themes/images/v1\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/themes/images/v1/iphone5 $PROJECT_DIR/www/resources/themes/images/v1\n\n#--\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/src/device $PROJECT_DIR/www/$libPath/src\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/kitchensink $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/resources $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/video $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/audio $PROJECT_DIR/www/$libPath/examples\n#---\n\nif [ ! -d \"$PROJECT_DIR/www\" ] ; then\ncp -R /Users/Shared/Cordova/Frameworks/PhoneGap.framework/www \"$PROJECT_DIR\"\nfi\n# detect www folder reference in project, if missing, print warning\ngrep \"{isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = \\\"<group>\\\"; };\" \"$PROJECT_DIR/$PROJECT_NAME.xcodeproj/project.pbxproj\"\nrc=$? \nif [ $rc != 0 ] ; then\necho -e \"warning: Missing - Add $PROJECT_DIR/www as a folder reference in your project. Just drag and drop the folder into your project, into the Project Navigator of Xcode 4. Make sure you select the second radio-button: 'Create folder references for any added folders' (which will create a blue folder)\" 1>&2\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -830,6 +850,7 @@
 				07CBB248167629A100DC2CEE /* Communicator.m in Sources */,
 				07CBB24B1676869600DC2CEE /* FastFT.m in Sources */,
 				073A9642168F74F9000FACB3 /* FacebookConnect.m in Sources */,
+				0799905E169A18FF00A32C1C /* Notification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
