@@ -6,9 +6,9 @@
  to you under the Apache License, Version 2.0 (the
  "License"); you may not use this file except in compliance
  with the License.  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing,
  software distributed under the License is distributed on an
  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -17,24 +17,24 @@
  under the License.
  */
 
-//
-//  MainViewController.h
-//  GetKickBak
-//
-//  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright ___ORGANIZATIONNAME___ ___YEAR___. All rights reserved.
-//
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioServices.h>
+#import <Cordova/CDVPlugin.h>
 
-#import <Cordova/CDVViewController.h>
-#import <Cordova/CDVCommandDelegateImpl.h>
-#import <Cordova/CDVCommandQueue.h>
+@interface Notification : CDVPlugin <UIAlertViewDelegate> {
+   NSMutableDictionary* alertViews;
+}
 
-@interface MainViewController : CDVViewController
+- (void)alert:(CDVInvokedUrlCommand*)command;
+- (void)confirm:(CDVInvokedUrlCommand*)command;
+- (void)vibrate:(CDVInvokedUrlCommand*)command;
+- (void)dismiss:(CDVInvokedUrlCommand*)command;
 
 @end
 
-@interface MainCommandDelegate : CDVCommandDelegateImpl
-@end
+@interface AlertView : UIAlertView {}
+@property (nonatomic) NSInteger key;
+@property (nonatomic, copy) NSString* callbackId;
 
-@interface MainCommandQueue : CDVCommandQueue
 @end

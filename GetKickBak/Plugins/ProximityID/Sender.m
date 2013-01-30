@@ -35,7 +35,6 @@ static void checkStatus(int status)
    }
 }
 
-
 @interface Sender()
 -(void) genTone;
 @end
@@ -181,7 +180,8 @@ static void checkStatus(int status)
    
    // Put everything in an NSData object.
    NSData* data = [[NSData alloc] initWithBytesNoCopy:wavBuffer length:wavSize];
-   
+
+   [self stop];
    // Create the AVAudioPlayer.
    NSError* error = nil;
    audioPlayer = [[AVAudioPlayer alloc] initWithData:data error:&error];

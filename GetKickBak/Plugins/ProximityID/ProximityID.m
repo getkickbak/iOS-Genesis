@@ -16,6 +16,8 @@
 // ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 #import <MediaPlayer/MPMusicPlayerController.h>
 #import "ProximityID.h"
 #import "Sender.h"
@@ -23,7 +25,56 @@
 
 #define TAG                         @"ProximityID - "
 
+static float                        fs = 44100.0;
 static int                          ILLEGAL_ACCESS_ERROR = 1;
+
+static void checkStatus(int status)
+{
+	if (status)
+   {
+		NSLog(TAG @"Status not 0! %d\n", status);
+      //		exit(1);
+   }
+}
+
+static void checkNSError(NSError *error)
+{
+	if (error != nil)
+   {
+		NSLog(TAG "Status Error! Code = %d\n", error.code);
+   }
+}
+
+static void audioRouteChangeListenerCallback (
+                                              void                   *inUserData,                                 // 1
+                                              AudioSessionPropertyID inPropertyID,                                // 2
+                                              UInt32                 inPropertyValueSize,                         // 3
+                                              const void             *inPropertyValue                             // 4
+                                              )
+
+{
+   if (inPropertyID != kAudioSessionProperty_AudioRouteChange) return; // 5
+   
+   NSLog(TAG @"Audio Route Change Detected");
+   /*
+    CFDictionaryRef routeChangeDictionary = inPropertyValue;        // 8
+    CFNumberRef routeChangeReasonRef = CFDictionaryGetValue (routeChangeDictionary,CFSTR (kAudioSession_AudioRouteChangeKey_Reason));
+    SInt32 routeChangeReason;
+    CFNumberGetValue (routeChangeReasonRef, kCFNumberSInt32Type, &routeChangeReason);
+    if (routeChangeReason ==  kAudioSessionRouteChangeReason_OldDeviceUnavailable) {  // 9
+    }
+    */
+   
+   OSStatus err = 0;
+   UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+   err =  AudioSessionSetProperty(kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
+   checkStatus(err);
+   // 2. Changing the default output audio route
+   UInt32 doChangeDefaultRoute = 1;
+   err = AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
+   checkStatus(err);
+   NSLog(TAG @"Rerouted sound to Speaker");
+}
 
 /*
 NSString* ERROR_NOT_FOUND =         @"file not found";
@@ -156,6 +207,42 @@ NSString* RESTRICTED =              @"ACTION RESTRICTED FOR FX AUDIO";
    sender = [[Sender alloc] init];
    receiver = nil;
    s_vol = -1;
+
+   NSError	*err = nil;
+   OSStatus status;
+	AVAudioSession *session = [AVAudioSession sharedInstance];
+   //[session setDelegate:self];
+	[session setPreferredSampleRate: fs error:&err];
+   checkNSError(err);
+	[session setCategory:AVAudioSessionCategoryPlayAndRecord error:&err];
+   checkNSError(err);
+   
+   /* Pick any one of them */
+   // 1. Overriding the output audio route
+   UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+   status =  AudioSessionSetProperty(kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
+   checkStatus(status);
+   // 2. Changing the default output audio route
+   UInt32 doChangeDefaultRoute = 1;
+   status = AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
+   checkStatus(status);
+   NSLog(TAG @"Rerouting sound to Speaker");
+   
+   //
+   // This is a MUST to make sure that Automatic Gain Adjustments
+   // were made to the signal to get precise signal data
+   //
+   [session setMode:AVAudioSessionModeMeasurement error:&err];
+   checkNSError(err);
+	[session setActive:YES error:&err];
+   checkNSError(err);
+   
+   NSLog(TAG @"Activated Audio Session");
+   
+   AudioSessionAddPropertyListener (kAudioSessionProperty_AudioRouteChange,
+                                    audioRouteChangeListenerCallback,
+                                    self);
+   NSLog(TAG @"Added AudioRouteChange Event Listener");
    
    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
@@ -201,7 +288,7 @@ NSString* RESTRICTED =              @"ACTION RESTRICTED FOR FX AUDIO";
    //
    // Restore original volume, ready to take on more tasks
    //
-   if (s_vol > 0)
+   if (s_vol >= 0)
    {
       [[MPMusicPlayerController applicationMusicPlayer]setVolume:s_vol];//returns volume to original setting
       NSLog(TAG @"Setting Volume Back to [%f]", s_vol);

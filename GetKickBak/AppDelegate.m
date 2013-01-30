@@ -30,6 +30,9 @@
 
 #import <Cordova/CDVPlugin.h>
 
+#define TAG               @"KICKBAK - "
+
+
 @implementation AppDelegate
 
 @synthesize window, viewController;
@@ -58,7 +61,7 @@
     
     if (url && [url isKindOfClass:[NSURL class]]) {
         invokeString = [url absoluteString];
-		NSLog(@"KickBak launchOptions = %@", url);
+		NSLog(TAG @"launchOptions = %@", url);
     }
     
    //[[UIApplication sharedApplication] setStatusBarHidden:YES animated:NO];
@@ -113,7 +116,7 @@
       else
          newOrient = UIInterfaceOrientationPortraitUpsideDown;
       
-      NSLog(@"AppDelegate forcing status bar to: %d from: %d", newOrient, curDevOrientation);
+      NSLog(TAG @"AppDelegate forcing status bar to: %d from: %d", newOrient, curDevOrientation);
       [[UIApplication sharedApplication] setStatusBarOrientation:newOrient];
    }
    /*
@@ -129,7 +132,7 @@
     //[self.window addSubview:self.viewController.view];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
-    
+   
     return YES;
 }
 
