@@ -16,12 +16,13 @@
 // ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import "GBDeviceInfo.h"
 #import "Sender.h"
 #import <AVFoundation/AVAudioPlayer.h>
 
 #define TAG               @"ProximityID-Sender - "
 
-static const int    DURATION  = 5;                                       // seconds
+static const int    DURATION  = 1;                                       // seconds
 static const double AMPLITUDE = 1.0;
 
 Sender  *sender;
@@ -52,9 +53,9 @@ static void checkStatus(int status)
       // assumes the sample buffer is normalised.
       for (int j = 0; j < [super getNumSignals]; j++)
       {
-         val += AMPLITUDE * sin(2 * M_PI * [[freqs objectAtIndex:j] intValue] * i / [super getSampleRate]);
+         val += sin(2 * M_PI * [[freqs objectAtIndex:j] intValue] * i / [super getSampleRate]);
       }
-      val /= [super getNumSignals];
+      val /= ([super getNumSignals] / AMPLITUDE);
       payload[i] = (SInt16) (val * SHRT_MAX);
    }
 }
@@ -147,13 +148,23 @@ static void checkStatus(int status)
    double bw = [self getBandwidth] / [super getNumSignals];
    int sigs[[super getNumSignals]];
    Boolean stay = false;
+   GBDeviceDetails deviceDetails = [GBDeviceInfo deviceDetails];
    do
    {
       stay = false;
-      for (int i = 0; i <[super getNumSignals]; i++)
+      for (int i = 0; i <[super getNumSignals] - 1; i++)
       {
          sigs[i] = arc4random_uniform(bw) + i*bw + [super getStartFreq];
       }
+      if (deviceDetails.family == GBDeviceFamilyiPod)
+      {
+         sigs[[super getNumSignals] - 1] = arc4random_uniform(bw/2 - 8) + (([super getNumSignals] - 1) * bw) + [super getStartFreq];
+      }
+      else
+      {
+         sigs[[super getNumSignals] - 1] = arc4random_uniform(bw/2) + (([super getNumSignals] - 1) * bw) + [super getStartFreq];
+      }
+   
       for (int i = 0; i < ([super getNumSignals] - 1); i++)
       {
          if ((sigs[i] + [super getFreqGap]) > sigs[i+1])
@@ -193,6 +204,15 @@ static void checkStatus(int status)
    {
       NSLog(TAG @"%@", error);
       return;
+   }
+   
+   if (deviceDetails.family == GBDeviceFamilyiPod)
+   {
+      for (int i = 0; i < [super getNumSignals]; i++)
+      {
+         NSNumber *freq = [freqs objectAtIndex:i];
+         [freqs replaceObjectAtIndex:i withObject:[NSNumber numberWithInt:[freq integerValue] + 8]];
+      }
    }
 }
 

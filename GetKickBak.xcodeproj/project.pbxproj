@@ -79,6 +79,7 @@
 		07CBB248167629A100DC2CEE /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CBB247167629A000DC2CEE /* Communicator.m */; };
 		07CBB24B1676869600DC2CEE /* FastFT.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CBB24A1676869600DC2CEE /* FastFT.m */; };
 		07CBB24D1679780400DC2CEE /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CBB24C1679780400DC2CEE /* Accelerate.framework */; };
+		07CDF1B816C8CB1B004429AB /* GBDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CDF1B716C8CB1A004429AB /* GBDeviceInfo.m */; };
 		07D0AAE0150A9355000E07EC /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AADD150A9355000E07EC /* icon-72.png */; };
 		07D0AAE1150A9355000E07EC /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AADE150A9355000E07EC /* icon.png */; };
 		07D0AAE2150A9355000E07EC /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D0AADF150A9355000E07EC /* icon@2x.png */; };
@@ -259,6 +260,8 @@
 		07CBB2491676869600DC2CEE /* FastFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastFT.h; sourceTree = "<group>"; };
 		07CBB24A1676869600DC2CEE /* FastFT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastFT.m; sourceTree = "<group>"; };
 		07CBB24C1679780400DC2CEE /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		07CDF1B616C8CB1A004429AB /* GBDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBDeviceInfo.h; sourceTree = "<group>"; };
+		07CDF1B716C8CB1A004429AB /* GBDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBDeviceInfo.m; sourceTree = "<group>"; };
 		07D0AADD150A9355000E07EC /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 		07D0AADE150A9355000E07EC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		07D0AADF150A9355000E07EC /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
@@ -657,6 +660,8 @@
 				07CBB2431676250600DC2CEE /* Sender.m */,
 				07CBB23D1675185600DC2CEE /* ProximityID.h */,
 				07CBB23E1675185600DC2CEE /* ProximityID.m */,
+				07CDF1B616C8CB1A004429AB /* GBDeviceInfo.h */,
+				07CDF1B716C8CB1A004429AB /* GBDeviceInfo.m */,
 			);
 			name = ProximityID;
 			path = Plugins/ProximityID;
@@ -851,6 +856,7 @@
 				07CBB24B1676869600DC2CEE /* FastFT.m in Sources */,
 				073A9642168F74F9000FACB3 /* FacebookConnect.m in Sources */,
 				0799905E169A18FF00A32C1C /* Notification.m in Sources */,
+				07CDF1B816C8CB1B004429AB /* GBDeviceInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

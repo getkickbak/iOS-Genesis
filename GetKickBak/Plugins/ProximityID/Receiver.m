@@ -108,8 +108,8 @@ static OSStatus recordingCallback(void *inRefCon,
    NSError	*err = nil;
 	AVAudioSession *session = [AVAudioSession sharedInstance];
    
-	[session setPreferredSampleRate: [super getSampleRate] error:&err];
-   checkNSError(err);
+	//[session setPreferredSampleRate: [super getSampleRate] error:&err];
+   //checkNSError(err);
 	[session setCategory:AVAudioSessionCategoryPlayAndRecord error:&err];
    checkNSError(err);
    //

@@ -166,9 +166,9 @@ NSString* RESTRICTED =              @"ACTION RESTRICTED FOR FX AUDIO";
    int magThreshold = [[command.arguments objectAtIndex:2] intValue];
    double overlapRatio = [[command.arguments objectAtIndex:3] doubleValue];
    
-   s_vol=[MPMusicPlayerController applicationMusicPlayer].volume; //grab current User volume
-   [[MPMusicPlayerController applicationMusicPlayer] setVolume:r_vol_ratio];//set system vol to max
-   NSLog(TAG @"scanIdentity - Setting Volume to [%f]", r_vol_ratio);
+   //s_vol=[MPMusicPlayerController applicationMusicPlayer].volume; //grab current User volume
+   //[[MPMusicPlayerController applicationMusicPlayer] setVolume:r_vol_ratio];//set system vol to max
+   //NSLog(TAG @"scanIdentity - Setting Volume to [%f]", r_vol_ratio);
 
    //
    // Cannot override initial setttings
@@ -212,8 +212,8 @@ NSString* RESTRICTED =              @"ACTION RESTRICTED FOR FX AUDIO";
    OSStatus status;
 	AVAudioSession *session = [AVAudioSession sharedInstance];
    //[session setDelegate:self];
-	[session setPreferredSampleRate: fs error:&err];
-   checkNSError(err);
+	//[session setPreferredSampleRate: fs error:&err];
+   //checkNSError(err);
 	[session setCategory:AVAudioSessionCategoryPlayAndRecord error:&err];
    checkNSError(err);
    
