@@ -43,7 +43,6 @@
 		073A9642168F74F9000FACB3 /* FacebookConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 073A9640168F74F9000FACB3 /* FacebookConnect.m */; };
 		073A9645168F75AC000FACB3 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073A9644168F75AC000FACB3 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		073A9647168F75B5000FACB3 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073A9646168F75B5000FACB3 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		073A964B168F8619000FACB3 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073A964A168F8619000FACB3 /* FacebookSDK.framework */; };
 		073A96A1168F898E000FACB3 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 073A96A0168F898E000FACB3 /* FacebookSDKResources.bundle */; };
 		073B1E76156D96E1000FB928 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 073B1E75156D96E1000FB928 /* NSDataAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		07646DAB14AC3C840098B6D2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 07646DAA14AC3C840098B6D2 /* Default.png */; };
@@ -56,6 +55,9 @@
 		077E6A67169DE059004C402E /* log in Resources */ = {isa = PBXBuildFile; fileRef = 077E6A62169DE059004C402E /* log */; };
 		077E6A68169DE059004C402E /* release in Resources */ = {isa = PBXBuildFile; fileRef = 077E6A63169DE059004C402E /* release */; };
 		077E6A69169DE059004C402E /* run in Resources */ = {isa = PBXBuildFile; fileRef = 077E6A64169DE059004C402E /* run */; };
+		078743D316DD837400ACA153 /* TwitterPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 078743D216DD837400ACA153 /* TwitterPlugin.m */; };
+		078743D516DD85A900ACA153 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078743D416DD85A900ACA153 /* Twitter.framework */; };
+		078743D716DFD43800ACA153 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078743D616DFD43800ACA153 /* FacebookSDK.framework */; };
 		0799905E169A18FF00A32C1C /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 0799905D169A18FF00A32C1C /* Notification.m */; };
 		0799AFCD156C454700C43BC4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0799AFCC156C454700C43BC4 /* MessageUI.framework */; };
 		079CA209159F8F930026A58E /* PushNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CA208159F8F930026A58E /* PushNotification.m */; };
@@ -153,7 +155,7 @@
 		0711C8591614E997002F0AC2 /* CordovaBuildSettings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = CordovaBuildSettings.xcconfig; sourceTree = "<group>"; };
 		0715FE551607ED4600A6501C /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		072FAF7D163B14F6001E8EA9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		072FB05F1644E3BF001E8EA9 /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = "../../CordovaLib-2.3.0/lib/ios/CordovaLib/CordovaLib.xcodeproj"; sourceTree = "<group>"; };
+		072FB05F1644E3BF001E8EA9 /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = "../../../CordovaLib-2.3.0/lib/ios/CordovaLib/CordovaLib.xcodeproj"; sourceTree = "<group>"; };
 		0736AF0115801F73008C0D98 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		0736AF0315801F8D008C0D98 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		0736AF0515801FCB008C0D98 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
@@ -162,7 +164,6 @@
 		073A9640168F74F9000FACB3 /* FacebookConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookConnect.m; sourceTree = "<group>"; };
 		073A9644168F75AC000FACB3 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		073A9646168F75B5000FACB3 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		073A964A168F8619000FACB3 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = System/Library/Frameworks/FacebookSDK.framework; sourceTree = SDKROOT; };
 		073A966D168F8941000FACB3 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		073A966E168F8941000FACB3 /* FacebookSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookSDK.h; sourceTree = "<group>"; };
 		073A966F168F8941000FACB3 /* FBCacheDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBCacheDescriptor.h; sourceTree = "<group>"; };
@@ -226,6 +227,10 @@
 		077E6A62169DE059004C402E /* log */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = log; sourceTree = "<group>"; };
 		077E6A63169DE059004C402E /* release */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = release; sourceTree = "<group>"; };
 		077E6A64169DE059004C402E /* run */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = run; sourceTree = "<group>"; };
+		078743D116DD837400ACA153 /* TwitterPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterPlugin.h; sourceTree = "<group>"; };
+		078743D216DD837400ACA153 /* TwitterPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterPlugin.m; sourceTree = "<group>"; };
+		078743D416DD85A900ACA153 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		078743D616DFD43800ACA153 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		0799905C169A18FF00A32C1C /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
 		0799905D169A18FF00A32C1C /* Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
 		0799AFCC156C454700C43BC4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -287,6 +292,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				078743D716DFD43800ACA153 /* FacebookSDK.framework in Frameworks */,
+				078743D516DD85A900ACA153 /* Twitter.framework in Frameworks */,
 				073A9647168F75B5000FACB3 /* Social.framework in Frameworks */,
 				073A9645168F75AC000FACB3 /* AdSupport.framework in Frameworks */,
 				07CBB24D1679780400DC2CEE /* Accelerate.framework in Frameworks */,
@@ -310,7 +317,6 @@
 				0706DE1814A2A6F90023AE8E /* MobileCoreServices.framework in Frameworks */,
 				0706DE1A14A2A6F90023AE8E /* CoreMedia.framework in Frameworks */,
 				0736AF0615801FCB008C0D98 /* libiconv.dylib in Frameworks */,
-				073A964B168F8619000FACB3 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,9 +351,10 @@
 		0706DE0014A2A6F90023AE8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				078743D616DFD43800ACA153 /* FacebookSDK.framework */,
+				078743D416DD85A900ACA153 /* Twitter.framework */,
 				073A96A0168F898E000FACB3 /* FacebookSDKResources.bundle */,
 				073A966C168F8941000FACB3 /* DeprecatedHeaders */,
-				073A964A168F8619000FACB3 /* FacebookSDK.framework */,
 				073A9646168F75B5000FACB3 /* Social.framework */,
 				073A9644168F75AC000FACB3 /* AdSupport.framework */,
 				07CBB24C1679780400DC2CEE /* Accelerate.framework */,
@@ -450,6 +457,7 @@
 		0706DE4314A2A6F90023AE8E /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				078743D016DD837400ACA153 /* TwitterPlugin */,
 				0799905B169A18FF00A32C1C /* Notification */,
 				073A963E168F74F9000FACB3 /* FacebookConnect */,
 				07CBB23C1675185600DC2CEE /* ProximityID */,
@@ -548,6 +556,16 @@
 				077E6A64169DE059004C402E /* run */,
 			);
 			path = cordova;
+			sourceTree = "<group>";
+		};
+		078743D016DD837400ACA153 /* TwitterPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				078743D116DD837400ACA153 /* TwitterPlugin.h */,
+				078743D216DD837400ACA153 /* TwitterPlugin.m */,
+			);
+			name = TwitterPlugin;
+			path = Plugins/TwitterPlugin;
 			sourceTree = "<group>";
 		};
 		0799905B169A18FF00A32C1C /* Notification */ = {
@@ -818,7 +836,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "appPath=\"/Users/eric/Documents/GetKickBak/V2.0.0/V2.0.0/public/javascripts/mobile\";\n\nlibPath=\"lib/sencha-touch-2.1.0-commercial\";\n\ntouch -cm ${PROJECT_DIR}/www\nmkdir -p $PROJECT_DIR/www/app/store\nmkdir -p $PROJECT_DIR/www/app/profile\nmkdir -p $PROJECT_DIR/www/resources/themes/images/v1\n\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/app/store/*Client*.json $PROJECT_DIR/www/app/store/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/app/profile/Iphone.js $PROJECT_DIR/www/app/profile/\n\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/*.wav $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/*.htm $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/client-all.js $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/core.js $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/index.html $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/*.ios.js $PROJECT_DIR/www/lib/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/*min.js $PROJECT_DIR/www/lib/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/core/*.ios.js $PROJECT_DIR/www/lib/core/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/core/Facebook*.js $PROJECT_DIR/www/lib/core/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/sencha-touch-all.js $PROJECT_DIR/www/lib/\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/src $PROJECT_DIR/www/$libPath\n\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/css/i*.css $PROJECT_DIR/www/resources/css/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/audio/*.mp3 $PROJECT_DIR/www/resources/audio/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/audio/*.wav $PROJECT_DIR/www/resources/audio/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/themes/images/v1/*facebook* $PROJECT_DIR/www/resources/themes/images/v1/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/themes/images/v1/ios $PROJECT_DIR/www/resources/themes/images/v1\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/themes/images/v1/iphone5 $PROJECT_DIR/www/resources/themes/images/v1\n\n#--\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/src/device $PROJECT_DIR/www/$libPath/src\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/kitchensink $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/resources $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/video $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/audio $PROJECT_DIR/www/$libPath/examples\n#---\n\nif [ ! -d \"$PROJECT_DIR/www\" ] ; then\ncp -R /Users/Shared/Cordova/Frameworks/PhoneGap.framework/www \"$PROJECT_DIR\"\nfi\n# detect www folder reference in project, if missing, print warning\ngrep \"{isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = \\\"<group>\\\"; };\" \"$PROJECT_DIR/$PROJECT_NAME.xcodeproj/project.pbxproj\"\nrc=$? \nif [ $rc != 0 ] ; then\necho -e \"warning: Missing - Add $PROJECT_DIR/www as a folder reference in your project. Just drag and drop the folder into your project, into the Project Navigator of Xcode 4. Make sure you select the second radio-button: 'Create folder references for any added folders' (which will create a blue folder)\" 1>&2\nfi\n";
+			shellScript = "appPath=\"/Users/eric/Documents/GetKickBak/V2.1.0/V2.1.0/public/javascripts/mobile\";\n\nlibPath=\"lib/touch-2.1.1\";\n\ntouch -cm ${PROJECT_DIR}/www\nmkdir -p $PROJECT_DIR/www/app/store\nmkdir -p $PROJECT_DIR/www/app/profile\nmkdir -p $PROJECT_DIR/www/resources/themes/images/v1\n\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/app/store/*Client*.json $PROJECT_DIR/www/app/store/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/app/profile/Iphone.js $PROJECT_DIR/www/app/profile/\n\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/*.wav $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/*.htm $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/client-all.js $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/core.js $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/index.html $PROJECT_DIR/www/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/*.ios.js $PROJECT_DIR/www/lib/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/*min.js $PROJECT_DIR/www/lib/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/core/*.ios.js $PROJECT_DIR/www/lib/core/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/lib/core/Facebook*.js $PROJECT_DIR/www/lib/core/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/sencha-touch-all.js $PROJECT_DIR/www/lib/\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/src $PROJECT_DIR/www/$libPath\n\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/css/i*.css $PROJECT_DIR/www/resources/css/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/audio/*.mp3 $PROJECT_DIR/www/resources/audio/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/audio/*.wav $PROJECT_DIR/www/resources/audio/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/themes/images/v1/*facebook* $PROJECT_DIR/www/resources/themes/images/v1/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/themes/images/v1/*twitter* $PROJECT_DIR/www/resources/themes/images/v1/\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/themes/images/v1/ios $PROJECT_DIR/www/resources/themes/images/v1\nrsync -pvtrlL --delete --cvs-exclude \"$appPath\"/resources/themes/images/v1/iphone5 $PROJECT_DIR/www/resources/themes/images/v1\n\n#--\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/src/device $PROJECT_DIR/www/$libPath/src\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/kitchensink $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/resources $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/video $PROJECT_DIR/www/$libPath/examples\n#rsync -pvtrlL --delete --cvs-exclude \"$appPath\"/$libPath/examples/audio $PROJECT_DIR/www/$libPath/examples\n#---\n\nif [ ! -d \"$PROJECT_DIR/www\" ] ; then\ncp -R /Users/Shared/Cordova/Frameworks/PhoneGap.framework/www \"$PROJECT_DIR\"\nfi\n# detect www folder reference in project, if missing, print warning\ngrep \"{isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = \\\"<group>\\\"; };\" \"$PROJECT_DIR/$PROJECT_NAME.xcodeproj/project.pbxproj\"\nrc=$? \nif [ $rc != 0 ] ; then\necho -e \"warning: Missing - Add $PROJECT_DIR/www as a folder reference in your project. Just drag and drop the folder into your project, into the Project Navigator of Xcode 4. Make sure you select the second radio-button: 'Create folder references for any added folders' (which will create a blue folder)\" 1>&2\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -857,6 +875,7 @@
 				073A9642168F74F9000FACB3 /* FacebookConnect.m in Sources */,
 				0799905E169A18FF00A32C1C /* Notification.m in Sources */,
 				07CDF1B816C8CB1B004429AB /* GBDeviceInfo.m in Sources */,
+				078743D316DD837400ACA153 /* TwitterPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -994,13 +1013,13 @@
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_OBJCPP_ARC_ABI = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../FacebookSDK\"",
-					"\"$(SRCROOT)/GetKickBak/FacebookConnect\"",
+					"\"$(SRCROOT)/GetKickBak/Plugins/FacebookConnect\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1016,17 +1035,12 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../RedLaser SDK Files\"",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/Release-iphoneos\"",
 					"\"$(SRCROOT)/Release-iphonesimulator\"",
 					"\"$(SRCROOT)/GetKickBak/facebook-ios-sdk\"",
 					"\"$(SRCROOT)/GetKickBak/Release-iphoneos\"",
 					"\"$(SRCROOT)/GetKickBak/Release-iphonesimulator\"",
-					"\"$(SRCROOT)/GetKickBak/Plugins/facebook-ios-sdk\"",
-					"\"$(SRCROOT)/GetKickBak/Plugins/SSC/lib\"",
-					"\"$(SRCROOT)/GetKickBak/Plugins/libBump\"",
-					"\"$(SRCROOT)/GetKickBak/Plugins/Bump/libBump\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
@@ -1064,14 +1078,14 @@
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_OBJCPP_ARC_ABI = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../FacebookSDK\"",
-					"\"$(SRCROOT)/GetKickBak/FacebookConnect\"",
+					"\"$(SRCROOT)/GetKickBak/Plugins/FacebookConnect\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GetKickBak/GetKickBak-Prefix.pch";
@@ -1086,17 +1100,12 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../RedLaser SDK Files\"",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/Release-iphoneos\"",
 					"\"$(SRCROOT)/Release-iphonesimulator\"",
 					"\"$(SRCROOT)/GetKickBak/facebook-ios-sdk\"",
 					"\"$(SRCROOT)/GetKickBak/Release-iphoneos\"",
 					"\"$(SRCROOT)/GetKickBak/Release-iphonesimulator\"",
-					"\"$(SRCROOT)/GetKickBak/Plugins/facebook-ios-sdk\"",
-					"\"$(SRCROOT)/GetKickBak/Plugins/SSC/lib\"",
-					"\"$(SRCROOT)/GetKickBak/Plugins/libBump\"",
-					"\"$(SRCROOT)/GetKickBak/Plugins/Bump/libBump\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
