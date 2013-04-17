@@ -17,13 +17,12 @@
  under the License.
  */
 
-//  Bridge implementation file for using Cordova plugins in PhoneGap 0.9.6.
-//
+@interface CDVConfigParser : NSObject <NSXMLParserDelegate>{}
 
-#import "CDVPlugin.h"
+@property (nonatomic, readonly, strong) NSMutableDictionary* pluginsDict;
+@property (nonatomic, readonly, strong) NSMutableDictionary* settings;
+@property (nonatomic, readonly, strong) NSMutableArray* whitelistHosts;
+@property (nonatomic, readonly, strong) NSMutableArray* startupPluginNames;
+@property (nonatomic, readonly, strong) NSString* startPage;
 
-@implementation CDVPlugin
-@end
-
-@implementation CDVPluginResult
 @end

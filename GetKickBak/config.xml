@@ -5,50 +5,57 @@
 	<preference name="BackupWebStorage" value="cloud"/>
 	<preference name="DetectPhotoNumber" value="true"/>
 	<preference name="EnableLocation" value="true"/>
+   <preference name="DisallowOverscroll" value="false" />
+   <preference name="EnableLocation" value="false" /><!-- DEPRECATED -->
 	<preference name="EnableViewportScale" value="false"/>
+   <preference name="FadeSplashScreen" value="true" />
+   <preference name="FadeSplashScreenDuration" value=".25" />
+   <preference name="HideKeyboardFormAccessoryBar" value="false" />
+   <preference name="KeyboardDisplayRequiresUserAction" value="true" />
+   <preference name="KeyboardShrinksView" value="false" />
 	<preference name="MediaPlaybackRequiresUserAction" value="false"/>
-	<preference name="OpenAllWhitelistURLsInWebView" value="true"/>
 	<preference name="ShowSplashScreenSpinner" value="true"/>
 	<preference name="SuppressesIncrementalRendering" value="true"/>
 	<preference name="TopActivityIndicator" value="gray"/>
-	<preference name="UIApplicationExitsOnSuspend" value="false"/>
-	<preference name="UIWebViewBounce" value="true"/>
 	<plugins>
+      <plugin name="Device" value="CDVDevice" />
+      <plugin name="Logger" value="CDVLogger" />
+      <plugin name="Compass" value="CDVLocation" />
+      <plugin name="Accelerometer" value="CDVAccelerometer" />
+      <plugin name="Camera" value="CDVCamera" />
+      <plugin name="NetworkStatus" value="CDVConnection" />
+      <plugin name="Contacts" value="CDVContacts" />
+      <plugin name="Debug Console" value="CDVDebugConsole" />
+      <plugin name="Echo" value="CDVEcho" />
+      <plugin name="File" value="CDVFile" />
+      <plugin name="FileTransfer" value="CDVFileTransfer" />
+      <plugin name="Geolocation" value="CDVLocation" />
+      <plugin name="Notification" value="CDVNotification" />
+      <plugin name="Media" value="CDVSound" />
+      <plugin name="Capture" value="CDVCapture" />
+      <plugin name="SplashScreen" value="CDVSplashScreen" />
+      <plugin name="Battery" value="CDVBattery" />
+      <plugin name="Globalization" value="CDVGlobalization" />
       <plugin name="InAppBrowser" value="CDVInAppBrowser" />
-		<plugin name="Accelerometer" value="CDVAccelerometer"/>
+      <plugin name="ProximityIDPlugin" value="ProximityID"/>
+      <plugin name="NotificationPlugin" value="Notification"/>
+      <plugin name="LowLatencyAudio" value="LowLatencyAudio"/>
 		<plugin name="BarcodeScanner" value="CDVBarcodeScanner"/>
-		<plugin name="Battery" value="CDVBattery"/>
-		<plugin name="Camera" value="CDVCamera"/>
-		<plugin name="Capture" value="CDVCapture"/>
-		<plugin name="Compass" value="CDVLocation"/>
-		<plugin name="Contacts" value="CDVContacts"/>
-		<plugin name="Debug Console" value="CDVDebugConsole"/>
-		<plugin name="Device" value="CDVDevice"/>
-		<plugin name="Echo" value="CDVEcho"/>
 		<plugin name="EmailComposer" value="EmailComposer"/>
 		<plugin name="FacebookConnect" value="FacebookConnect"/>
-		<plugin name="File" value="CDVFile"/>
-		<plugin name="FileTransfer" value="CDVFileTransfer"/>
-		<plugin name="Geolocation" value="CDVLocation"/>
-		<plugin name="Globalization" value="CDVGlobalization"/>
-		<plugin name="Logger" value="CDVLogger"/>
-		<plugin name="LowLatencyAudio" value="LowLatencyAudio"/>
-		<plugin name="Media" value="CDVSound"/>
-		<plugin name="NetworkStatus" value="CDVConnection"/>
-		<plugin name="Notification" value="CDVNotification"/>
-		<plugin name="NotificationPlugin" value="Notification"/>
-		<plugin name="ProximityIDPlugin" value="ProximityID"/>
-		<plugin name="PushNotification" value="PushNotification"/>
+      <plugin name="PushNotification" value="PushNotification"/>
 		<plugin name="QRCodeReaderNigma" value="QRCodeReaderNigma"/>
 		<plugin name="QRCodeReaderRL" value="QRCodeReaderRL"/>
-		<plugin name="SplashScreen" value="CDVSplashScreen"/>
+		<plugin name="TwitterPlugin" value="TwitterPlugin"/>
 	</plugins>
 	<access origin="*.akamaihd.net"/>
+	<access origin="*.dev1getkickbak.com"/>
 	<access origin="*.devgetkickbak.com"/>
 	<access origin="*.fbcdn.net"/>
 	<access origin="*.getkickbak.com"/>
 	<access origin="*.googleapis.com"/>
 	<access origin="*.pushwoosh.com"/>
+	<access origin="192.168.0.46"/>
 	<access origin="192.168.0.52"/>
 	<access origin="76.10.173.153"/>
 	<access origin="api.facebook.com"/>

@@ -19,7 +19,7 @@
 
 //
 //  AppDelegate.h
-//  test
+//  GetKickBak
 //
 //  Created by Eric Chan on 12-04-14.
 //  Copyright __MyCompanyName__ 2012. All rights reserved.

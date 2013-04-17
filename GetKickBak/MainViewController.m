@@ -26,6 +26,7 @@
 //
 
 #import "MainViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @implementation MainViewController
 
@@ -75,6 +76,10 @@
 {
    [super viewDidLoad];
    // Do any additional setup after loading the view from its nib.
+   MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame: CGRectZero];
+   [volumeView setShowsRouteButton:NO];
+   [self.view addSubview: volumeView];
+   [volumeView release];
 }
 
 - (void)viewDidUnload

@@ -17,7 +17,14 @@
  under the License.
  */
 
-//  Bridge implementation file for using Cordova > 1.5 plugins in 1.5.0.
-//
+@interface NSArray (CDVJSONSerializing)
+- (NSString*)JSONString;
+@end
 
-#import <Cordova/CDVPlugin.h>
+@interface NSDictionary (CDVJSONSerializing)
+- (NSString*)JSONString;
+@end
+
+@interface NSString (CDVJSONSerializing)
+- (id)JSONObject;
+@end

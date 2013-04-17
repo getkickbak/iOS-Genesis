@@ -17,21 +17,12 @@
  under the License.
  */
 
-#import "CDVCordovaView.h"
+#import <Foundation/Foundation.h>
 
-@implementation CDVCordovaView
+@protocol CDVScreenOrientationDelegate <NSObject>
 
-- (void)loadRequest:(NSURLRequest*)request
-{
-    [super loadRequest:request];
-}
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code.
-}
-*/
+- (NSUInteger)supportedInterfaceOrientations;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
+- (BOOL)shouldAutorotate;
 
 @end
