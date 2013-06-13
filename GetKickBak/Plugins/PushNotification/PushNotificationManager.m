@@ -11,8 +11,12 @@
 #import "PWRegisterDeviceRequest.h"
 #import "PWSetTagsRequest.h"
 #import "PWSendBadgeRequest.h"
+#import "PWAppOpenRequest.h"
 #import "PWPushStatRequest.h"
 #import "PWGetNearestZoneRequest.h"
+#import "PWApplicationEventRequest.h"
+
+#import "PWLocationTracker.h"
 
 #include <sys/socket.h> // Per msqr
 #include <sys/sysctl.h>
@@ -20,14 +24,16 @@
 #include <net/if_dl.h>
 #import <CommonCrypto/CommonDigest.h>
 
-#define kServicePushNotificationUrl @"https://cp.pushwoosh.com/json/1.3/registerDevice"
-#define kServiceSetTagsUrl @"https://cp.pushwoosh.com/json/1.3/setTags"
-#define kServiceHtmlContentFormatUrl @"https://cp.pushwoosh.com/content/%@"
+#define kServiceHtmlContentFormatUrl @"http://cp.pushwoosh.com/content/%@"
+
+@interface UIApplication(Pushwoosh)
+- (void) pw_setApplicationIconBadgeNumber:(NSInteger) badgeNumber;
+@end
 
 @implementation PushNotificationManager
 
-@synthesize appCode, appName, navController, pushNotifications, delegate;
-@synthesize supportedOrientations;
+@synthesize appCode, appName, richPushWindow, pushNotifications, delegate;
+@synthesize supportedOrientations, showPushnotificationAlert;
 
 - (NSString *) stringFromMD5: (NSString *)val{
     
@@ -104,21 +110,41 @@
 #pragma mark -
 #pragma mark Public Methods
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
 - (NSString *) uniqueDeviceIdentifier{
     NSString *macaddress = [self macaddress];
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
     
     NSString *stringToHash = [NSString stringWithFormat:@"%@%@",macaddress,bundleIdentifier];
-    NSString *uniqueIdentifier = [self stringFromMD5:stringToHash];
+    NSString *uniqueDeviceIdentifier = [self stringFromMD5:stringToHash];
     
-    return uniqueIdentifier;
+    return uniqueDeviceIdentifier;
 }
 
 - (NSString *) uniqueGlobalDeviceIdentifier{
+	// >= iOS6 return identifierForVendor
+	UIDevice *device = [UIDevice currentDevice];
+	
+	if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.1")) {
+		if ([device respondsToSelector:@selector(identifierForVendor)] && [NSUUID class]) {
+			NSUUID *uuid = [device identifierForVendor];
+			return [uuid UUIDString];
+		}
+	}
+	
+	// Fallback on macaddress
     NSString *macaddress = [self macaddress];
-    NSString *uniqueIdentifier = [self stringFromMD5:macaddress];
+    NSString *uniqueDeviceIdentifier = [self stringFromMD5:macaddress];
     
-    return uniqueIdentifier;
+    return uniqueDeviceIdentifier;
+}
+
+static PushNotificationManager * instance = nil;
+
+// this method is for backward compatibility
+- (id) initWithApplicationCode:(NSString *)_appCode navController:(UIViewController *) _navController appName:(NSString *)_appName {
+	return [self initWithApplicationCode:_appCode appName:_appName];
 }
 
 - (id) initWithApplicationCode:(NSString *)_appCode appName:(NSString *)_appName{
@@ -126,32 +152,35 @@
 		self.supportedOrientations = PWOrientationPortrait | PWOrientationPortraitUpsideDown | PWOrientationLandscapeLeft | PWOrientationLandscapeRight;
 		self.appCode = _appCode;
 		self.appName = _appName;
-		self.navController = [UIApplication sharedApplication].keyWindow.rootViewController;
+		richPushWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+		richPushWindow.windowLevel = UIWindowLevelStatusBar + 1.0f;
+		
 		internalIndex = 0;
 		pushNotifications = [[NSMutableDictionary alloc] init];
+		showPushnotificationAlert = TRUE;
 		
 		[[NSUserDefaults standardUserDefaults] setObject:_appCode forKey:@"Pushwoosh_APPID"];
 		if(_appName) {
 			[[NSUserDefaults standardUserDefaults] setObject:_appName forKey:@"Pushwoosh_APPNAME"];
 		}
-	}
-	
-	return self;
-}
+		
+		//initalize location tracker
+		self.locationTracker = [[PWLocationTracker alloc] init];
+		[self.locationTracker setLocationUpdatedInForeground:^ (CLLocation *location) {
+			if (!location)
+				return;
 
-- (id) initWithApplicationCode:(NSString *)_appCode navController:(UIViewController *) _navController appName:(NSString *)_appName{
-	if (self = [super init]) {
-		self.supportedOrientations = PWOrientationPortrait | PWOrientationPortraitUpsideDown | PWOrientationLandscapeLeft | PWOrientationLandscapeRight;
-		self.appCode = _appCode;
-		self.navController = _navController;
-		self.appName = _appName;
-		internalIndex = 0;
-		pushNotifications = [[NSMutableDictionary alloc] init];
+			[[PushNotificationManager pushManager] sendLocationBackground:location];
+		}];
 		
-		[[NSUserDefaults standardUserDefaults] setObject:_appCode forKey:@"Pushwoosh_APPID"];
-		if(_appName) {
-			[[NSUserDefaults standardUserDefaults] setObject:_appName forKey:@"Pushwoosh_APPNAME"];
-		}
+		[self.locationTracker setLocationUpdatedInBackground:^ (CLLocation *location) {
+			if (!location)
+				return;
+
+			[[PushNotificationManager pushManager] sendLocationBackground:location];
+		}];
+		
+		instance = self;
 	}
 	
 	return self;
@@ -165,11 +194,60 @@
 	}
 }
 
-+ (PushNotificationManager *)pushManager {
-	static PushNotificationManager * instance = nil;
++ (BOOL) getAPSProductionStatus {
+	NSString * provisioning = [[NSBundle mainBundle] pathForResource:@"embedded.mobileprovision" ofType:nil];
+	if(!provisioning)
+		return YES;	//AppStore
 	
+	NSString * contents = [NSString stringWithContentsOfFile:provisioning encoding:NSASCIIStringEncoding error:nil];
+	if(!contents)
+		return YES;
+
+	NSRange start = [contents rangeOfString:@"<?xml"];
+	NSRange end = [contents rangeOfString:@"</plist>"];
+	start.length = end.location + end.length - start.location;
+	
+	NSString * profile =[contents substringWithRange:start];
+	if(!profile)
+		return YES;
+	
+	NSData * profileData = [profile dataUsingEncoding:NSUTF8StringEncoding];
+	NSString *error = nil;;
+	NSPropertyListFormat format;
+	NSDictionary* plist = [NSPropertyListSerialization propertyListFromData:profileData mutabilityOption:NSPropertyListImmutable format:&format errorDescription:&error];
+	
+	NSDictionary * entitlements = [plist objectForKey:@"Entitlements"];
+//	NSNumber * allowNumber = [entitlements objectForKey:@"get-task-allow"];
+	
+	//could be development or production
+	NSString * apsGateway = [entitlements objectForKey:@"aps-environment"];
+	
+	if(!apsGateway) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Pushwoosh Error" message:@"Your provisioning profile does not have APS entry. Please make your profile push compatible." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+		[alert show];
+		[alert release];
+	}
+	
+	if([apsGateway isEqualToString:@"development"])
+		return NO;
+	
+	return YES;
+}
+
++ (NSString *) getAppIdFromBundle:(BOOL)productionAPS {
+	NSString * appid = nil;
+	if(!productionAPS) {
+		appid = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Pushwoosh_APPID_Dev"];
+		if(appid)
+			return appid;
+	}
+	
+	return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Pushwoosh_APPID"];
+}
+
++ (PushNotificationManager *)pushManager {
 	if(instance == nil) {
-		NSString * appid = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Pushwoosh_APPID"];
+		NSString * appid = [self getAppIdFromBundle:[self getAPSProductionStatus]];
 		
 		if(!appid) {
 			appid = [[NSUserDefaults standardUserDefaults] objectForKey:@"Pushwoosh_APPID"];
@@ -179,13 +257,18 @@
 			}
 		}
 		
-		NSString * appname = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-		if(!appname) {
+		NSString * appname = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Pushwoosh_APPNAME"];
+		if(!appname)
+			appname = [[NSUserDefaults standardUserDefaults] objectForKey:@"Pushwoosh_APPNAME"];
+		
+		if(!appname)
+			appname = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+		
+		if(!appname)
 			appname = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
 			
-			if(!appname) {
-				appname = @"";
-			}
+		if(!appname) {
+			appname = @"";
 		}
 		
 		instance = [[PushNotificationManager alloc] initWithApplicationCode:appid appName:appname ];
@@ -194,23 +277,41 @@
 	return instance;
 }
 
-- (void) closeAction {
-	[navController dismissModalViewControllerAnimated:YES];
+- (void) showWebView {
+	self.richPushWindow.alpha = 0.0f;
+	self.richPushWindow.windowLevel = UIWindowLevelStatusBar + 1.0f;
+	self.richPushWindow.hidden = NO;
+	self.richPushWindow.transform = CGAffineTransformMakeScale(0.01, 0.01);
+	
+	[UIView animateWithDuration:0.3 animations:^{
+		self.richPushWindow.transform = CGAffineTransformIdentity;
+		self.richPushWindow.alpha = 1.0f;
+	} completion:^(BOOL finished) {
+	}];
+
 }
 
 - (void) showPushPage:(NSString *)pageId {
 	NSString *url = [NSString stringWithFormat:kServiceHtmlContentFormatUrl, pageId];
 	HtmlWebViewController *vc = [[HtmlWebViewController alloc] initWithURLString:url];
+	vc.delegate = self;
 	vc.supportedOrientations = supportedOrientations;
-	
-	// Create the navigation controller and present it modally.
-	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
-	vc.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(closeAction)] autorelease];
-    
-	[navController presentModalViewController:navigationController animated:YES];
-	
-	[navigationController release];
+
+	self.richPushWindow.rootViewController = vc;
+	[vc view];
 	[vc release];
+}
+
+- (void)htmlWebViewControllerDidClose:(HtmlWebViewController *)viewController {
+	
+	self.richPushWindow.transform = CGAffineTransformIdentity;
+	[UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		self.richPushWindow.transform = CGAffineTransformMakeScale(0.01, 0.01);
+		self.richPushWindow.alpha = 0.0f;
+	} completion:^(BOOL finished) {
+		self.richPushWindow.hidden = YES;
+
+	}];
 }
 
 - (void) sendDevTokenToServer:(NSString *)deviceID {
@@ -266,6 +367,13 @@
 	[pool release]; pool = nil;
 }
 
+- (void) handlePushRegistrationString:(NSString *)deviceID {
+	
+	[[NSUserDefaults standardUserDefaults] setObject:deviceID forKey:@"PWPushUserId"];
+	
+	[self performSelectorInBackground:@selector(sendDevTokenToServer:) withObject:deviceID];
+}
+
 - (void) handlePushRegistration:(NSData *)devToken {
 	NSMutableString *deviceID = [NSMutableString stringWithString:[devToken description]];
 	
@@ -277,6 +385,12 @@
 	[[NSUserDefaults standardUserDefaults] setObject:deviceID forKey:@"PWPushUserId"];
 	
 	[self performSelectorInBackground:@selector(sendDevTokenToServer:) withObject:deviceID];
+}
+
+- (void) handlePushRegistrationFailure:(NSError *) error {
+	if([delegate respondsToSelector:@selector(onDidFailToRegisterForRemoteNotificationsWithError:)] ) {
+		[delegate performSelectorOnMainThread:@selector(onDidFailToRegisterForRemoteNotificationsWithError:) withObject:error waitUntilDone:NO];
+	}
 }
 
 - (NSString *) getPushToken {
@@ -339,13 +453,15 @@
 	if([delegate respondsToSelector:@selector(onPushAccepted: withNotification:)] ) {
 		[delegate onPushAccepted:self withNotification:lastPushDict];
 	}
+	else
+	if([delegate respondsToSelector:@selector(onPushAccepted: withNotification: onStart:)] ) {
+		[delegate onPushAccepted:self withNotification:lastPushDict onStart:NO];
+	}
 	
 	[pushNotifications removeObjectForKey:[NSNumber numberWithInt:alertView.tag]];
 }
 
 - (BOOL) handlePushReceived:(NSDictionary *)userInfo {
-	//set the application badges icon to 0
-	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 	
 	BOOL isPushOnStart = NO;
 	NSDictionary *pushDict = [userInfo objectForKey:@"aps"];
@@ -364,22 +480,29 @@
 		isPushOnStart = YES;
 	}
 	
-	[self performSelectorInBackground:@selector(sendStatsBackground) withObject:nil];
+	NSString *hash = [userInfo objectForKey:@"p"];
+	
+	[self performSelectorInBackground:@selector(sendStatsBackground:) withObject:hash];
 	
 	if([delegate respondsToSelector:@selector(onPushReceived: withNotification: onStart:)] ) {
 		[delegate onPushReceived:self withNotification:userInfo onStart:isPushOnStart];
 		return YES;
 	}
 
-//	NSString *alertMsg = [pushDict objectForKey:@"alert"];
+	NSString *alertMsg = [pushDict objectForKey:@"alert"];
+	
+	bool msgIsString = YES;
+	if(![alertMsg isKindOfClass:[NSString class]])
+		msgIsString = NO;
+	
 //	NSString *badge = [pushDict objectForKey:@"badge"];
 //	NSString *sound = [pushDict objectForKey:@"sound"];
 	NSString *htmlPageId = [userInfo objectForKey:@"h"];
 //	NSString *customData = [userInfo objectForKey:@"u"];
 	NSString *linkUrl = [userInfo objectForKey:@"l"];
 	
-	//No alert in the PhoneGap
-/*	if(!isPushOnStart) {
+	//the app is running, display alert only
+	if(!isPushOnStart && showPushnotificationAlert && msgIsString) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:self.appName message:alertMsg delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
 		alert.tag = ++internalIndex;
 		[pushNotifications setObject:userInfo forKey:[NSNumber numberWithInt:internalIndex]];
@@ -387,7 +510,7 @@
 		[alert release];
 		return YES;
 	}
-*/
+	
 	if(htmlPageId) {
 		[self showPushPage:htmlPageId];
 	}
@@ -399,6 +522,11 @@
 	if([delegate respondsToSelector:@selector(onPushAccepted: withNotification:)] ) {
 		[delegate onPushAccepted:self withNotification:userInfo];
 	}
+	else
+	if([delegate respondsToSelector:@selector(onPushAccepted: withNotification: onStart:)] ) {
+		[delegate onPushAccepted:self withNotification:userInfo onStart:isPushOnStart];
+	}
+
 	return YES;
 }
 
@@ -410,11 +538,12 @@
 	return [pushNotification objectForKey:@"u"];
 }
 
-- (void) sendStatsBackground {
+- (void) sendStatsBackground:(NSString *)hash {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
 	PWPushStatRequest *request = [[PWPushStatRequest alloc] init];
 	request.appId = appCode;
+	request.hash = hash;
 	request.hwid = [self uniqueGlobalDeviceIdentifier];
 	
 	if ([[PWRequestManager sharedManager] sendRequest:request]) {
@@ -448,7 +577,7 @@
 	[pool release]; pool = nil;
 }
 
-- (void) sendLocation: (CLLocation *) location {
+- (void) sendLocationBackground: (CLLocation *) location {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
 	NSLog(@"Sending location: %@", location);
@@ -471,7 +600,32 @@
 	[pool release]; pool = nil;
 }
 
+- (void) sendLocation: (CLLocation *) location {
+	[self performSelectorInBackground:@selector(sendLocationBackground:) withObject:location];
+}
+
+- (void) sendAppOpenBackground {
+	//it's ok to call this method without push token
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
+	PWAppOpenRequest *request = [[PWAppOpenRequest alloc] init];
+	request.appId = appCode;
+	request.hwid = [self uniqueGlobalDeviceIdentifier];
+	
+	if ([[PWRequestManager sharedManager] sendRequest:request]) {
+		NSLog(@"sending appOpen completed");
+	} else {
+		NSLog(@"sending appOpen failed");
+	}
+	
+	[request release]; request = nil;
+	[pool release]; pool = nil;
+}
+
 - (void) sendBadgesBackground: (NSNumber *) badge {
+	if([[PushNotificationManager pushManager] getPushToken] == nil)
+		return;
+	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
 	PWSendBadgeRequest *request = [[PWSendBadgeRequest alloc] init];
@@ -489,168 +643,76 @@
 	[pool release]; pool = nil;
 }
 
+- (void) sendGoalBackground: (PWApplicationEventRequest *) request {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
+	if ([[PWRequestManager sharedManager] sendRequest:request]) {
+		NSLog(@"sendGoals completed");
+	} else {
+		NSLog(@"sendGoals failed");
+	}
+
+	[pool release]; pool = nil;
+}
+
 - (void) sendBadges: (NSInteger) badge {
 	[self performSelectorInBackground:@selector(sendBadgesBackground:) withObject:[NSNumber numberWithInt:badge]];
+}
+
+- (void) sendAppOpen {
+	[self performSelectorInBackground:@selector(sendAppOpenBackground) withObject:nil];
 }
 
 - (void) setTags: (NSDictionary *) tags {
 	[self performSelectorInBackground:@selector(sendTagsBackground:) withObject:tags];
 }
 
+- (void) recordGoal: (NSString *) goal {
+	[self recordGoal:goal withCount:nil];
+}
+
+- (void) recordGoal: (NSString *) goal withCount: (NSNumber *) count {
+	PWApplicationEventRequest *request = [[PWApplicationEventRequest alloc] init];
+	request.appId = appCode;
+	request.hwid = [self uniqueGlobalDeviceIdentifier];
+	request.goal = goal;
+	request.count = count;
+
+	[self performSelectorInBackground:@selector(sendGoalBackground:) withObject:request];
+	[request release];
+}
+
+//clears the notifications from the notification center
++ (void) clearNotificationCenter {
+	
+	UIApplication* application = [UIApplication sharedApplication];
+	NSArray* scheduledNotifications = [NSArray arrayWithArray:application.scheduledLocalNotifications];
+	application.scheduledLocalNotifications = scheduledNotifications;
+}
+
+//start location tracking. this is battery efficient and uses network triangulation in background
+- (void)startLocationTracking {
+	NSString *modeString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Pushwoosh_BGMODE"];
+	[self startLocationTracking:modeString];
+}
+
+- (void) startLocationTracking:(NSString *)mode {
+	self.locationTracker.backgroundMode = mode;
+	self.locationTracker.enabled = YES;
+}
+
+//stops location tracking
+- (void) stopLocationTracking {
+	self.locationTracker.enabled = NO;
+}
+
 - (void) dealloc {
+	self.richPushWindow = nil;
 	self.delegate = nil;
 	self.appCode = nil;
-	self.navController = nil;
 	self.pushNotifications = nil;
 	
 	[super dealloc];
-}
-
-@end
-
-#import <objc/runtime.h>
-#import "AppDelegate.h"
-#import "PushNotification.h"
-
-@interface AppDelegate (Pushwoosh)
-- (void)application:(UIApplication *)application newDidRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken;
-- (void)application:(UIApplication *)application newDidFailToRegisterForRemoteNotificationsWithError:(NSError *)err;
-- (void)application:(UIApplication *)application newDidReceiveRemoteNotification:(NSDictionary *)userInfo;
-
-- (BOOL)application:(UIApplication *)application newDidFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
-@end
-
-@implementation AppDelegate(Pushwoosh)
-
-- (void)application:(UIApplication *)application internalDidRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
-	PushNotification *pushHandler = [self.viewController getCommandInstance:@"PushNotification"];
-	[pushHandler.pushManager handlePushRegistration:devToken];
-	
-    //you might want to send it to your backend if you use remote integration
-	NSString *token = [pushHandler.pushManager getPushToken];
-	NSLog(@"Push token: %@", token);
-}
-
-- (void)application:(UIApplication *)application newDidRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
-	[self application:application newDidRegisterForRemoteNotificationsWithDeviceToken:devToken];
-	[self application:application internalDidRegisterForRemoteNotificationsWithDeviceToken:devToken];
-}
-
-- (void)application:(UIApplication *)application internalDidFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
-	PushNotification* pushHandler = [self.viewController getCommandInstance:@"PushNotification"];
-	[pushHandler onDidFailToRegisterForRemoteNotificationsWithError:err];
-}
-
-- (void)application:(UIApplication *)application newDidFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
-	[self application:application newDidFailToRegisterForRemoteNotificationsWithError:err];
-	[self application:application internalDidFailToRegisterForRemoteNotificationsWithError:err];
-}
-
-- (void)application:(UIApplication *)application internalDidReceiveRemoteNotification:(NSDictionary *)userInfo {
-	PushNotification *pushHandler = [self.viewController getCommandInstance:@"PushNotification"];
-	[pushHandler.pushManager handlePushReceived:userInfo];
-}
-
-- (void)application:(UIApplication *)application newDidReceiveRemoteNotification:(NSDictionary *)userInfo {
-	[self application:application newDidReceiveRemoteNotification:userInfo];
-	[self application:application internalDidReceiveRemoteNotification:userInfo];
-}
-
-
-- (BOOL)application:(UIApplication *)application newDidFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	BOOL result = [self application:application newDidFinishLaunchingWithOptions:launchOptions];
-	
-	PushNotification *pushHandler = [self.viewController getCommandInstance:@"PushNotification"];
-	if(!pushHandler || !pushHandler.pushManager)
-		return result;
-	
-	if(result) {
-		NSDictionary * userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-		[pushHandler.pushManager handlePushReceived:userInfo];
-		
-		
-		NSString* u = [userInfo objectForKey:@"u"];
-		if (u) {
-			NSDictionary *dict = [u cdvjk_objectFromJSONString];
-			if (dict) {
-				NSMutableDictionary *pn = [NSMutableDictionary dictionaryWithDictionary:userInfo];
-				[pn setObject:dict forKey:@"u"];
-				userInfo = pn;
-			}
-		}
-		
-		if(userInfo) {
-			NSString *jsonString = [userInfo cdvjk_JSONString];
-			//the webview is not loaded yet, keep it for the callback
-			pushHandler.startPushData = jsonString;
-		}
-	}
-	
-	return result;
-}
-
-void dynamicMethodIMP(id self, SEL _cmd, id application, id param) {
-	if (_cmd == @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:)) {
-		[self application:application internalDidRegisterForRemoteNotificationsWithDeviceToken:param];
-		return;
-    }
-	
-	if (_cmd == @selector(application:didFailToRegisterForRemoteNotificationsWithError:)) {
-		[self application:application internalDidFailToRegisterForRemoteNotificationsWithError:param];
-		return;
-    }
-	
-	if (_cmd == @selector(application:didReceiveRemoteNotification:)) {
-		[self application:application internalDidReceiveRemoteNotification:param];
-		return;
-    }
-}
-
-+ (void)load {
-	method_exchangeImplementations(class_getInstanceMethod(self, @selector(application:didFinishLaunchingWithOptions:)), class_getInstanceMethod(self, @selector(application:newDidFinishLaunchingWithOptions:)));
-	
-	//if methods does not exist - provide default implementation, otherwise swap the implementation
-	Method method = nil;
-	method = class_getInstanceMethod(self, @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:));
-	if(method) {
-		method_exchangeImplementations(method, class_getInstanceMethod(self, @selector(application:newDidRegisterForRemoteNotificationsWithDeviceToken:)));
-	}
-	else {
-		class_addMethod(self, @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:), (IMP)dynamicMethodIMP, "v@:::");
-	}
-	
-	method = class_getInstanceMethod(self, @selector(application:didFailToRegisterForRemoteNotificationsWithError:));
-	if(method) {
-		method_exchangeImplementations(class_getInstanceMethod(self, @selector(application:didFailToRegisterForRemoteNotificationsWithError:)), class_getInstanceMethod(self, @selector(application:newDidFailToRegisterForRemoteNotificationsWithError:)));
-	}
-	else {
-		class_addMethod(self, @selector(application:didFailToRegisterForRemoteNotificationsWithError:), (IMP)dynamicMethodIMP, "v@:::");
-	}
-	
-	method = class_getInstanceMethod(self, @selector(application:didReceiveRemoteNotification:));
-	if(method) {
-		method_exchangeImplementations(class_getInstanceMethod(self, @selector(application:didReceiveRemoteNotification:)), class_getInstanceMethod(self, @selector(application:newDidReceiveRemoteNotification:)));
-	}
-	else {
-		class_addMethod(self, @selector(application:didReceiveRemoteNotification:), (IMP)dynamicMethodIMP, "v@:::");
-	}
-}
-
-@end
-
-@implementation UIApplication(Pushwoosh)
-
-- (void) pw_setApplicationIconBadgeNumber:(NSInteger) badgeNumber {
-	[self pw_setApplicationIconBadgeNumber:badgeNumber];
-	
-	[[PushNotificationManager pushManager] sendBadges:badgeNumber];
-}
-
-+ (void) load {
-	method_exchangeImplementations(class_getInstanceMethod(self, @selector(setApplicationIconBadgeNumber:)), class_getInstanceMethod(self, @selector(pw_setApplicationIconBadgeNumber:)));
-	
-	UIApplication *app = [UIApplication sharedApplication];
-	NSLog(@"Initializing application: %@, %@", app, app.delegate);
 }
 
 @end

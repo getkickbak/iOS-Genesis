@@ -48,7 +48,11 @@
    
    int cacheSizeMemory = 8 * 1024 * 1024; // 8MB
    int cacheSizeDisk = 32 * 1024 * 1024; // 32MB
+#if __has_feature(objc_arc)
+   NSURLCache* sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory diskCapacity:cacheSizeDisk diskPath:@"nsurlcache"];
+#else
    NSURLCache* sharedCache = [[[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory diskCapacity:cacheSizeDisk diskPath:@"nsurlcache"] autorelease];
+#endif
    [NSURLCache setSharedURLCache:sharedCache];
    self = [super init];
    return self;
@@ -63,10 +67,18 @@
 {    
    CGRect screenBounds = [[UIScreen mainScreen] bounds];
    
+#if __has_feature(objc_arc)
+   self.window = [[UIWindow alloc] initWithFrame:screenBounds];
+#else
    self.window = [[[UIWindow alloc] initWithFrame:screenBounds] autorelease];
+#endif
    self.window.autoresizesSubviews = YES;
    
+#if __has_feature(objc_arc)
+   self.viewController = [[MainViewController alloc] init];
+#else
    self.viewController = [[[MainViewController alloc] init] autorelease];
+#endif
    self.viewController.useSplashScreen = YES;
    
    // Set your app's start page by setting the <content src='foo.html' /> tag in config.xml.

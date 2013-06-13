@@ -17,37 +17,92 @@
 	<preference name="ShowSplashScreenSpinner" value="true"/>
 	<preference name="SuppressesIncrementalRendering" value="true"/>
 	<preference name="TopActivityIndicator" value="gray"/>
-	<plugins>
-      <plugin name="Device" value="CDVDevice" />
-      <plugin name="Logger" value="CDVLogger" />
-      <plugin name="Compass" value="CDVLocation" />
-      <plugin name="Accelerometer" value="CDVAccelerometer" />
-      <plugin name="Camera" value="CDVCamera" />
-      <plugin name="NetworkStatus" value="CDVConnection" />
-      <plugin name="Contacts" value="CDVContacts" />
-      <plugin name="Debug Console" value="CDVDebugConsole" />
-      <plugin name="Echo" value="CDVEcho" />
-      <plugin name="File" value="CDVFile" />
-      <plugin name="FileTransfer" value="CDVFileTransfer" />
-      <plugin name="Geolocation" value="CDVLocation" />
-      <plugin name="Notification" value="CDVNotification" />
-      <plugin name="Media" value="CDVSound" />
-      <plugin name="Capture" value="CDVCapture" />
-      <plugin name="SplashScreen" value="CDVSplashScreen" />
-      <plugin name="Battery" value="CDVBattery" />
-      <plugin name="Globalization" value="CDVGlobalization" />
-      <plugin name="InAppBrowser" value="CDVInAppBrowser" />
-      <plugin name="ProximityIDPlugin" value="ProximityID"/>
-      <plugin name="NotificationPlugin" value="Notification"/>
-      <plugin name="LowLatencyAudio" value="LowLatencyAudio"/>
-		<plugin name="BarcodeScanner" value="CDVBarcodeScanner"/>
-		<plugin name="EmailComposer" value="EmailComposer"/>
-		<plugin name="FacebookConnect" value="FacebookConnect"/>
-      <plugin name="PushNotification" value="PushNotification"/>
-		<plugin name="QRCodeReaderNigma" value="QRCodeReaderNigma"/>
-		<plugin name="QRCodeReaderRL" value="QRCodeReaderRL"/>
-		<plugin name="TwitterPlugin" value="TwitterPlugin"/>
-	</plugins>
+   
+   <feature name="Device">
+      <param name="ios-package" value="CDVDevice" />
+   </feature>
+   <feature name="Logger">
+      <param name="ios-package" value="CDVLogger" />
+   </feature>
+   <feature name="Compass">
+      <param name="ios-package" value="CDVLocation" />
+   </feature>
+   <feature name="Accelerometer">
+      <param name="ios-package" value="CDVAccelerometer" />
+   </feature>
+   <feature name="Camera">
+      <param name="ios-package" value="CDVCamera" />
+   </feature>
+   <feature name="NetworkStatus">
+      <param name="ios-package" value="CDVConnection" />
+   </feature>
+   <feature name="Contacts">
+      <param name="ios-package" value="CDVContacts" />
+   </feature>
+   <feature name="Echo">
+      <param name="ios-package" value="CDVEcho" />
+   </feature>
+   <feature name="File">
+      <param name="ios-package" value="CDVFile" />
+   </feature>
+   <feature name="FileTransfer">
+      <param name="ios-package" value="CDVFileTransfer" />
+   </feature>
+   <feature name="Geolocation">
+      <param name="ios-package" value="CDVLocation" />
+   </feature>
+   <feature name="Notification">
+      <param name="ios-package" value="CDVNotification" />
+   </feature>
+   <feature name="Media">
+      <param name="ios-package" value="CDVSound" />
+   </feature>
+   <feature name="Capture">
+      <param name="ios-package" value="CDVCapture" />
+   </feature>
+   <feature name="SplashScreen">
+      <param name="ios-package" value="CDVSplashScreen" />
+   </feature>
+   <feature name="Battery">
+      <param name="ios-package" value="CDVBattery" />
+   </feature>
+   <feature name="Globalization">
+      <param name="ios-package" value="CDVGlobalization" />
+   </feature>
+   <feature name="InAppBrowser">
+      <param name="ios-package" value="CDVInAppBrowser" />
+   </feature>
+   <feature name="ProximityIDPlugin">
+      <param name="ios-package" value="ProximityID" />
+   </feature>
+   <feature name="NotificationPlugin">
+      <param name="ios-package" value="Notification" />
+   </feature>
+   <feature name="LowLatencyAudio">
+      <param name="ios-package" value="LowLatencyAudio" />
+   </feature>
+   <feature name="BarcodeScanner">
+      <param name="ios-package" value="CDVBarcodeScanner" />
+   </feature>
+   <feature name="EmailComposer">
+      <param name="ios-package" value="EmailComposer" />
+   </feature>
+   <feature name="FacebookConnect">
+      <param name="ios-package" value="FacebookConnect" />
+   </feature>
+   <feature name="PushNotification">
+      <param name="ios-package" value="PushNotification" />
+   </feature>
+   <feature name="QRCodeReaderNigma">
+      <param name="ios-package" value="QRCodeReaderNigma" />
+   </feature>
+   <feature name="QRCodeReaderRL">
+      <param name="ios-package" value="QRCodeReaderRL" />
+   </feature>
+   <feature name="TwitterPlugin">
+      <param name="ios-package" value="TwitterPlugin" />
+   </feature>
+   
 	<access origin="*.akamaihd.net"/>
 	<access origin="*.dev1getkickbak.com"/>
 	<access origin="*.devgetkickbak.com"/>
@@ -62,4 +117,5 @@
 	<access origin="graph.facebook.com"/>
 	<access origin="localhost"/>
 	<access origin="m.facebook.com"/>
+	<access origin="*.amazonaws.com"/>
 </cordova>

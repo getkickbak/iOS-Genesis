@@ -11,9 +11,10 @@
 // MIT Licensed
 
 #import "PushNotification.h"
-//#import <Cordova/JSONKit.h>
+#import "PW_SBJsonWriter.h"
 #import <CoreLocation/CoreLocation.h>
 #import "AppDelegate.h"
+#import "PW_SBJsonParser.h"
 
 @implementation PushNotification
 
@@ -29,20 +30,9 @@
 
 - (PushNotificationManager*)pushManager {
 	if(pushManager == nil) {
-		AppDelegate * delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-		UIViewController * mainVC = delegate.viewController;
-		
-		NSString * appid = [[NSUserDefaults standardUserDefaults] objectForKey:@"Pushwoosh_APPID"];
-		
-		if(!appid)
-			return nil;
-		
-		NSString * appname = [[NSUserDefaults standardUserDefaults] objectForKey:@"Pushwoosh_APPNAME"];
-		if(!appname)
-			appname = @"";
-			
-		pushManager = [[PushNotificationManager alloc] initWithApplicationCode:appid navController:mainVC appName:appname ];
+		pushManager = [PushNotificationManager pushManager];
 		pushManager.delegate = self;
+		pushManager.showPushnotificationAlert = FALSE;
 	}
 	return pushManager;
 }
@@ -89,6 +79,15 @@
 		[[NSUserDefaults standardUserDefaults] setObject:appname forKey:@"Pushwoosh_APPNAME"];
 	}
 	
+	//we need to re-set APPID if it has been changed (on start we have initialized Push Manager with app id from NSUserDefaults)
+	self.pushManager.appCode = appid;
+	
+	//and name if it has been provided
+	if(appname)
+	{
+		self.pushManager.appName = appname;
+	}
+	
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
 
 }
@@ -119,6 +118,33 @@
 	
 }
 
+- (void)startLocationTracking:(NSMutableArray *)arguments withDict:(NSMutableDictionary*)options {
+	// The first argument in the arguments parameter is the callbackID.
+	[self.callbackIds setValue:[arguments pop] forKey:@"startLocationTracking"];
+	
+	NSString *modeString = [options objectForKey:@"mode"];
+	if (modeString) {
+		[[PushNotificationManager pushManager] startLocationTracking:modeString];
+	} else {
+		[[PushNotificationManager pushManager] startLocationTracking];
+	}
+	
+	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:nil];
+	[self writeJavascript:[pluginResult toSuccessCallbackString:[self.callbackIds valueForKey:@"startLocationTracking"]]];
+	
+}
+
+- (void)stopLocationTracking:(NSMutableArray *)arguments withDict:(NSMutableDictionary*)options {
+	// The first argument in the arguments parameter is the callbackID.
+	[self.callbackIds setValue:[arguments pop] forKey:@"stopLocationTracking"];
+	
+	[[PushNotificationManager pushManager] stopLocationTracking];
+	
+	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:nil];
+	[self writeJavascript:[pluginResult toSuccessCallbackString:[self.callbackIds valueForKey:@"stopLocationTracking"]]];
+	
+}
+
 - (void)onDidRegisterForRemoteNotificationsWithDeviceToken:(NSString *)token {
 
     NSMutableDictionary *results = [PushNotification getRemoteNotificationStatus];
@@ -138,21 +164,30 @@
 }
 
 
-- (void) onPushAccepted:(PushNotificationManager *)manager withNotification:(NSDictionary *)pushNotification{
+- (void) onPushAccepted:(PushNotificationManager *)manager withNotification:(NSDictionary *)pushNotification onStart:(BOOL)onStart{
 	//reset badge counter
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 	
+	NSMutableDictionary *pn = [NSMutableDictionary dictionaryWithDictionary:pushNotification];
+
+	//pase JSON string in custom data to JSON Object
 	NSString* u = [pushNotification objectForKey:@"u"];
 	if (u) {
-		NSDictionary *dict = [u cdvjk_objectFromJSONString];
+		PW_SBJsonParser * json = [[PW_SBJsonParser alloc] init];
+		NSDictionary *dict =[json objectWithString:u];
+		[json release]; json = nil;
+		
 		if (dict) {
-			NSMutableDictionary *pn = [NSMutableDictionary dictionaryWithDictionary:pushNotification];
 			[pn setObject:dict forKey:@"u"];
-			pushNotification = pn;
 		}
 	}
 	
-	NSString *jsonString = [pushNotification cdvjk_JSONString];
+	[pn setValue:[NSNumber numberWithBool:onStart] forKey:@"onStart"];
+	
+	PW_SBJsonWriter * json = [[PW_SBJsonWriter alloc] init];
+	NSString *jsonString =[json stringWithObject:pn];
+	[json release]; json = nil;
+	
 	NSString *jsStatement = [NSString stringWithFormat:@"window.plugins.pushNotification.notificationCallback(%@);", jsonString];
 	[self writeJavascript:[NSString stringWithFormat:@"setTimeout(function() { %@; }, 0);", jsStatement]];
 }

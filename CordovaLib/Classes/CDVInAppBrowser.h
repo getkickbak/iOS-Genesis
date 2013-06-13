@@ -24,28 +24,21 @@
 
 @class CDVInAppBrowserViewController;
 
-@protocol CDVInAppBrowserNavigationDelegate <NSObject>
-
-- (void)browserLoadStart:(NSURL*)url;
-- (void)browserLoadStop:(NSURL*)url;
-- (void)browserLoadError:(NSError*)error forUrl:(NSURL*)url;
-- (void)browserExit;
-
-@end
-
-@interface CDVInAppBrowser : CDVPlugin <CDVInAppBrowserNavigationDelegate>
+@interface CDVInAppBrowser : CDVPlugin {
+    BOOL _injectedIframeBridge;
+}
 
 @property (nonatomic, retain) CDVInAppBrowserViewController* inAppBrowserViewController;
 @property (nonatomic, copy) NSString* callbackId;
 
 - (void)open:(CDVInvokedUrlCommand*)command;
 - (void)close:(CDVInvokedUrlCommand*)command;
+- (void)injectScriptCode:(CDVInvokedUrlCommand*)command;
 
 @end
 
 @interface CDVInAppBrowserViewController : UIViewController <UIWebViewDelegate>{
     @private
-    NSURL* _requestedURL;
     NSString* _userAgent;
     NSString* _prevUserAgent;
     NSInteger _userAgentLockToken;
@@ -61,11 +54,14 @@
 @property (nonatomic, strong) IBOutlet UIToolbar* toolbar;
 
 @property (nonatomic, weak) id <CDVScreenOrientationDelegate> orientationDelegate;
-@property (nonatomic, weak) id <CDVInAppBrowserNavigationDelegate> navigationDelegate;
+@property (nonatomic, weak) CDVInAppBrowser* navigationDelegate;
+@property (nonatomic) NSURL* currentURL;
 
 - (void)close;
 - (void)navigateTo:(NSURL*)url;
 - (void)showLocationBar:(BOOL)show;
+- (void)showToolBar:(BOOL)show;
+- (void)setCloseButtonTitle:(NSString*)title;
 
 - (id)initWithUserAgent:(NSString*)userAgent prevUserAgent:(NSString*)prevUserAgent;
 
@@ -74,6 +70,9 @@
 @interface CDVInAppBrowserOptions : NSObject {}
 
 @property (nonatomic, assign) BOOL location;
+@property (nonatomic, assign) BOOL toolbar;
+@property (nonatomic, copy) NSString* closebuttoncaption;
+
 @property (nonatomic, copy) NSString* presentationstyle;
 @property (nonatomic, copy) NSString* transitionstyle;
 
