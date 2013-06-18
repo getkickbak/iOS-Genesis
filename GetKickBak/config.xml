@@ -87,9 +87,6 @@
    <feature name="EmailComposer">
       <param name="ios-package" value="EmailComposer" />
    </feature>
-   <feature name="FacebookConnect">
-      <param name="ios-package" value="FacebookConnect" />
-   </feature>
    <feature name="PushNotification">
       <param name="ios-package" value="PushNotification" />
    </feature>
@@ -113,8 +110,10 @@
 	<access origin="192.168.0.46"/>
 	<access origin="192.168.0.52"/>
 	<access origin="76.10.173.153"/>
+	<access origin="connect.facebook.net"/>
 	<access origin="api.facebook.com"/>
 	<access origin="graph.facebook.com"/>
+	<access origin="*.facebook.com"/>
 	<access origin="localhost"/>
 	<access origin="m.facebook.com"/>
 	<access origin="*.amazonaws.com"/>

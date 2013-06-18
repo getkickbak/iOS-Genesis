@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSData+Base64.h"
 #import <MessageUI/MFMailComposeViewController.h>
 #import <Cordova/CDVPlugin.h>
 

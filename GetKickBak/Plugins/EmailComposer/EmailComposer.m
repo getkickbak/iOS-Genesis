@@ -52,7 +52,7 @@
       for (int i = 0; i < [images count]; i++)
          {
          NSString *image = [images objectAtIndex: i];
-         NSData *data = [NSData dataWithBase64EncodedString:image];
+         NSData *data = [NSData dataFromBase64String:image];
          [picker addAttachmentData:data
                           mimeType:@"image/png"
                           fileName:[NSString stringWithFormat:@"image%d.png", i+1]];
